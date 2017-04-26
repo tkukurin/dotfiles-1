@@ -1,4 +1,4 @@
-" Modified: Fri 11 Jan 2013 03:22:05 PM CET 
+" Modified: Wed 26 Apr 2017 10:44:56 AM CEST 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -11,6 +11,10 @@ try
 catch
 endtry
 
+" initialize an empty array for disabled pathogen plugins
+let g:pathogen_disabled = []
+
+" call add(g:pathogen_disabled, 'sparkup')
 call pathogen#infect()
 
 set ai                 " always set autoindenting on
@@ -93,11 +97,16 @@ set formatoptions-=t
 set textwidth=79
 set mouse=a
 
+" powerline statusbar
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+
 syntax enable
 
 
 " Set up pretty colors
-let myColorscheme = 'inkpot'
+set background=dark
+let myColorscheme = 'solarized'
+"let myColorscheme = 'inkpot'
 
 " Personal preferences for users
 if $USER == 'ldx' || $USER == 'mroos' || $USER == 'michiel'
@@ -110,6 +119,7 @@ endif
 if &term ==? 'xterm-256color' || &term ==? 'screen-256color-bce' || &term ==? 'screen-256color'
 	set t_Co=256
 	execute "colorscheme ".myColorscheme
+	let g:solarized_termtrans = 1
 else
 	colorscheme default
 endif
@@ -142,7 +152,6 @@ nmap <F2> :w<C-M>
 nmap <F4> :wq<C-M>
 nmap <F10> :qall<C-M>
 
-
 " Use system-wide clipboard
 set clipboard+=unnamed
 
@@ -152,7 +161,7 @@ map <leader>c "+y<cr>
 
 
 " Let's see some useful info in the status line
-set statusline=%f\ %1*%m%*%=[%{strlen(&fenc)?&fenc:'none'},%{&ff}]\ %{fugitive#statusline()}\ %2*%r%*%w\ %l,%c-%v/%L\ %P
+" set statusline=%f\ %1*%m%*%=[%{strlen(&fenc)?&fenc:'none'},%{&ff}]\ %{fugitive#statusline()}\ %2*%r%*%w\ %l,%c-%v/%L\ %P
 
 
 " Session management
@@ -291,15 +300,15 @@ cnoremap <C-N> <Down>
 
 " command-T
 let g:CommandTMaxHeight = 30
-noremap <leader>j :CommandT<cr>
-noremap <leader>y :CommandTFlush<cr>
+noremap <leader>ct :CommandT<cr>
+noremap <leader>cty :CommandTFlush<cr>
 "map <D-t> :CommandT<CR>
 
 
 " Cope
 " Do :help cope if you are unsure what cope is. It's super useful!
 map <leader>ccc :botright cope 20<cr>
-map <leader>\ :ccl<CR>
+map <leader>\ :ccl<cr>
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 
@@ -307,9 +316,9 @@ map <leader>p :cp<cr>
 " Tagbar http://majutsushi.github.com/tagbar/
 let g:tagbar_autofocus = 1
 let g:tagbar_usearrows = 1
-"au BufWinEnter *.js TagbarOpen
-"au BufWinEnter *.php TagbarOpen
-
+au BufWinEnter *.js TagbarOpen
+au BufWinEnter *.php TagbarOpen
+map <leader>tb :TagbarToggle<cr>
 
 " restore debug.vim from ~/.vim/plugins/attic
 "let g:debuggerMaxChildren = 64
@@ -318,9 +327,20 @@ let g:tagbar_usearrows = 1
 
 
 " Start NERDTree
-"autocmd VimEnter * NERDTree
+" autocmd VimEnter * NERDTree
 " Move cursor to main window
-"autocmd VimEnter * wincmd p
+autocmd VimEnter * wincmd p
+" Close vim if NERDTree is the last open buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+map <leader>nt :NERDTreeToggle<cr>
 
+" Sparkup
+let g:sparkupNextMapping = '<c-n>'
+let g:sparkupExecuteMapping = '<c-e>'
 
+" PHP Code completion
+" autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+
+" Add PHP Omni Completion to SuperTab
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>" 
 " http://amix.dk/vim/vimrc.html
