@@ -89,3 +89,6 @@
 [submodule ".vim/bundle/tmux.vim"]
 	path = .vim/bundle/tmux.vim
 	url = https://github.com/keith/tmux.vim.git
+[submodule ".vim/bundle/sslsecure"]
+	path = .vim/bundle/sslsecure
+	url = https://github.com/chr4/sslsecure.vim.git
