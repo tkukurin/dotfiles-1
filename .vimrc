@@ -1,4 +1,4 @@
-" Modified: Wed 26 Apr 2017 10:44:56 AM CEST 
+" Modified: Wed 03 May 2017 12:46:02 PM CEST 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -50,6 +50,7 @@ set magic              " Use some magic in search patterns
 set matchtime=2        " Show the match for n tenths of a second
 set noerrorbells       " Damn error bells!
 set noexpandtab
+set number             " Show line numbers
 set copyindent
 set nostartofline      " Don't jump to start of line on pagedown
 set nrformats+=alpha   " Allows CTRL-A and CTRL-X to increment/decrement letters
@@ -109,11 +110,8 @@ let myColorscheme = 'solarized'
 "let myColorscheme = 'inkpot'
 
 " Personal preferences for users
-if $USER == 'ldx' || $USER == 'mroos' || $USER == 'michiel'
+if $USER == 'ldx' || $USER == 'michiel' || $USER == 'vagrant'
 	let myColorscheme = 'typofree'
-endif
-if $USER == 'remco'
-	set number "show line numbers
 endif
 
 if &term ==? 'xterm-256color' || &term ==? 'screen-256color-bce' || &term ==? 'screen-256color'
