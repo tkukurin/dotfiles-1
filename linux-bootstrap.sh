@@ -16,9 +16,9 @@ then
 	cd ..
 	ln -s $home/${PWD##*/}/powerline-shell/powerline-shell.py $home/powerline-shell.py
 fi
-if [ ! -d $home/.oh-my-zsh ]
+if [ ! -d $home/.zim ]
 then
-	curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+    git clone --recursive https://github.com/Eriner/zim.git ${ZDOTDIR:-${HOME}}/.zim
 fi
 
 # Create symlinks

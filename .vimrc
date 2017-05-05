@@ -1,9 +1,8 @@
-" Modified: Wed 03 May 2017 12:46:02 PM CEST 
+" Modified: Fri 05 May 2017 02:25:39 PM CEST 
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
-set encoding=utf-8
 set fileformat=unix
 set fileformats=unix,dos,mac
 try
@@ -11,21 +10,72 @@ try
 catch
 endtry
 
-" initialize an empty array for disabled pathogen plugins
-let g:pathogen_disabled = []
+call plug#begin()
 
-" call add(g:pathogen_disabled, 'sparkup')
-call pathogen#infect()
+" Sensible defaults
+Plug 'tpope/vim-sensible'
 
-set ai                 " always set autoindenting on
+" Status bar
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" Fuzzy file, buffer, mru, tag, etc finder
+Plug 'ctrlpvim/ctrlp.vim'
+
+" A tree explorer plugin for vim.
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+" Syntax checking hacks for vim
+Plug 'scrooloose/syntastic'
+Plug 'mtscout6/syntastic-local-eslint.vim'
+
+" Completions
+Plug 'marijnh/tern_for_vim'
+" Plug 'Valloric/YouCompleteMe'
+
+" Strip whitespace
+Plug 'bronson/vim-trailing-whitespace'
+
+" JSON
+Plug 'elzr/vim-json'
+
+" Snippets
+Plug 'honza/vim-snippets'
+
+" JavaScript
+Plug 'othree/yajs.vim'
+Plug 'othree/es.next.syntax.vim'
+
+" And the rest
+Plug 'rodjek/vim-puppet'
+Plug 'wincent/command-t'
+Plug 'scrooloose/nerdcommenter'
+Plug 'ap/vim-css-color'
+Plug 'raimondi/delimitmate'
+Plug 'rstacruz/sparkup'
+Plug 'ervandew/supertab'
+Plug 'majutsushi/tagbar'
+Plug 'marcweber/vim-addon-mw-utils'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-eunuch'
+Plug 'altercation/vim-colors-solarized'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'easymotion/vim-easymotion'
+
+call plug#end()
+
 " File-type
 filetype on
 filetype plugin on
 filetype indent on
 "set backspace=2      " allow backspacing over everything in insert mode
-" allow <BkSpc> to delete line breaks, beyond the start of the current 
+" allow <BkSpc> to delete line breaks, beyond the start of the current
 " insertion, and over indentations:
-set backspace=eol,start,indent
 silent execute '!mkdir -p ~/.vim/backup'
 set backupdir=~/.vim/backup/
 set backupskip=/tmp/*,/private/tmp/*
@@ -36,13 +86,11 @@ set complete=k,.,w,b,u,t,i
 set directory=~/.vim/backup,/tmp " This is where the swapfiles go
 set history=1000       " keep 50 lines of command line history
 set undolevels=1000
-set incsearch          " Incremental search on - Show match as search is typed
 "set ignorecase         " Ignore the case when searching
 set smartcase          " Override the 'ignorecase' option if the search pattern contains ucase
 set laststatus=2       " Show status only when there are more than two windows
 set lazyredraw         " Don't redraw while executing macros (good performance config)
 set cmdheight=2        " Helps avoiding 'hit enter' prompt
-set listchars=tab:>.,trail:-,extends:#,nbsp:.
 set foldmethod=indent
 set foldminlines=5
 set foldlevelstart=1
@@ -55,7 +103,6 @@ set copyindent
 set nostartofline      " Don't jump to start of line on pagedown
 set nrformats+=alpha   " Allows CTRL-A and CTRL-X to increment/decrement letters
 set pastetoggle=<F11>
-set ruler              " show the cursor position all the time
 "if exists('+colorcolumn')
 "	set colorcolumn=+1
 "endif
@@ -89,7 +136,6 @@ set whichwrap=<,>,h,l,~,[,]   " Left/right motion line wrap
 " have further <Tab>s cycle through the possibilities:
 set wildmode=list:longest,full
 set wildchar=<TAB>     " the char used for "expansion" on the command line
-set wildmenu
 set wildignore+=*.DS_Store,*.o,*.obj,.git,.svn,*.pyc " Ignore certain files in wildmenu
 
 " normally don't automatically format `text' as it is typed, IE only do this
@@ -98,8 +144,9 @@ set formatoptions-=t
 set textwidth=79
 set mouse=a
 
-" powerline statusbar
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+" statusbar
+let g:airline_theme='distinguished'
+let g:airline_powerline_fonts = 1
 
 syntax enable
 
@@ -202,9 +249,9 @@ map <C-l> <C-w>l
 
 " Tab configuration
 map <leader>tn :tabnew<cr>
-map <leader>te :tabedit 
+map <leader>te :tabedit
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
+map <leader>tm :tabmove
 map <Left> :tabprevious<CR>
 map <Right> :tabnext<CR>
 
@@ -217,7 +264,7 @@ map <leader>cd :cd %:p:h<cr>
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
 
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 try
 	set switchbuf=usetab
 	set stal=2
@@ -340,5 +387,5 @@ let g:sparkupExecuteMapping = '<c-e>'
 " autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
 " Add PHP Omni Completion to SuperTab
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>" 
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 " http://amix.dk/vim/vimrc.html

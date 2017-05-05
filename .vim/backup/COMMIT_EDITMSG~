@@ -1,0 +1,15 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch feature/DII2-258-blog-pagina-type-blog
+# Your branch is up-to-date with 'origin/feature/DII2-258-blog-pagina-type-blog'.
+#
+# Changes to be committed:
+#	modified:   Web/typo3conf/ext/site_darling_fe/Classes/Index/Queue/AbstractInitializer.php
+#	modified:   Web/typo3conf/ext/site_darling_fe/Configuration/TypoScript/Setup/Layout/Page.ts
+#	modified:   Web/typo3conf/ext/site_darling_fe/Configuration/TypoScript/Setup/Modules/Solr.ts
+#
+# Untracked files:
+#	Web/typo3conf/ext/site_darling_fe/Classes/Hooks/
+#	Web/typo3conf/ext/site_darling_fe/Configuration/TCA/Overrides/sys_file_collection.php
+#

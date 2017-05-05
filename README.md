@@ -4,8 +4,8 @@ vim-config
 My personal "Text Triumvirate" configuration as defined in this [Dr.Bunsen](http://www.drbunsen.org/the-text-triumvirate/) article.
 
 It consists out of:
-* A `.vimrc` with all required [Pathogen](https://github.com/tpope/vim-pathogen) modules. 
-* A `.zshrc` for use with [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh).
+* A `.vimrc` with all required [Plug](https://github.com/junegunn/vim-plug) modules.
+* A `.zshrc` for use with [zim](https://github.com/Eriner/zim).
 * A `.tmux.conf` for use with tmux
 
 The entire setup is primarily meant for use with Mac OS X, but is set up to be generic, so it might benefit others as well.
@@ -17,8 +17,8 @@ for linux based systems. (Which may or may not work in your situation.)
 * You have `zsh` installed
 * You have `tmux` installed (`2.1`+ or you will have issues with the supplied
 		`.tmux.conf` )
-* You have `vim` installed and compiled with `ruby` and `python` support
-* You have `ruby`, `ruby-devel`, `python` and `python-pip` installed
+* You have `vim` installed (optionally compiled with `ruby` and `python` support)
+* You have `ruby`, `ruby-devel`, `python` and `python-pip` installed - if you wish to use Command-T plugin in vim
 * You have `powerline` installed from either Git or `pip`. (See: 
 		https://powerline.readthedocs.org/en/latest/installation.html )
 * `Exuberant Ctags`, as TagBar will not work with GNU ctags. On OSX: `brew install ctags`
@@ -66,7 +66,7 @@ Fix configuration in `.zshrc` and other files immediately after installation to
 match your situation; It's highly unlikely that your setup will work 100% OK
 unless your username is `remco` and your `$PATH` matches mine.
 
-This installer will also install `powerline-shell` and `oh-my-zsh` for you if they
+This installer will also install `powerline-shell` and `zim` for you if they
 do not already exist.
 
 On OSX you will also need a patched font for powerline to work right. The
