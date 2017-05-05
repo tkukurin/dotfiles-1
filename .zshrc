@@ -181,51 +181,53 @@ zstyle ':completion:*:history-words' remove-all-dups yes
 zstyle ':completion:*:history-words' list false
 zstyle ':completion:*:history-words' menu yes
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ -e source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+	source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+	ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 
-# STYLES
-# Aliases and functions
-ZSH_HIGHLIGHT_STYLES[alias]='fg=068'
-ZSH_HIGHLIGHT_STYLES[function]='fg=028'
+	# STYLES
+	# Aliases and functions
+	ZSH_HIGHLIGHT_STYLES[alias]='fg=068'
+	ZSH_HIGHLIGHT_STYLES[function]='fg=028'
 
-# Commands and builtins
-ZSH_HIGHLIGHT_STYLES[command]="fg=166"
-ZSH_HIGHLIGHT_STYLES[hashed-command]="fg=blue"
-ZSH_HIGHLIGHT_STYLES[builtin]="fg=202"
+	# Commands and builtins
+	ZSH_HIGHLIGHT_STYLES[command]="fg=166"
+	ZSH_HIGHLIGHT_STYLES[hashed-command]="fg=blue"
+	ZSH_HIGHLIGHT_STYLES[builtin]="fg=202"
 
-# Paths
-ZSH_HIGHLIGHT_STYLES[path]='fg=244'
+	# Paths
+	ZSH_HIGHLIGHT_STYLES[path]='fg=244'
 
-# Globbing
-ZSH_HIGHLIGHT_STYLES[globbing]='fg=130,bold'
+	# Globbing
+	ZSH_HIGHLIGHT_STYLES[globbing]='fg=130,bold'
 
-# Options and arguments
-ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=124'
-ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=124'
+	# Options and arguments
+	ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=124'
+	ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=124'
 
-ZSH_HIGHLIGHT_STYLES[back-quoted-argument]="fg=065"
-ZSH_HIGHLIGHT_STYLES[single-quoted-argument]="fg=065"
-ZSH_HIGHLIGHT_STYLES[double-quoted-argument]="fg=065"
-ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]="fg=065"
-ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]="fg=065"
+	ZSH_HIGHLIGHT_STYLES[back-quoted-argument]="fg=065"
+	ZSH_HIGHLIGHT_STYLES[single-quoted-argument]="fg=065"
+	ZSH_HIGHLIGHT_STYLES[double-quoted-argument]="fg=065"
+	ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]="fg=065"
+	ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]="fg=065"
 
 
-ZSH_HIGHLIGHT_STYLES[default]='none'
-ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red,bold'
-ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=green'
-ZSH_HIGHLIGHT_STYLES[precommand]='none'
-ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=214'
-ZSH_HIGHLIGHT_STYLES[history-expansion]='fg=blue'
+	ZSH_HIGHLIGHT_STYLES[default]='none'
+	ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red,bold'
+	ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=green'
+	ZSH_HIGHLIGHT_STYLES[precommand]='none'
+	ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=214'
+	ZSH_HIGHLIGHT_STYLES[history-expansion]='fg=blue'
 
-ZSH_HIGHLIGHT_STYLES[assign]='none'
+	ZSH_HIGHLIGHT_STYLES[assign]='none'
 
-# PATTERNS
-# rm -rf
-ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
+	# PATTERNS
+	# rm -rf
+	ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
 
-# Sudo
-ZSH_HIGHLIGHT_PATTERNS+=('sudo ' 'fg=white,bold,bg=red')
+	# Sudo
+	ZSH_HIGHLIGHT_PATTERNS+=('sudo ' 'fg=white,bold,bg=red')
+fi
 
 ssh-add -A &> /dev/null
