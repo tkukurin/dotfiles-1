@@ -66,6 +66,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'altercation/vim-colors-solarized'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'easymotion/vim-easymotion'
+Plug 'tmux-plugins/vim-tmux'
 
 call plug#end()
 
