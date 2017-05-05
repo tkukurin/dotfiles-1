@@ -140,8 +140,8 @@ zstyle ':completion:*:history-words' list false
 zstyle ':completion:*:history-words' menu yes
 
 # Highlighting
-if [ -e /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-	source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ -e ${HOME}/.zim/modules/syntax-highlighting/external/zsh-syntax-highlighting.zsh ]; then
+	source ${HOME}/.zim/modules/syntax-highlighting/external/zsh-syntax-highlighting.zsh
 
 	ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 
