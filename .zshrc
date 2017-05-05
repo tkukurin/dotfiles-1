@@ -3,57 +3,11 @@ if [[ -s ${ZDOTDIR:-${HOME}}/.zim/init.zsh ]]; then
 	source ${ZDOTDIR:-${HOME}}/.zim/init.zsh
 fi
 
-# Ooooh ;-)
-fractal () {
-	local lines columns colour a b p q i pnew
-	((columns=COLUMNS-1, lines=LINES-1, colour=0))
-	for ((b=-1.5; b<=1.5; b+=3.0/lines)) do
-		for ((a=-2.0; a<=1; a+=3.0/columns)) do
-			for ((p=0.0, q=0.0, i=0; p*p+q*q < 4 && i < 32; i++)) do
-				((pnew=p*p-q*q+a, q=2*p*q+b, p=pnew))
-			done
-			((colour=(i/4)%8))
-			echo -n "\\e[4${colour}m "
-		done
-		echo
-	done
-}
+umask 002
 
-# Customize to your needs...
-extract () {
-	if [ -f $1 ] ; then
-		case $1 in
-			*.tar.bz2) tar xvjf $1 ;;
-			*.tar.gz) tar xvzf $1 ;;
-			*.tar.xz) tar xvJf $1 ;;
-			*.bz2) bunzip2 $1 ;;
-			*.rar) unrar x $1 ;;
-			*.gz) gunzip $1 ;;
-			*.tar) tar xvf $1 ;;
-			*.tbz2) tar xvjf $1 ;;
-			*.tgz) tar xvzf $1 ;;
-			*.zip) unzip $1 ;;
-			*.Z) uncompress $1 ;;
-			*.7z) 7z x $1 ;;
-			*.xz) unxz $1 ;;
-			*.exe) cabextract $1 ;;
-			*) echo "\`$1': unrecognized file compression" ;;
-	esac
-	else
-		echo "\`$1' is not a valid file"
-	fi
-}
-
-# Gather external ip address
-exip () {
-	echo -n "Current External IP: "
-	curl -s -m 5 http://ipv4.myip.dk/api/info/IPv4Address | sed -e 's/"//g'
-}
-
-# Determine local IP address
-ips () {
-	ifconfig | grep "inet " | awk '{ print $2 }'
-}
+HISTFILE=~/.zshhistory
+HISTSIZE=3000
+SAVEHIST=3000
 
 if [ -x /usr/local/bin/gdircolors ]; then
 	eval "`/usr/local/bin/gdircolors -b ${HOME}/.dircolors`"
@@ -90,6 +44,10 @@ alias :q="exit"
 alias l="ls -A -F"
 alias ll="ls -h -l "
 alias la="ls -a"
+# List only directories and symbolic links that point to directories
+alias lsd='ls -ld *(-/DN)'
+# List only file beginning with "."
+alias lsa='ls -ld .*'
 alias grep="grep --color=auto"
 alias know="vim ${HOME}/.ssh/known_hosts"
 alias reload!=". ${HOME}/.zshrc"
@@ -232,3 +190,55 @@ if [ -e /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; 
 fi
 
 ssh-add -A &> /dev/null
+
+# Ooooh ;-)
+fractal () {
+	local lines columns colour a b p q i pnew
+	((columns=COLUMNS-1, lines=LINES-1, colour=0))
+	for ((b=-1.5; b<=1.5; b+=3.0/lines)) do
+		for ((a=-2.0; a<=1; a+=3.0/columns)) do
+			for ((p=0.0, q=0.0, i=0; p*p+q*q < 4 && i < 32; i++)) do
+				((pnew=p*p-q*q+a, q=2*p*q+b, p=pnew))
+			done
+			((colour=(i/4)%8))
+			echo -n "\\e[4${colour}m "
+		done
+		echo
+	done
+}
+
+# Customize to your needs...
+extract () {
+	if [ -f $1 ] ; then
+		case $1 in
+			*.tar.bz2) tar xvjf $1 ;;
+			*.tar.gz) tar xvzf $1 ;;
+			*.tar.xz) tar xvJf $1 ;;
+			*.bz2) bunzip2 $1 ;;
+			*.rar) unrar x $1 ;;
+			*.gz) gunzip $1 ;;
+			*.tar) tar xvf $1 ;;
+			*.tbz2) tar xvjf $1 ;;
+			*.tgz) tar xvzf $1 ;;
+			*.zip) unzip $1 ;;
+			*.Z) uncompress $1 ;;
+			*.7z) 7z x $1 ;;
+			*.xz) unxz $1 ;;
+			*.exe) cabextract $1 ;;
+			*) echo "\`$1': unrecognized file compression" ;;
+	esac
+	else
+		echo "\`$1' is not a valid file"
+	fi
+}
+
+# Gather external ip address
+exip () {
+	echo -n "Current External IP: "
+	curl -s -m 5 http://ipv4.myip.dk/api/info/IPv4Address | sed -e 's/"//g'
+}
+
+# Determine local IP address
+ips () {
+	ifconfig | grep "inet " | awk '{ print $2 }'
+}

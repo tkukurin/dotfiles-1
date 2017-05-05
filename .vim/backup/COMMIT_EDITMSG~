@@ -5,41 +5,11 @@
 # Your branch is up-to-date with 'tuurlijk/master'.
 #
 # Changes to be committed:
-#	modified:   .gitignore
+#	modified:   .bashrc
 #	modified:   .gitmodules
-#	deleted:    .vim/autoload/pathogen.vim
-#	new file:   .vim/autoload/plug.vim
-#	new file:   .vim/backup/COMMIT_EDITMSG~
-#	deleted:    .vim/bundle/Command-T
-#	deleted:    .vim/bundle/ShowTrailingWhitespace
-#	deleted:    .vim/bundle/css-color
-#	deleted:    .vim/bundle/delimitMate
-#	deleted:    .vim/bundle/jslint.vim
-#	deleted:    .vim/bundle/mw-utils
-#	deleted:    .vim/bundle/nerdtree
-#	deleted:    .vim/bundle/phpcomplete.vim
-#	deleted:    .vim/bundle/powerline
-#	deleted:    .vim/bundle/puppet
-#	deleted:    .vim/bundle/snipmate.vim
-#	deleted:    .vim/bundle/sparkup
-#	deleted:    .vim/bundle/sslsecure
-#	deleted:    .vim/bundle/supertab
-#	deleted:    .vim/bundle/syntastic
-#	deleted:    .vim/bundle/tagbar
-#	deleted:    .vim/bundle/taglist-plus
-#	deleted:    .vim/bundle/tcomment
-#	deleted:    .vim/bundle/timestamp.vim
-#	deleted:    .vim/bundle/tlib_vim
-#	deleted:    .vim/bundle/tmux.vim
-#	deleted:    .vim/bundle/vim-colors-solarized
-#	deleted:    .vim/bundle/vim-eunuch
-#	deleted:    .vim/bundle/vim-fugitive
-#	deleted:    .vim/bundle/vim-snippets
-#	deleted:    .vim/bundle/vim-tmux
-#	modified:   .vim/filetype.vim
-#	deleted:    .vim/plugin/shuffle.vim
-#	modified:   .vimrc
+#	modified:   .vim/backup/COMMIT_EDITMSG~
+#	new file:   .zimrc
 #	modified:   .zshrc
-#	modified:   README.md
+#	deleted:    antigen
 #	modified:   linux-bootstrap.sh
 #
