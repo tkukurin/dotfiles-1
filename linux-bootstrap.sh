@@ -12,20 +12,20 @@ fi
 if [ ! -d $home/powerline-shell ]
 then
 	cd $home/${PWD##*/}
-	git submodule update --init powerline-shell 
+	git submodule update --init powerline-shell
 	cd $home/${PWD##*/}/powerline-shell && ./install.py
 	cd ..
 	ln -s $home/${PWD##*/}/powerline-shell/powerline-shell.py $home/powerline-shell.py
 fi
 if [ ! -d $home/.zim ]
 then
-    git clone --recursive https://github.com/Eriner/zim.git ${ZDOTDIR:-${HOME}}/.zim
+	git clone --recursive https://github.com/Eriner/zim.git ${ZDOTDIR:-${HOME}}/.zim
 fi
 
 # Create symlinks
 if [ -e $home/.vim ] || [ -L $home/.vim ]
 then
-q	mv $home/.vim $home/.vim.original
+	mv $home/.vim $home/.vim.original
 fi
 if [ -e $home/.vimrc ] || [ -L $home/.vimrc ]
 then
@@ -33,11 +33,11 @@ then
 fi
 if [ -e $home/.tmux.conf ] || [ -L $home/.tmux.conf ]
 then
-  mv $home/.tmux.conf $home/.tmux.conf.original
+	mv $home/.tmux.conf $home/.tmux.conf.original
 fi
 if [ -e $home/.bashrc ] || [ -L $home/.bashrc ]
 then
-  mv $home/.bashrc $home/.bashrc.original
+	mv $home/.bashrc $home/.bashrc.original
 fi
 if [ -e $home/.zshrc ] || [ -L $home/.zshrc ]
 then
