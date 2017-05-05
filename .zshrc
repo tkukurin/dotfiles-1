@@ -9,10 +9,10 @@ HISTFILE=~/.zshhistory
 HISTSIZE=3000
 SAVEHIST=3000
 
-if [ -x /usr/local/bin/gdircolors ]; then
+if [ -x /usr/local/bin/gdircolors ] && [ -e ${HOME}/.dircolors ]; then
 	eval "`/usr/local/bin/gdircolors -b ${HOME}/.dircolors`"
 fi
-if [ -x /usr/bin/dircolors ]; then
+if [ -x /usr/bin/dircolors ] && [ -e ${HOME}/.dircolors ]; then
 	eval "`dircolors -b ~/.dircolors`"
 fi
 
