@@ -58,6 +58,9 @@ ips () {
 if [ -x /usr/local/bin/gdircolors ]; then
 	eval "`/usr/local/bin/gdircolors -b ${HOME}/.dircolors`"
 fi
+if [ -x /usr/bin/dircolors ]; then
+	eval "`dircolors -b ~/.dircolors`"
+fi
 
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='38;5;202'
@@ -77,7 +80,11 @@ export LESS=-r
 export GPG_TTY=$(tty)
 
 # Aliases
-alias ls='/usr/local/bin/gls --color=auto'
+if [ `uname` = Darwin ]; then
+	alias ls='/usr/local/bin/gls --color=auto'
+else
+	alias ls='/bin/ls --color=auto'
+fi
 alias :e="\$EDITOR"
 alias :q="exit"
 alias l="ls -A -F"

@@ -1,5 +1,7 @@
 export EDITOR='vim'
-export BYOBU_PREFIX=`brew --prefix`
+if [ `uname` = Darwin ] && [ `which brew` ]; then
+    export BYOBU_PREFIX=`brew --prefix`
+fi
 
 #[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 

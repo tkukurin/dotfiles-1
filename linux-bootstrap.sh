@@ -7,7 +7,8 @@ then
 else
 	home=$1
 fi
-#Install prerequisites
+
+# Install prerequisites
 if [ ! -d $home/powerline-shell ]
 then
 	cd $home/${PWD##*/}
@@ -24,7 +25,7 @@ fi
 # Create symlinks
 if [ -e $home/.vim ] || [ -L $home/.vim ]
 then
-	mv $home/.vim $home/.vim.original
+q	mv $home/.vim $home/.vim.original
 fi
 if [ -e $home/.vimrc ] || [ -L $home/.vimrc ]
 then
@@ -42,6 +43,10 @@ if [ -e $home/.zshrc ] || [ -L $home/.zshrc ]
 then
 	mv $home/.zshrc $home/.zshrc.original
 fi
+if [ -e $home/.zimrc ] || [ -L $home/.zimrc ]
+then
+	mv $home/.zimrc $home/.zimrc.original
+fi
 if [ -e $home/tmux-launch.sh ] || [ -L $home/tmux-launch.sh ]
 then
 	mv $home/tmux-launch.sh $home/tmux-launch.sh.original
@@ -56,8 +61,9 @@ ln -s $home/${PWD##*/}/.vim $home/.vim
 ln -s $home/${PWD##*/}/.vimrc $home/.vimrc
 ln -s $home/${PWD##*/}/.tmux.conf $home/.tmux.conf
 ln -s $home/${PWD##*/}/.bashrc $home/.bashrc
+ln -s $home/${PWD##*/}/.zimrc $home/.zimrc
 ln -s $home/${PWD##*/}/.zshrc $home/.zshrc
-ln -s $home/${PWD##*/}/powerline-config $home/.config/powerline 
+ln -s $home/${PWD##*/}/powerline-config $home/.config/powerline
 ln -s $home/${PWD##*/}/tmux-launch.sh $home/tmux-launch.sh
 chmod u+x $home/tmux-launch.sh
 
