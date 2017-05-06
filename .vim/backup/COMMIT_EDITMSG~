@@ -5,11 +5,6 @@
 # Your branch is up-to-date with 'tuurlijk/master'.
 #
 # Changes to be committed:
-#	modified:   .bashrc
-#	modified:   .gitmodules
-#	modified:   .vim/backup/COMMIT_EDITMSG~
-#	new file:   .zimrc
 #	modified:   .zshrc
-#	deleted:    antigen
-#	modified:   linux-bootstrap.sh
+#	modified:   powerline-fonts
 #
