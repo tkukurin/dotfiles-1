@@ -38,7 +38,11 @@ itemsToLink=(
     .vim
     .vimrc
     .zimrc
+    .zlogin
+    .zlogout
+    .zshenv
     .zshrc
+    .zprofile
 )
 
 length=${#itemsToLink[*]}
