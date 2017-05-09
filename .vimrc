@@ -1,4 +1,4 @@
-" Modified: Fri 05 May 2017 02:25:39 PM CEST 
+" Modified: Fri 05 May 2017 02:25:39 PM CEST
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
