@@ -10,6 +10,7 @@ try
 catch
 endtry
 
+" Load plugins
 call plug#begin()
 
 " Sensible defaults
@@ -30,9 +31,10 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-" Syntax checking hacks for vim
+" Syntax checking
 Plug 'scrooloose/syntastic'
 Plug 'mtscout6/syntastic-local-eslint.vim'
+Plug 'chr4/sslsecure.vim'
 
 " Completions
 Plug 'marijnh/tern_for_vim'
@@ -51,22 +53,23 @@ Plug 'honza/vim-snippets'
 Plug 'othree/yajs.vim'
 Plug 'othree/es.next.syntax.vim'
 
-" And the rest
+" File type support
+Plug 'ap/vim-css-color'
 Plug 'rodjek/vim-puppet'
+Plug 'tmux-plugins/vim-tmux'
+
+" And the rest
 Plug 'wincent/command-t'
 Plug 'scrooloose/nerdcommenter'
-Plug 'ap/vim-css-color'
 Plug 'raimondi/delimitmate'
 Plug 'rstacruz/sparkup'
 Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar'
 Plug 'marcweber/vim-addon-mw-utils'
-Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-eunuch'
 Plug 'altercation/vim-colors-solarized'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'easymotion/vim-easymotion'
-Plug 'tmux-plugins/vim-tmux'
 
 call plug#end()
 
@@ -118,6 +121,7 @@ set showmode           " Show current edit mode
 set smartindent        " Indent after { has been typed
 set softtabstop=2
 set splitbelow         " Create new window below current one
+set splitright         " Create new window to the right of the current one
 set tabstop=2
 set title
 set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:~:.:h\")})%)%(\ %a%)
@@ -139,20 +143,21 @@ set wildmode=list:longest,full
 set wildchar=<TAB>     " the char used for "expansion" on the command line
 set wildignore+=*.DS_Store,*.o,*.obj,.git,.svn,*.pyc " Ignore certain files in wildmenu
 
+
 " normally don't automatically format `text' as it is typed, IE only do this
 " with comments, at 79 characters:
 set formatoptions-=t
 set textwidth=79
 set mouse=a
 
+
 " statusbar
 let g:airline_theme='distinguished'
 let g:airline_powerline_fonts = 1
 
-syntax enable
-
 
 " Set up pretty colors
+syntax enable
 set background=dark
 let myColorscheme = 'solarized'
 "let myColorscheme = 'inkpot'
@@ -248,6 +253,11 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 
+" Create new windows horizontal (-) and vertical (/)
+map <leader>- <C-W>n
+map <leader>/ :vne<cr>
+
+
 " Tab configuration
 map <leader>tn :tabnew<cr>
 map <leader>te :tabedit
@@ -339,7 +349,6 @@ vmap <S-Tab> <C-D>
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
 cnoremap <C-K> <C-U>
-
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
 
@@ -366,7 +375,8 @@ au BufWinEnter *.js TagbarOpen
 au BufWinEnter *.php TagbarOpen
 map <leader>tb :TagbarToggle<cr>
 
-" restore debug.vim from ~/.vim/plugins/attic
+
+" Restore debug.vim from ~/.vim/plugins/attic
 "let g:debuggerMaxChildren = 64
 "let g:debuggerMaxData = 2048
 "let g:debuggerMaxDepth = 10
@@ -380,12 +390,15 @@ autocmd VimEnter * wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 map <leader>nt :NERDTreeToggle<cr>
 
+
 " Sparkup
 let g:sparkupNextMapping = '<c-n>'
 let g:sparkupExecuteMapping = '<c-e>'
 
+
 " PHP Code completion
 " autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+
 
 " Add PHP Omni Completion to SuperTab
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
