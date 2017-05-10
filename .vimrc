@@ -194,6 +194,10 @@ silent execute "map <leader>co :tabedit! ~/.vim/colors/".myColorscheme.".vim<cr>
 autocmd! bufwritepost ~/.vim/colors/*.vim execute "colorscheme ".myColorscheme
 
 
+" Fast editing of the .zshrc
+map <leader>z :tabedit! ~/.zshrc<cr>
+
+
 " Make ;w work http://nvie.com/posts/how-i-boosted-my-vim/
 nnoremap ; :
 
