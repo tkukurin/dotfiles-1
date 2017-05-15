@@ -15,22 +15,22 @@ echo "------------------"
 echo " "
 select opt in "${options[@]}"
 do
-    case $opt in
-        "NEW SESSION")
-            read -p "Enter new session name: " SESSION_NAME
-            tmux new -s "$SESSION_NAME"
-            break
-            ;;
-        "BASH")
-            bash --login
-            break
-						;;
-			  "Regular ZSH Shell")
-						break
-						;;
-        *) 
-            tmux attach-session -t $opt 
-            break
-            ;; 
-    esac
+	case $opt in
+		"NEW SESSION")
+			read -p "Enter new session name: " SESSION_NAME
+			tmux new -s "$SESSION_NAME"
+			break
+			;;
+		"BASH")
+			bash --login
+			break
+			;;
+		"Regular ZSH Shell")
+			break
+			;;
+		*) 
+			tmux attach-session -t $opt 
+			break
+			;; 
+	esac
 done
