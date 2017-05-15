@@ -1,9 +1,18 @@
+# Initialise zulu plugin manager
+source "${ZULU_DIR:-"${ZDOTDIR:-$HOME}/.zulu"}/core/zulu"
+
 # Source zim
 if [[ -s ${ZDOTDIR:-${HOME}}/.zim/init.zsh ]]; then
 	source ${ZDOTDIR:-${HOME}}/.zim/init.zsh
 fi
 
+# Use emacs keybindings so we can use <C-a> to go to the beginning of a line
+bindkey -e
+
 umask 002
+
+# Remove whitespace after the RPROMPT
+ZLE_RPROMPT_INDENT=0
 
 HISTFILE=~/.zshhistory
 HISTSIZE=3000
@@ -18,8 +27,6 @@ fi
 
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='38;5;202'
-
-export VAGRANT_DEFAULT_PROVIDER=vmware_fusion # https://docs.vagrantup.com/v2/providers/default.html
 
 export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
 export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
@@ -39,8 +46,27 @@ if [ `uname` = Darwin ]; then
 else
 	alias ls='/bin/ls --color=auto'
 fi
+
+# Easier navigation: .., ..., ...., ....., ~ and -
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias -- -="cd -"
+
+# Shortcuts
+alias d="cd ~/Documents/Dropbox"
+alias dl="cd ~/Downloads"
+alias dt="cd ~/Desktop"
+alias p="cd ~/projects"
+alias g="git"
+alias h="history"
+alias j="jobs"
+
+# Vim shortcuts
 alias :e="\$EDITOR"
 alias :q="exit"
+
 alias l="ls -A -F"
 alias ll="ls -h -l "
 alias la="ls -a"
@@ -242,3 +268,13 @@ exip () {
 ips () {
 	ifconfig | grep "inet " | awk '{ print $2 }'
 }
+
+#zstyle ':zim:git-info:branch' format '🌲 %b '
+zstyle ':zim:git-info:keys' format \
+	'prompt' '%b%c%s%A%B' \
+	'isClean' '%C' \
+	'isDirty' '%D'
+
+autoload -Uz promptinit && promptinit
+prompt tuurlijk
+#prompt tuurlijk 232 74 253 31 234 28 214
