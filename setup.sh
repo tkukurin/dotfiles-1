@@ -8,7 +8,13 @@ else
 	home=$1
 fi
 
-echo "Installing powerline shell..."
+# Logging stuff.
+function e_header()   { echo -e "\n\033[1m$@\033[0m"; }
+function e_success()  { echo -e " \033[1;32m✔\033[0m  $@"; }
+function e_error()    { echo -e " \033[1;31m✖\033[0m  $@"; }
+function e_arrow()    { echo -e " \033[1;34m➜\033[0m  $@"; }
+
+e_header "Installing powerline shell..."
 if [ ! -d $home/powerline-shell ]
 then
 	cd $home/${PWD##*/}
@@ -22,54 +28,25 @@ then
     ln -s $home/${PWD##*/}/powerline-shell/powerline-shell.py $home/powerline-shell.py
 fi
 
-echo "Installing zim..."
+e_header "Installing zim..."
 if [ ! -d $home/.zim ]
 then
 	git clone --recursive https://github.com/Eriner/zim.git ${ZDOTDIR:-${HOME}}/.zim
 fi
 
-echo "Creating symlinks..."
-itemsToLink=(
-    .bashrc
-    .config/powerline
-    .dircolors
-    tmux-launch.sh
-    .tmux.conf
-    .vim
-    .vimrc
-    .zimrc
-    .zlogin
-    .zlogout
-    .zshenv
-    .zshrc
-    .zprofile
-)
-
-length=${#itemsToLink[*]}
-i=0
-while [ $i -lt $length ];
-do
-    item=${itemsToLink[$i]}
-    if [ -e "$home/$item" ] || [ -L "$home/$item" ]; then
-        if [ -L "$home/$item.original" ]; then
-            rm "$home/$item.original"
-        fi
-    	mv "$home/$item" "$home/$item.original"
-        ln -s $home/${PWD##*/}/$item $home/$item
-    else
-        ln -s $home/${PWD##*/}/$item $home/$item
-    fi
-    let i++
+e_header "Creating symlinks..."
+setopt EXTENDED_GLOB
+for rcfile in "${ZDOTDIR:-$HOME}"/dotfiles/^(.git|config|README*|setup.sh|update-modules.sh)(D); do
+    ln -s -f "$rcfile" "${ZDOTDIR:-$HOME}/${rcfile:t}"
 done
-
 mkdir -p $home/.config
 
 chmod u+x $home/tmux-launch.sh
 
-echo "Initializing submodules..."
+e_header "Initializing submodules..."
 git submodule update --init --recursive
 
-echo "Compiling command-t for current ruby version..."
+e_header "Compiling command-t for current ruby version..."
 cd $home/${PWD##*/}/.vim/plugged/command-t/ruby/command-t
 if command -v ruby > /dev/null 2>&1; then
 	ruby extconf.rb
@@ -77,3 +54,5 @@ if command -v ruby > /dev/null 2>&1; then
 		make
 	fi
 fi
+
+e_success "All done"
