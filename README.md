@@ -3,10 +3,11 @@ dotfiles
 
 My dotfiles `¯\_(ツ)_/¯`
 
-Consists of:
+Consist of:
 * A `.vimrc` with all required [Plug](https://github.com/junegunn/vim-plug) modules.
 * A `.zshrc` for use with [zim](https://github.com/Eriner/zim).
 * A `.tmux.conf` for use with tmux
+* And some other files
 
 The entire setup is primarily meant for use with Mac OS X, but is set up to be generic, so it might benefit others as well.
 
@@ -37,8 +38,7 @@ cd "${ZDOTDIR:-$HOME}/dotfiles"
 chsh -s /bin/zsh
 ```
 
-This installer will also install `powerline-shell` and `zim` for you if they
-do not already exist.
+This installer will also install `zim` for you.
 
 On OSX you will also need a patched font for powerline to work right. The
 required patched fonts are conveniently cloned along with this repository.
