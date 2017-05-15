@@ -12,7 +12,7 @@ bindkey -e
 umask 002
 
 # Remove whitespace after the RPROMPT
-ZLE_RPROMPT_INDENT=0
+#ZLE_RPROMPT_INDENT=0
 
 HISTFILE=~/.zshhistory
 HISTSIZE=3000
