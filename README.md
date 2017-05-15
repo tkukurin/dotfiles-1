@@ -21,6 +21,7 @@ for linux based systems. (Which may or may not work in your situation.)
 * You have `ruby`, `ruby-devel`, `python` and `python-pip` installed - if you wish to use Command-T plugin in vim
 * You have `powerline` installed from either Git or `pip`. (See: 
 		https://powerline.readthedocs.org/en/latest/installation.html )
+* You will need a Powerline capable font: https://github.com/powerline/powerline
 * `Exuberant Ctags`, as TagBar will not work with GNU ctags. On OSX: `brew install ctags`
 * You have `UTF-8` locales installed, otherwise the `tmux` powerline setup will
 fail.
@@ -29,7 +30,7 @@ fail.
 Installation on any Linux or OSX machine is pretty straightforward:
 
 ```
-git clone --recursive https://github.com/tuurlijk/dotfiles "${ZDOTDIR:-$HOME}/dotfiles"
+git clone https://github.com/tuurlijk/dotfiles "${ZDOTDIR:-$HOME}/dotfiles"
 cd "${ZDOTDIR:-$HOME}/dotfiles"
 ./setup.sh
 
