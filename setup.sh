@@ -39,9 +39,6 @@ function main () {
 		done
 	done
 
-	e_header "Initializing submodules..."
-	git submodule update --init --recursive
-
 	e_header "Installing vim plugins..."
 	vim -S <(echo -e "PlugInst \n q \n q")
 
