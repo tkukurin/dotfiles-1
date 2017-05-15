@@ -6,3 +6,5 @@
 .vim/*/doc/tags
 vim/backup
 .vim/backup/*
+backup/
+.idea/
