@@ -34,8 +34,13 @@ function main () {
 		mkdir -p ${home}${dir}
 		mkdir -p $dotfileDir/backup${dir}
 		for rcfile in ${dotfileDir}${dir}${~ohMyGlob}; do
-			[[ -a "${home}${dir}${rcfile:t}" ]] && mv "${home}${dir}${rcfile:t}" "$dotfileDir/backup/${dir}" 2>/dev/null
-			ln -h -s -F "$rcfile" "${home}${dir}${rcfile:t}"
+		    local target="${home}${dir}${rcfile:t}"
+			[[ -a "${target}" ]] && mv "${target}" "$dotfileDir/backup/${dir}" 2>/dev/null
+			if [ $(uname) = Darwin ]; then
+			    command ln -h -s -F "$rcfile" "${target}"
+            else
+			    command ln -s "$rcfile" "${target}"
+            fi
 		done
 	done
 
