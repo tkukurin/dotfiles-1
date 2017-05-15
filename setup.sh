@@ -3,9 +3,9 @@
 # Take home dir as parameter for use in puppet script
 if [[ -z $1 ]]
 then
-	home=~
+	home=${ZDOTDIR:-${HOME}}
 else
-	home=${1:-${ZDOTDIR:-${HOME}}}
+	home=$1
 fi
 
 # Logging stuff.
@@ -45,6 +45,9 @@ chmod u+x $home/tmux-launch.sh
 
 e_header "Initializing submodules..."
 git submodule update --init --recursive
+
+e_header "Installing vim plugins..."
+vim -S <(echo -e "PlugInst \n q \n q")
 
 e_header "Compiling command-t for current ruby version..."
 cd $home/${PWD##*/}/.vim/plugged/command-t/ruby/command-t
