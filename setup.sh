@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # Take home dir as parameter for use in puppet script
 if [[ -z $1 ]]
 then
 	home=~
 else
-	home=$1
+	home=${1:-${ZDOTDIR:-${HOME}}}
 fi
 
 # Logging stuff.
@@ -23,21 +23,21 @@ then
 	cd ..
 
 	if [ -e $home/powerline-shell.py ] || [ -L $home/powerline-shell.py ]; then
-	    mv $home/powerline-shell.py $home/powerline-shell.py.original
-    fi
-    ln -s $home/${PWD##*/}/powerline-shell/powerline-shell.py $home/powerline-shell.py
+		mv $home/powerline-shell.py $home/powerline-shell.py.original
+	fi
+	ln -s $home/${PWD##*/}/powerline-shell/powerline-shell.py $home/powerline-shell.py
 fi
 
 e_header "Installing zim..."
 if [ ! -d $home/.zim ]
 then
-	git clone --recursive https://github.com/Eriner/zim.git ${ZDOTDIR:-${HOME}}/.zim
+	git clone --recursive https://github.com/Eriner/zim.git $home/.zim
 fi
 
 e_header "Creating symlinks..."
 setopt EXTENDED_GLOB
-for rcfile in "${ZDOTDIR:-$HOME}"/dotfiles/^(.git|config|README*|setup.sh|update-modules.sh)(D); do
-    ln -s -f "$rcfile" "${ZDOTDIR:-$HOME}/${rcfile:t}"
+for rcfile in "${home}"/dotfiles/^(.git|config|README*|setup.sh|update-modules.sh)(D); do
+	ln -s -f "$rcfile" "${home}/${rcfile:t}"
 done
 mkdir -p $home/.config
 
