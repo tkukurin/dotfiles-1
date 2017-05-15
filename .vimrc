@@ -58,6 +58,10 @@ Plug 'ap/vim-css-color'
 Plug 'rodjek/vim-puppet'
 Plug 'tmux-plugins/vim-tmux'
 
+" Naviation
+Plug 'matze/vim-move'
+Plug 'easymotion/vim-easymotion'
+
 " And the rest
 Plug 'wincent/command-t'
 Plug 'scrooloose/nerdcommenter'
@@ -68,8 +72,6 @@ Plug 'majutsushi/tagbar'
 Plug 'marcweber/vim-addon-mw-utils'
 Plug 'tpope/vim-eunuch'
 Plug 'altercation/vim-colors-solarized'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'easymotion/vim-easymotion'
 
 call plug#end()
 
@@ -198,6 +200,10 @@ autocmd! bufwritepost ~/.vim/colors/*.vim execute "colorscheme ".myColorscheme
 map <leader>z :tabedit! ~/.zshrc<cr>
 
 
+" Fast saving
+nmap <M-s> :w!<cr>
+
+
 " Make ;w work http://nvie.com/posts/how-i-boosted-my-vim/
 nnoremap ; :
 
@@ -213,10 +219,6 @@ set clipboard+=unnamed
 
 " Copy to clipboard
 map <leader>c "+y<cr>
-
-
-" Let's see some useful info in the status line
-" set statusline=%f\ %1*%m%*%=[%{strlen(&fenc)?&fenc:'none'},%{&ff}]\ %{fugitive#statusline()}\ %2*%r%*%w\ %l,%c-%v/%L\ %P
 
 
 " Session management
@@ -238,13 +240,6 @@ nmap <leader>wd :%s/\s\+$//<cr>
 vmap <leader>wd :s/\s\+$//<cr>
 
 
-"Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-
 " Use Q for formatting the current paragraph (or selection)
 vmap Q gq
 nmap Q gqap
@@ -262,13 +257,17 @@ map <leader>- <C-W>n
 map <leader>/ :vne<cr>
 
 
+" Resize splits evenly automatically
+autocmd VimResized * wincmd =
+
+
 " Tab configuration
 map <leader>tn :tabnew<cr>
 map <leader>te :tabedit
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
-map <Left> :tabprevious<CR>
-map <Right> :tabnext<CR>
+map <Left> :tabprevious<cr>
+map <Right> :tabnext<cr>
 
 
 " When pressing <leader>cd switch to the directory of the open buffer
@@ -276,7 +275,7 @@ map <leader>cd :cd %:p:h<cr>
 
 
 " Make p in Visual mode replace the selected text with the "" register.
-vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
+vnoremap p <Esc>:let current_reg = @"<cr>gvdi<C-R>=current_reg<cr><Esc>
 
 
 " Specify the behavior when switching between buffers
@@ -295,25 +294,25 @@ inoremap kj <Esc>
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
 	set hlsearch
-	map <C-\> :nohlsearch<CR>
+	map <C-\> :nohlsearch<cr>
 endif
 
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
-" When editing a file, always jump to the last cursor position.
-" http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
-function! ResCur()
-	if line("'\"") <= line("$")
-		normal! g`"
-		return 1
-	endif
-endfunction
+	" When editing a file, always jump to the last cursor position.
+	" http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
+	function! ResCur()
+		if line("'\"") <= line("$")
+			normal! g`"
+			return 1
+		endif
+	endfunction
 
-augroup resCur
-	autocmd!
-	autocmd BufWinEnter * call ResCur()
-augroup END
+	augroup resCur
+		autocmd!
+		autocmd BufWinEnter * call ResCur()
+	augroup END
 
 endif " has("autocmd")
 
@@ -324,17 +323,17 @@ endif " has("autocmd")
 " If there is no fold at current line, just moves forward.
 " If it is present, reverse its state.
 fun! ToggleFold()
-if foldlevel('.') == 0
-	normal! l
-else
-	if foldclosed('.') < 0
-		. foldclose
+	if foldlevel('.') == 0
+		normal! l
 	else
-		. foldopen
+		if foldclosed('.') < 0
+			. foldclose
+		else
+			. foldopen
+		endif
 	endif
-endif
-" Clear status line
-echo
+	" Clear status line
+	echo
 endfun
 
 " Map this function to Space key.
@@ -361,7 +360,7 @@ cnoremap <C-N> <Down>
 let g:CommandTMaxHeight = 30
 noremap <leader>ct :CommandT<cr>
 noremap <leader>cty :CommandTFlush<cr>
-"map <D-t> :CommandT<CR>
+"map <D-t> :CommandT<cr>
 
 
 " Cope
@@ -393,6 +392,13 @@ autocmd VimEnter * wincmd p
 " Close vim if NERDTree is the last open buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 map <leader>nt :NERDTreeToggle<cr>
+
+
+" Toggles
+nmap <C-r> :TagbarToggle<CR>
+nmap <C-t> :CtrlP<CR>
+nmap <C-e> :NERDTreeToggle<CR>
+nmap <C-n> :tabnew<CR>
 
 
 " Sparkup
