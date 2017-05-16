@@ -268,8 +268,13 @@ function e_arrow()   { echo -e " \033[1;34m➜\033[0m  $@"; }
 rd () {
 	e_header "Updating dotfiles..."
 	pushd "${ZDOTDIR:-${HOME}}/dotfiles/"
-	git pull || e_error "(ノ°Д°）ノ︵ ┻━┻)" && return 1
-	./setup.sh
+	git pull
+	if (( $? )) then
+		e_error "(ノ°Д°）ノ︵ ┻━┻)"
+		return 1
+	else
+		./setup.sh
+    fi
 	popd
 }
 
