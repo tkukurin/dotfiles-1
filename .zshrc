@@ -76,6 +76,7 @@ alias lsd='ls -ld *(-/DN)'
 alias lsa='ls -ld .*'
 alias grep="grep --color=auto"
 alias know="vim ${HOME}/.ssh/known_hosts"
+alias mc="mc --nosubshell"
 alias reload!=". ${HOME}/.zshrc"
 alias takeover="tmux detach -a"
 alias vu="vagrant up"
