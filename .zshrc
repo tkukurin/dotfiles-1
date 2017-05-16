@@ -258,9 +258,24 @@ extract () {
 	fi
 }
 
+# Colourfull messages
+function e_header()  { echo -e "\n\033[1m$@\033[0m"; }
+function e_success() { echo -e " \033[1;32m✔\033[0m  $@"; }
+function e_error()   { echo -e " \033[1;31m✖\033[0m  $@"; }
+function e_arrow()   { echo -e " \033[1;34m➜\033[0m  $@"; }
+
+# Update dotfiles
+rd () {
+	e_header "Updating dotfiles..."
+	pushd "${ZDOTDIR:-${HOME}}/dotfiles/"
+	git pull
+	./setup.sh
+	popd
+}
+
 # Gather external ip address
 exip () {
-	echo -n "Current External IP: "
+	e_header "Current External IP: "
 	curl -s -m 5 http://ipv4.myip.dk/api/info/IPv4Address | sed -e 's/"//g'
 }
 
