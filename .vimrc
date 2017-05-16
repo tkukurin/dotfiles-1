@@ -55,13 +55,16 @@ Plug 'othree/yajs.vim'
 Plug 'othree/es.next.syntax.vim'
 
 " File type support
-Plug 'ap/vim-css-color'
 Plug 'rodjek/vim-puppet'
 Plug 'tmux-plugins/vim-tmux'
 
 " Naviation
 Plug 'matze/vim-move'
 Plug 'easymotion/vim-easymotion'
+
+" Colors
+Plug 'ap/vim-css-color'
+Plug 'altercation/vim-colors-solarized'
 
 " And the rest
 Plug 'wincent/command-t'
@@ -72,7 +75,6 @@ Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar'
 Plug 'marcweber/vim-addon-mw-utils'
 Plug 'tpope/vim-eunuch'
-Plug 'altercation/vim-colors-solarized'
 
 call plug#end()
 
@@ -90,6 +92,7 @@ set backupskip=/tmp/*,/private/tmp/*
 set backup             " keep a backup file
 set cindent
 set complete=k,.,w,b,u,t,i
+set cursorline         " Highlight the current line number
 set directory=~/.vim/backup,/tmp " This is where the swapfiles go
 set history=1000       " keep 50 lines of command line history
 set undolevels=1000

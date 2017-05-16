@@ -24,7 +24,10 @@ hi Directory     ctermfg=67    ctermbg=NONE  cterm=NONE
 hi LineNr        ctermfg=238   ctermbg=NONE  cterm=NONE
 
 hi Cursor        ctermfg=130   ctermbg=NONE  cterm=NONE
-hi CursorLine    ctermfg=NONE  ctermbg=NONE  cterm=underline
+hi CursorLine    ctermfg=NONE  ctermbg=NONE  cterm=NONE
+if v:version >= 734
+	hi CursorLineNR  ctermfg=245   ctermbg=NONE  cterm=NONE
+endif
 hi CursorColumn  ctermfg=NONE  ctermbg=234   cterm=NONE
 
 hi DiffAdd       ctermfg=NONE  ctermbg=22    cterm=NONE
