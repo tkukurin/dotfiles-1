@@ -268,14 +268,14 @@ function e_arrow()   { echo -e " \033[1;34m➜\033[0m  $@"; }
 rd () {
 	e_header "Updating dotfiles..."
 	pushd "${ZDOTDIR:-${HOME}}/dotfiles/"
-	git pull
+	git pull || e_error "(ノ°Д°）ノ︵ ┻━┻)" && return 1
 	./setup.sh
 	popd
 }
 
 # Gather external ip address
 exip () {
-	e_header "Current External IP: "
+	echo -n "Current External IP: "
 	curl -s -m 5 http://ipv4.myip.dk/api/info/IPv4Address | sed -e 's/"//g'
 }
 
