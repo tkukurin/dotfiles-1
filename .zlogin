@@ -55,3 +55,6 @@
 
 
 ) &!
+
+# Set tmux status line theme from https://github.com/edkolev/tmuxline.vim
+vim -S <(echo -e "Tmuxline \n q \n q")
