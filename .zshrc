@@ -44,6 +44,7 @@ fi
 
 if [[ "$FRAMEWORK" = "zim" ]] && [[ -s ${ZDOTDIR:-${HOME}}/.zim/init.zsh ]]; then
 	source ${ZDOTDIR:-${HOME}}/.zim/init.zsh
+	zstyle ':zim:git-info' ignore-submodules 'none'
 	#zstyle ':zim:git-info:branch' format '🌲 %b '
 	zstyle ':zim:git-info:keys' format \
 		'prompt' '%b%c%s%A%B' \
@@ -140,13 +141,14 @@ if [ -e ${ZDOTDIR:-${HOME}}/.secrets ]; then
 	source ${ZDOTDIR:-${HOME}}/.secrets
 fi
 
-setopt EXTENDED_GLOB
-local ohMyGlob='(alias|completion|env|styles)(D)'
-for rcfile in ${ZDOTDIR:-${HOME}}/.config/zsh/${~ohMyGlob}; do
-	source ${ZDOTDIR:-${HOME}}/.config/zsh/${rcfile:t}
-done
-
-zstyle ':zim:git-info' ignore-submodules 'none'
+# Load settings
+() {
+	setopt EXTENDED_GLOB
+	local ohMyGlob='(alias|completion|env|styles)(D)'
+	for rcfile in ${ZDOTDIR:-${HOME}}/.config/zsh/${~ohMyGlob}; do
+		source ${ZDOTDIR:-${HOME}}/.config/zsh/${rcfile:t}
+	done
+}
 
 ssh-add -A &> /dev/null
 
