@@ -399,7 +399,6 @@ map <leader>nt :NERDTreeToggle<cr>
 
 
 " Toggles
-nmap <C-r> :TagbarToggle<CR>
 nmap <C-t> :NERDTreeToggle<CR>
 nmap <C-n> :tabnew<CR>
 
