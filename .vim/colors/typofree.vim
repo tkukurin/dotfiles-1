@@ -2,7 +2,7 @@
 " Name:           typofree.vim
 " Maintainer:     Michiel Roos <vim@typofree.org>
 " Created:        ma 06 okt 2008 07:29:31 pm CEST
-" Last Modified:  Fri 27 May 2011 02:50u49 pm CEST CEST CEST CEST CEST CEST CEST CEST CEST CEST CEST CEST CEST CEST CEST CEST CEST CEST CEST CEST CEST CEST CEST CEST CEST CEST CEST CEST CEST CEST CEST CEST CEST CEST
+" Last Modified:  Fri 27 May 2011 02:50u49 pm CEST
 " License:        This file is placed in the public domain.
 " Version:        0.1 alpha
 "
@@ -26,7 +26,7 @@ hi LineNr        ctermfg=238   ctermbg=NONE  cterm=NONE
 hi Cursor        ctermfg=130   ctermbg=NONE  cterm=NONE
 hi CursorLine    ctermfg=NONE  ctermbg=NONE  cterm=NONE
 if v:version >= 734
-	hi CursorLineNR  ctermfg=245   ctermbg=NONE  cterm=NONE
+	hi CursorLineNR  ctermfg=246   ctermbg=NONE  cterm=NONE
 endif
 hi CursorColumn  ctermfg=NONE  ctermbg=234   cterm=NONE
 
