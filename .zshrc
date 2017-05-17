@@ -1,4 +1,8 @@
-#date "+%s.%N"
+# Colourfull messages
+function e_header()  { echo -e "\n\033[1m$@\033[0m"; }
+function e_success() { echo -e " \033[1;32m✔\033[0m  $@"; }
+function e_error()   { echo -e " \033[1;31m✖\033[0m  $@"; }
+function e_arrow()   { echo -e " \033[1;34m➜\033[0m  $@"; }
 
 # Profiling method 1
 #zmodload zsh/zprof
@@ -10,15 +14,20 @@
 #exec 3>&2 2>/tmp/zshstart.$$.log
 #setopt xtrace prompt_subst
 
-FRAMEWORK="oh-my-zsh"
+FRAMEWORK="zulu"
+FRAMEWORK="zeesh"
 FRAMEWORK="zpm"
+FRAMEWORK="oh-my-zsh"
 FRAMEWORK="zim"
 FRAMEWORK="zprezto"
 FRAMEWORK="zplugin"
 FRAMEWORK="zgen"
 
 # Initialise plugin manager
-#source "${ZULU_DIR:-"${ZDOTDIR:-$HOME}/.zulu"}/core/zulu"
+if [[ "$FRAMEWORK" = "zulu" ]] && [[ -s ${ZDOTDIR:-${HOME}}/.zulu/core/zulu ]]; then
+	source "${ZULU_DIR:-"${ZDOTDIR:-$HOME}/.zulu"}/core/zulu"
+	zulu init
+fi
 
 if [[ "$FRAMEWORK" = "oh-my-zsh" ]] && [[ -s ${ZDOTDIR:-${HOME}}/.oh-my-zsh/oh-my-zsh.sh ]]; then
 	plugins=(
@@ -45,14 +54,11 @@ fi
 if [[ "$FRAMEWORK" = "zeesh" ]] && [[ -s ${ZDOTDIR:-${HOME}}/.zsh/zeesh.zsh ]]; then
 	zeesh_plugins=(
 	autocomplete
-	osx
 	git
 	vcs-info
 	syntax-highlighting
 	history-substring-search
 	theme
-	vi-mode
-	vi-visual-mode
 	)
 
 	source ${ZDOTDIR:-${HOME}}/.zsh/zeesh.zsh
@@ -62,25 +68,19 @@ if [[ "$FRAMEWORK" = "zgen" ]] && [[ -s ${ZDOTDIR:-${HOME}}/.zgen/zgen.zsh ]]; t
 	source ${ZDOTDIR:-${HOME}}/.zgen/zgen.zsh
 	# if the init scipt doesn't exist
 	if ! zgen saved; then
-			echo "Creating a zgen save"
+		e_header "Creating a zgen save"
 
-			zgen oh-my-zsh
+		# plugins
+		zgen oh-my-zsh plugins/sudo
+		zgen load zsh-users/zsh-autosuggestions
+		zgen load zdharma/fast-syntax-highlighting
+		zgen load zsh-users/zsh-history-substring-search
 
-			# plugins
-			zgen oh-my-zsh plugins/git
-			zgen oh-my-zsh plugins/sudo
-			zgen oh-my-zsh plugins/command-not-found
-			zgen load zdharma/fast-syntax-highlighting
-		  zgen load zsh-users/zsh-history-substring-search
+		# theme
+		zgen oh-my-zsh themes/refined
 
-			# completions
-			zgen load zsh-users/zsh-completions src
-
-			# theme
-			zgen oh-my-zsh themes/refined
-
-			# save all to init script
-			zgen save
+		# save all to init script
+		zgen save
 	fi
 fi
 
@@ -118,7 +118,7 @@ fi
 # Use emacs keybindings so we can use <C-a> to go to the beginning of a line
 bindkey -e
 
-umask 002
+umask g-w,o-w
 
 # Remove whitespace after the RPROMPT
 #ZLE_RPROMPT_INDENT=0
@@ -135,15 +135,11 @@ if [ -e ${ZDOTDIR:-${HOME}}/.secrets ]; then
 	source ${ZDOTDIR:-${HOME}}/.secrets
 fi
 
-# Aliases
-if [ -e ${ZDOTDIR:-${HOME}}/.config/zsh/alias ]; then
-	source ${ZDOTDIR:-${HOME}}/.config/zsh/alias
-fi
-
-# Env
-if [ -e ${ZDOTDIR:-${HOME}}/.config/zsh/env ]; then
-	source ${ZDOTDIR:-${HOME}}/.config/zsh/env
-fi
+setopt EXTENDED_GLOB
+local ohMyGlob='(alias|completion|env|styles)(D)'
+for rcfile in ${ZDOTDIR:-${HOME}}/.config/zsh/${~ohMyGlob}; do
+	source ${ZDOTDIR:-${HOME}}/.config/zsh/${rcfile:t}
+done
 
 zstyle ':zim:git-info' ignore-submodules 'none'
 
@@ -165,12 +161,6 @@ fractal () {
 	done
 }
 
-# Colourfull messages
-function e_header()  { echo -e "\n\033[1m$@\033[0m"; }
-function e_success() { echo -e " \033[1;32m✔\033[0m  $@"; }
-function e_error()   { echo -e " \033[1;31m✖\033[0m  $@"; }
-function e_arrow()   { echo -e " \033[1;34m➜\033[0m  $@"; }
-
 # Update dotfiles
 rd () {
 	e_header "Updating dotfiles..."
@@ -187,7 +177,7 @@ rd () {
 
 # Gather external ip address
 exip () {
-	echo -n "Current External IP: "
+	e_header "Current External IP: "
 	curl -s -m 5 http://ipv4.myip.dk/api/info/IPv4Address | sed -e 's/"//g'
 }
 
