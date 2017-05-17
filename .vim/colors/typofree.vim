@@ -25,8 +25,8 @@ hi LineNr        ctermfg=238   ctermbg=NONE  cterm=NONE
 
 hi Cursor        ctermfg=130   ctermbg=NONE  cterm=NONE
 hi CursorLine    ctermfg=NONE  ctermbg=NONE  cterm=NONE
-if v:version >= 734
-	hi CursorLineNR  ctermfg=246   ctermbg=NONE  cterm=NONE
+if v:version >= 734 || has("patch1-547")
+	hi CursorLineNR  ctermfg=244   ctermbg=NONE  cterm=NONE
 endif
 hi CursorColumn  ctermfg=NONE  ctermbg=234   cterm=NONE
 
