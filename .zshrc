@@ -64,8 +64,13 @@ if [[ "$FRAMEWORK" = "zeesh" ]] && [[ -s ${ZDOTDIR:-${HOME}}/.zsh/zeesh.zsh ]]; 
 	source ${ZDOTDIR:-${HOME}}/.zsh/zeesh.zsh
 fi
 
-if [[ "$FRAMEWORK" = "zgen" ]] && [[ -s ${ZDOTDIR:-${HOME}}/.zgen/zgen.zsh ]]; then
-	source ${ZDOTDIR:-${HOME}}/.zgen/zgen.zsh
+if [[ "$FRAMEWORK" = "zgen" ]]; then
+	if [[ -s ${ZDOTDIR:-${HOME}}/.zgen/zgen.zsh ]]; then
+		source ${ZDOTDIR:-${HOME}}/.zgen/zgen.zsh
+	else
+		git clone --recursive https://github.com/tarjoilija/zgen.git ${ZDOTDIR:-${HOME}}/.zgen
+		source ${ZDOTDIR:-${HOME}}/.zgen/zgen.zsh
+	fi
 	# if the init scipt doesn't exist
 	if ! zgen saved; then
 		e_header "Creating a zgen save"
