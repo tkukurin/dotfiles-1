@@ -1,5 +1,7 @@
 # Completion
 [ -d /usr/local/share/zsh-completions ] && fpath=(/usr/local/share/zsh-completions $fpath)
+zstyle ':completion::complete:*' use-cache on               # completion caching, use rehash to clear
+zstyle ':completion:*' cache-path ${ZDOTDIR:-${HOME}}/.config/zsh/cache              # cache path
 
 # Zstyle show completion menu if 2 or more items to select
 zstyle ':completion:*' menu select=2
