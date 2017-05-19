@@ -14,15 +14,15 @@ zmodload zsh/zprof
 #exec 3>&2 2>/tmp/zshstart.$$.log
 #setopt xtrace prompt_subst
 
-FRAMEWORK="zplugin" # 0.14
+FRAMEWORK="zplugin"   # 0.14
 FRAMEWORK="oh-my-zsh" # 0.37
-FRAMEWORK="zpm" # 0.30
-FRAMEWORK="zeesh" # 0.08
-FRAMEWORK="zulu" # 0.39
-FRAMEWORK="antigen" # seconds!
-FRAMEWORK="zprezto" # 0.04
-FRAMEWORK="zim" # 0.03
-FRAMEWORK="zgen" # 0.05
+FRAMEWORK="zpm"       # 0.30
+FRAMEWORK="zeesh"     # 0.08
+FRAMEWORK="zulu"      # 0.39
+FRAMEWORK="antigen"   # seconds!
+FRAMEWORK="zprezto"   # 0.04
+FRAMEWORK="zim"       # 0.03
+FRAMEWORK="zgen"      # 0.04
 
 # Initialise plugin manager
 if [[ "$FRAMEWORK" = "antigen" ]] && [[ -s ${ZDOTDIR:-${HOME}}/.antigen/antigen.zsh ]]; then
