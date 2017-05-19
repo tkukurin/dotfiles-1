@@ -22,7 +22,7 @@ FRAMEWORK="zulu"      # 0.39
 FRAMEWORK="antigen"   # seconds!
 FRAMEWORK="zprezto"   # 0.04
 FRAMEWORK="zim"       # 0.03
-FRAMEWORK="zgen"      # 0.04
+FRAMEWORK="zgen"      # 0.03
 
 # Initialise plugin manager
 if [[ "$FRAMEWORK" = "antigen" ]] && [[ -s ${ZDOTDIR:-${HOME}}/.antigen/antigen.zsh ]]; then
@@ -102,7 +102,14 @@ if [[ "$FRAMEWORK" = "zgen" ]]; then
 	fi
 	fpath=(/${ZDOTDIR:-${HOME}}/.config/zsh/functions $fpath)
 	#setopt promptsubst
-	zstyle ':theme:tuurlijk:pwd' colour 253
+	zstyle ':theme:tuurlijk:pwd' colour 250
+	zstyle ':theme:tuurlijk:pwdBg' colour 238
+	zstyle ':theme:tuurlijk:exit' colour 124
+	zstyle ':theme:tuurlijk:exitBg' colour 245
+	zstyle ':theme:tuurlijk:root' colour 234
+	zstyle ':theme:tuurlijk:rootBg' colour 238
+	zstyle ':theme:tuurlijk:userHost' colour 16
+	zstyle ':theme:tuurlijk:userHostBg' colour 245
 	autoload -Uz promptinit && promptinit
 	prompt lala
 fi
