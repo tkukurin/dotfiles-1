@@ -107,7 +107,7 @@ if [[ "$FRAMEWORK" = "zgen" ]]; then
 	zstyle ':theme:tuurlijk:exit' colour 124
 	zstyle ':theme:tuurlijk:exitBg' colour 245
 	zstyle ':theme:tuurlijk:root' colour 234
-	zstyle ':theme:tuurlijk:rootBg' colour 238
+	zstyle ':theme:tuurlijk:rootBg' colour 52
 	zstyle ':theme:tuurlijk:userHost' colour 16
 	zstyle ':theme:tuurlijk:userHostBg' colour 245
 	autoload -Uz promptinit && promptinit
