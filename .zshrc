@@ -5,7 +5,7 @@ function e_error()   { echo -e " \033[1;31m✖\033[0m  $@"; }
 function e_arrow()   { echo -e " \033[1;34m➜\033[0m  $@"; }
 
 # Profiling method 1
-zmodload zsh/zprof
+#zmodload zsh/zprof
 
 # Profiling method 2
 #zmodload zsh/datetime
@@ -140,6 +140,14 @@ fi
 
 # Use emacs keybindings so we can use <C-a> to go to the beginning of a line
 #bindkey -e
+bindkey '^w' backward-kill-word
+bindkey '^h' backward-delete-char
+bindkey '^r' history-incremental-search-backward
+bindkey '^a' beginning-of-line
+bindkey '^e' end-of-line
+bindkey '^k' kill-line
+bindkey "^f" forward-word
+bindkey "^b" backward-word
 
 umask g-w,o-w
 
