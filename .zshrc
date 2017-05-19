@@ -14,15 +14,15 @@ zmodload zsh/zprof
 #exec 3>&2 2>/tmp/zshstart.$$.log
 #setopt xtrace prompt_subst
 
-FRAMEWORK="antigen"
-FRAMEWORK="zulu"
-FRAMEWORK="zeesh"
-FRAMEWORK="zpm"
-FRAMEWORK="oh-my-zsh"
-FRAMEWORK="zim"
-FRAMEWORK="zprezto"
-FRAMEWORK="zplugin"
-FRAMEWORK="zgen"
+FRAMEWORK="zplugin" # 0.14
+FRAMEWORK="oh-my-zsh" # 0.37
+FRAMEWORK="zpm" # 0.30
+FRAMEWORK="zeesh" # 0.08
+FRAMEWORK="zulu" # 0.39
+FRAMEWORK="antigen" # seconds!
+FRAMEWORK="zprezto" # 0.04
+FRAMEWORK="zim" # 0.03
+FRAMEWORK="zgen" # 0.05
 
 # Initialise plugin manager
 if [[ "$FRAMEWORK" = "antigen" ]] && [[ -s ${ZDOTDIR:-${HOME}}/.antigen/antigen.zsh ]]; then
@@ -90,6 +90,7 @@ if [[ "$FRAMEWORK" = "zgen" ]]; then
 
 		# plugins
 		zgen load zsh-users/zsh-autosuggestions
+		zgen load bric3/nice-exit-code
 		zgen load zdharma/fast-syntax-highlighting
 		zgen load zsh-users/zsh-history-substring-search
 		zgen oh-my-zsh plugins/shrink-path
@@ -101,6 +102,7 @@ if [[ "$FRAMEWORK" = "zgen" ]]; then
 	fi
 	fpath=(/${ZDOTDIR:-${HOME}}/.config/zsh/functions $fpath)
 	#setopt promptsubst
+	zstyle ':theme:tuurlijk:pwd' colour 253
 	autoload -Uz promptinit && promptinit
 	prompt lala
 fi
