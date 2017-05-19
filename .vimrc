@@ -11,15 +11,17 @@ catch
 endtry
 
 " Load plugins
+let g:plug_shallow = 0
 call plug#begin()
 
 " Sensible defaults
 Plug 'tpope/vim-sensible'
 
-" Status bar
+" Status bar and prompt
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'edkolev/tmuxline.vim'
+Plug 'edkolev/tmuxline.vim', { 'on': [ 'Tmuxline', 'TmuxlineSimpe' ] }
+Plug 'edkolev/promptline.vim', { 'on': 'PromptlineSnapshot' }
 
 " Fuzzy file, buffer, mru, tag, etc finder
 Plug 'ctrlpvim/ctrlp.vim'
