@@ -3,6 +3,9 @@
 zstyle ':completion::complete:*' use-cache on               # completion caching, use rehash to clear
 zstyle ':completion:*' cache-path ${ZDOTDIR:-${HOME}}/.config/zsh/cache              # cache path
 
+# Ignore completion functions for commands you don’t have
+zstyle ':completion:*:functions' ignored-patterns '_*'
+
 # Zstyle show completion menu if 2 or more items to select
 zstyle ':completion:*' menu select=2
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
