@@ -1,6 +1,8 @@
 HISTFILE=~/.zshhistory
 HISTSIZE=3000
 SAVEHIST=3000
+# Share history between tmux windows
+setopt SHARE_HISTORY
 
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='38;5;202'
