@@ -116,7 +116,11 @@ prompt_lala_setup() {
 
 # Fastest possible way to check if repo is dirty
 _prompt_lala_vcs_is_git_dirty() {
-	return [[ $(command git diff --shortstat 2> /dev/null | tail -n1) != "" ]]
+	if [[ $(command git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
+	  return true
+	else
+		return false
+	fi
 }
 
 # Display information about the current path and branch
@@ -124,10 +128,10 @@ _prompt_lala_vcs_path_and_branch() {
 	local segment
 	if [[ -n "$vcs_info_msg_0_" ]]; then
 		segment+=( "$vcs_info_msg_0_" )
-		if [ _prompt_lala_vcs_is_git_dirty ]; then
-			segment+=( "$vcs_info_msg_2_" )
-		else
+		if [[ -z $vcs_info_msg_4_ ]]; then
 			segment+=( "$vcs_info_msg_1_" )
+		else
+			segment+=( "$vcs_info_msg_2_" )
 		fi
 		[[ -n "$vcs_info_msg_3_" ]] && segment+=( " $vcs_info_msg_3_ " )
 	fi
@@ -152,17 +156,9 @@ _prompt_lala_preexec() {
 	_cmd_timestamp=`date +%s`
 }
 
-# Output additional information about paths, repos and exec time
+# Get version control info before we start outputting stuff
 _prompt_lala_precmd() {
-	vcs_info # Get version control info before we start outputting stuff
-}
-
-_prompt_lala_set_colour () {
-	local colour
-	if zstyle -s ":theme:tuurlijk:$1" colour colour; then
-		zstyle -s ":theme:tuurlijk:$1" colour colour
-		colours[$1]=$colour
-	fi
+	vcs_info
 }
 
 prompt_lala_setup "$@"
