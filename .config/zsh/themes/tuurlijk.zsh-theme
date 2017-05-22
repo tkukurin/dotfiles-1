@@ -143,7 +143,7 @@ _prompt_tuurlijk_vcs_path_and_branch() {
 			segment+=( "$vcs_info_msg_4_" )
 		fi
 		segment+=( "$vcs_info_msg_2_" )
-		[[ -n "$vcs_info_msg_3_" ]] && segment+=( " $vcs_info_msg_3_ " )
+		[[ -n "$vcs_info_msg_3_" ]] && segment+=( "| $vcs_info_msg_3_ " )
 	fi
 	echo $segment
 }
