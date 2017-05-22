@@ -3,12 +3,15 @@
 # @see prompt_tuurlijk_help
 
 local -A symbols
+local -A colours
+local newSymbol
+local newColour
+
 symbols=(
 	'branch' ''
 	'hash' '➦'
 )
 
-local -A colours
 # Use extended color palette if available
 if [[ -n ${terminfo[colors]} && ${terminfo[colors]} -ge 256 ]]; then
 	colours=(
@@ -39,13 +42,11 @@ else
 fi
 
 # Set symbols from user preferences (zstyle ':theme:tuurlijk:branch' symbol '')
-local newSymbol
 for symbol in ${(@k)symbols}; do
 	zstyle -s ":theme:tuurlijk:$symbol" symbol newSymbol && symbols[$symbol]=$newSymbol
 done
 
 # Set colours from user preferences (zstyle ':theme:tuurlijk:pwd' colour 250)
-local newColour
 for colour in ${(@k)colours}; do
 	zstyle -s ":theme:tuurlijk:$colour" colour newColour && colours[$colour]=$newColour
 done
@@ -72,7 +73,7 @@ prompt_tuurlijk_setup() {
 	zstyle ':vcs_info:*' enable git
 	zstyle ':vcs_info:*' check-for-changes true
 	zstyle ':vcs_info:*' get-revision true
-	zstyle ':vcs_info:*' max-exports 6
+	zstyle ':vcs_info:*' max-exports 5
 	zstyle ':vcs_info:*:*' unstagedstr '!'
 	zstyle ':vcs_info:*:*' stagedstr '+'
 	zstyle ':vcs_info:*:*' formats \
@@ -86,7 +87,6 @@ prompt_tuurlijk_setup() {
 		"%F{$colours[vcsClean]}${symbols[branch]} %F{$colours[pwd]}%b" \
 		"%F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[pwd]}%b" \
 		"%r" \
-		"%i" \
 		"%u%c (%a)"
 	autoload -Uz colors && colors
 	autoload -Uz add-zsh-hook
@@ -120,7 +120,7 @@ prompt_tuurlijk_setup() {
 # Fastest possible way to check if repo is dirty
 _prompt_tuurlijk_vcs_is_git_dirty() {
 	if [[ $(command git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
-	  return true
+		return true
 	else
 		return false
 	fi
@@ -134,6 +134,7 @@ _prompt_tuurlijk_vcs_path_and_branch() {
 		if [[ -z $vcs_info_msg_4_ ]]; then
 			segment+=( "$vcs_info_msg_1_" )
 		else
+			segment+=( "$vcs_info_msg_4_" )
 			segment+=( "$vcs_info_msg_2_" )
 		fi
 		[[ -n "$vcs_info_msg_3_" ]] && segment+=( " $vcs_info_msg_3_ " )
@@ -169,7 +170,7 @@ prompt_tuurlijk_help () {
 	Tuurlijk's lightweight prompt
 
 	You will need a Powerline capable font:
- 	https://github.com/powerline/powerline
+	https://github.com/powerline/powerline
 
 	You can style this prompt using zstyles in your .zshrc:
 
