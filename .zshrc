@@ -22,6 +22,7 @@ FRAMEWORK="zulu"      # 0.39
 FRAMEWORK="antigen"   # seconds!
 FRAMEWORK="zprezto"   # 0.04
 FRAMEWORK="zim"       # 0.03
+FRAMEWORK="zplug"     # 0.09
 FRAMEWORK="zgen"      # 0.03
 
 # Initialise plugin manager
@@ -31,8 +32,6 @@ if [[ "$FRAMEWORK" = "antigen" ]] && [[ -s ${ZDOTDIR:-${HOME}}/.antigen/antigen.
 	antigen bundle zsh-users/zsh-autosuggestions
 	antigen bundle zdharma/fast-syntax-highlighting
 	antigen bundle zsh-users/zsh-history-substring-search
-	antigen theme refined
-
 	antigen apply
 fi
 
@@ -50,7 +49,6 @@ if [[ "$FRAMEWORK" = "oh-my-zsh" ]] && [[ -s ${ZDOTDIR:-${HOME}}/.oh-my-zsh/oh-m
 	)
 
 	export ZSH=$HOME/.oh-my-zsh
-	ZSH_THEME="refined"
 	source $ZSH/oh-my-zsh.sh
 fi
 
@@ -71,7 +69,6 @@ if [[ "$FRAMEWORK" = "zeesh" ]] && [[ -s ${ZDOTDIR:-${HOME}}/.zsh/zeesh.zsh ]]; 
 	vcs-info
 	syntax-highlighting
 	history-substring-search
-	theme
 	)
 
 	source ${ZDOTDIR:-${HOME}}/.zsh/zeesh.zsh
@@ -101,17 +98,22 @@ if [[ "$FRAMEWORK" = "zgen" ]]; then
 		zgen save
 	fi
 	fpath=(/${ZDOTDIR:-${HOME}}/.config/zsh/functions $fpath)
-	#setopt promptsubst
-	zstyle ':theme:tuurlijk:pwd' colour 250
-	zstyle ':theme:tuurlijk:pwdBg' colour 238
-	zstyle ':theme:tuurlijk:exit' colour 124
-	zstyle ':theme:tuurlijk:exitBg' colour 245
-	zstyle ':theme:tuurlijk:root' colour 234
-	zstyle ':theme:tuurlijk:rootBg' colour 52
-	zstyle ':theme:tuurlijk:userHost' colour 16
-	zstyle ':theme:tuurlijk:userHostBg' colour 245
-	autoload -Uz promptinit && promptinit
-	prompt lala
+fi
+
+if [[ "$FRAMEWORK" = "zplug" ]]; then
+	if [[ -s ${ZDOTDIR:-${HOME}}/.zplug/init.zsh ]]; then
+		source ${ZDOTDIR:-${HOME}}/.zplug/init.zsh
+	else
+		git clone --recursive https://github.com/zplug/zplug.git ${ZDOTDIR:-${HOME}}/.zplug
+		source ${ZDOTDIR:-${HOME}}/.zplug/init.zsh
+	fi
+	# if the init scipt doesn't exist
+	zplug zsh-users/zsh-autosuggestions
+	zplug bric3/nice-exit-code
+	zplug zdharma/fast-syntax-highlighting
+	zplug zsh-users/zsh-history-substring-search
+	zplug plugins/shrink-path, from:oh-my-zsh
+	fpath=(/${ZDOTDIR:-${HOME}}/.config/zsh/functions $fpath)
 fi
 
 if [[ "$FRAMEWORK" = "zplugin" ]] && [[ -s ${ZDOTDIR:-${HOME}}/.zplugin/zplugin.zsh ]]; then
@@ -121,10 +123,6 @@ if [[ "$FRAMEWORK" = "zplugin" ]] && [[ -s ${ZDOTDIR:-${HOME}}/.zplugin/zplugin.
 	zplugin snippet 'https://github.com/robbyrussell/oh-my-zsh/raw/master/plugins/git/git.plugin.zsh'
 	zplugin load mafredri/zsh-async
 	zplugin cdclear -q # <- forget completions provided up to this moment
-	setopt promptsubst
-	# Load theme
-	zplugin load sindresorhus/pure
-
 	autoload -Uz compinit
 	compinit -u
 
@@ -145,16 +143,33 @@ if [[ "$FRAMEWORK" = "zpm" ]] then
 	fi
 fi
 
+# Load customized prompt
+zstyle ':theme:tuurlijk:pwd' colour 250
+zstyle ':theme:tuurlijk:pwdBg' colour 238
+zstyle ':theme:tuurlijk:exit' colour 124
+zstyle ':theme:tuurlijk:exitBg' colour 245
+zstyle ':theme:tuurlijk:root' colour 234
+zstyle ':theme:tuurlijk:rootBg' colour 52
+zstyle ':theme:tuurlijk:userHost' colour 16
+zstyle ':theme:tuurlijk:userHostBg' colour 245
+autoload -Uz promptinit && promptinit
+prompt lala
+
 # Use emacs keybindings so we can use <C-a> to go to the beginning of a line
 #bindkey -e
 bindkey '^w' backward-kill-word
 bindkey '^h' backward-delete-char
 bindkey '^r' history-incremental-search-backward
+bindkey '^s' history-incremental-search-forward
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 bindkey '^k' kill-line
 bindkey "^f" forward-word
 bindkey "^b" backward-word
+bindkey "${terminfo[khome]}" beginning-of-line # Fn-Left, Home
+bindkey "${terminfo[kend]}" end-of-line # Fn-Right, End
 
 umask g-w,o-w
 
