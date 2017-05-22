@@ -83,14 +83,14 @@ prompt_tuurlijk_setup() {
 	zstyle ':vcs_info:*:*' unstagedstr '!'
 	zstyle ':vcs_info:*:*' stagedstr '+'
 	zstyle ':vcs_info:*:*' formats \
-		"%F{$colours[vcsBg]}%K{$colours[vcsBg]}%F{$colours[vcs]} %F{$colours[vcsClean]}${symbols[branch]} %F{$colours[vcs]}%b" \
-		"%F{$colours[vcsBg]}%K{$colours[vcsBg]}%F{$colours[vcs]} %F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[vcs]}%b" \
+		"%F{$colours[vcsBg]}%K{$colours[vcsBg]}%F{$colours[vcs]} %F{$colours[vcsClean]}${symbols[branch]} %F{$colours[vcs]}%25.25b" \
+		"%F{$colours[vcsBg]}%K{$colours[vcsBg]}%F{$colours[vcs]} %F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[vcs]}%25.25b" \
 		"$symbols[hash] %7.7i" \
 		"%r" \
 		"%u%c"
 	zstyle ':vcs_info:*:* actionformats' \
-		"%F{$colours[vcsBg]}%K{$colours[vcsBg]}%F{$colours[vcs]} %F{$colours[vcsClean]}${symbols[branch]} %F{$colours[vcs]}%b" \
-		"%F{$colours[vcsBg]}%K{$colours[vcsBg]}%F{$colours[vcs]} %F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[vcs]}%b" \
+		"%F{$colours[vcsBg]}%K{$colours[vcsBg]}%F{$colours[vcs]} %F{$colours[vcsClean]}${symbols[branch]} %F{$colours[vcs]}%25.25b" \
+		"%F{$colours[vcsBg]}%K{$colours[vcsBg]}%F{$colours[vcs]} %F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[vcs]}%25.25b" \
 		"$symbols[hash] %7.7i" \
 		"%r" \
 		"%u%c (%a)"
