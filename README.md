@@ -5,7 +5,7 @@ My dotfiles `¯\_(ツ)_/¯`
 
 Consist of:
 * A `.vimrc` with all required [Plug](https://github.com/junegunn/vim-plug) modules.
-* A `.zshrc` for use with [zim](https://github.com/Eriner/zim).
+* A `.zshrc` for use with [zgen](https://github.com/tarjoilija/zgen.git).
 * A `.tmux.conf` for use with tmux
 * And some other files
 
@@ -36,7 +36,7 @@ cd "${ZDOTDIR:-$HOME}/dotfiles"
 chsh -s /bin/zsh
 ```
 
-This installer will also install `zim` for you.
+This installer will also install `zgen` for you.
 
 On OSX you will also need a patched font for powerline to work right. The
 required patched fonts are conveniently cloned along with this repository.
