@@ -153,7 +153,7 @@ zstyle ':theme:tuurlijk:rootBg' colour 52
 zstyle ':theme:tuurlijk:userHost' colour 16
 zstyle ':theme:tuurlijk:userHostBg' colour 245
 autoload -Uz promptinit && promptinit
-prompt lala
+prompt tuurlijk
 
 # Use emacs keybindings so we can use <C-a> to go to the beginning of a line
 #bindkey -e
