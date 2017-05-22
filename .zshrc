@@ -54,12 +54,6 @@ fi
 
 if [[ "$FRAMEWORK" = "zim" ]] && [[ -s ${ZDOTDIR:-${HOME}}/.zim/init.zsh ]]; then
 	source ${ZDOTDIR:-${HOME}}/.zim/init.zsh
-	zstyle ':zim:git-info' ignore-submodules 'none'
-	#zstyle ':zim:git-info:branch' format '🌲 %b '
-	zstyle ':zim:git-info:keys' format \
-		'prompt' '%b%c%s%A%B' \
-		'isClean' '%C' \
-		'isDirty' '%D'
 fi
 
 if [[ "$FRAMEWORK" = "zeesh" ]] && [[ -s ${ZDOTDIR:-${HOME}}/.zsh/zeesh.zsh ]]; then
@@ -92,8 +86,6 @@ if [[ "$FRAMEWORK" = "zgen" ]]; then
 		zgen load zsh-users/zsh-history-substring-search
 		zgen oh-my-zsh plugins/shrink-path
 		#zgen oh-my-zsh plugins/tmux
-		# theme
-		#zgen oh-my-zsh themes/refined
 		# save all to init script
 		zgen save
 	fi
@@ -144,14 +136,6 @@ if [[ "$FRAMEWORK" = "zpm" ]] then
 fi
 
 # Load customized prompt
-zstyle ':theme:tuurlijk:pwd' colour 250
-zstyle ':theme:tuurlijk:pwdBg' colour 238
-zstyle ':theme:tuurlijk:exit' colour 124
-zstyle ':theme:tuurlijk:exitBg' colour 245
-zstyle ':theme:tuurlijk:root' colour 234
-zstyle ':theme:tuurlijk:rootBg' colour 52
-zstyle ':theme:tuurlijk:userHost' colour 16
-zstyle ':theme:tuurlijk:userHostBg' colour 245
 autoload -Uz promptinit && promptinit
 prompt tuurlijk
 

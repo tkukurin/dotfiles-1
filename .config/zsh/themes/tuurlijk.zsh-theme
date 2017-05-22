@@ -15,14 +15,14 @@ symbols=(
 # Use extended color palette if available
 if [[ -n ${terminfo[colors]} && ${terminfo[colors]} -ge 256 ]]; then
 	colours=(
-	'pwd' 253
-	'pwdBg' 31
-	'userHost' 245
-	'userHostBg' 238
+	'pwd' 250
+	'pwdBg' 238
+	'userHost' 16
+	'userHostBg' 254
 	'exit' 124
-	'exitBg' 74
-	'root' 235
-	'rootBg' 235
+	'exitBg' 245
+	'root' 245
+	'rootBg' 52
 	'vcs' 248
 	'vcsBg' 236
 	'vcsClean' 28
