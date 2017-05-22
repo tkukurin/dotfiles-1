@@ -19,12 +19,6 @@ function main () {
 	# Get the directory in which the script resides
 	local dotfileDir=${0:a:h}
 
-	e_header "Installing zim..."
-	if [ ! -d $home/.zim ]
-	then
-		git clone --recursive https://github.com/Eriner/zim.git $home/.zim
-	fi
-
 	e_header "Creating symlinks..."
 	mkdir -p $dotfileDir/backup
 
