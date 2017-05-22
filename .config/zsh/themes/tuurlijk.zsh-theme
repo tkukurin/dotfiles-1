@@ -23,6 +23,8 @@ if [[ -n ${terminfo[colors]} && ${terminfo[colors]} -ge 256 ]]; then
 	'exitBg' 74
 	'root' 235
 	'rootBg' 235
+	'vcs' 248
+	'vcsBg' 236
 	'vcsClean' 28
 	'vcsDirty' 124
 	)
@@ -36,6 +38,8 @@ else
 	'exitBg' cyan
 	'root' red
 	'rootBg' yellow
+	'vcs' white
+	'vcsBg' blue
 	'vcsClean' green
 	'vcsDirty' red
 	)
@@ -77,14 +81,14 @@ prompt_tuurlijk_setup() {
 	zstyle ':vcs_info:*:*' unstagedstr '!'
 	zstyle ':vcs_info:*:*' stagedstr '+'
 	zstyle ':vcs_info:*:*' formats \
-		"%F{$colours[pwdBg]}%K{$colours[pwdBg]}%F{$colours[pwd]} %F{$colours[vcsClean]}${symbols[branch]} %F{$colours[pwd]}%b" \
-		"%F{$colours[pwdBg]}%K{$colours[pwdBg]}%F{$colours[pwd]} %F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[pwd]}%b" \
+		"%F{$colours[vcsBg]}%K{$colours[vcsBg]}%F{$colours[vcs]} %F{$colours[vcsClean]}${symbols[branch]} %F{$colours[vcs]}%b" \
+		"%F{$colours[vcsBg]}%K{$colours[vcsBg]}%F{$colours[vcs]} %F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[vcs]}%b" \
 		"$symbols[hash] %7.7i" \
 		"%r" \
 		"%u%c"
 	zstyle ':vcs_info:*:* actionformats' \
-		"%F{$colours[pwdBg]}%K{$colours[pwdBg]}%F{$colours[pwd]} %F{$colours[vcsClean]}${symbols[branch]} %F{$colours[pwd]}%b" \
-		"%F{$colours[pwdBg]}%K{$colours[pwdBg]}%F{$colours[pwd]} %F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[pwd]}%b" \
+		"%F{$colours[vcsBg]}%K{$colours[vcsBg]}%F{$colours[vcs]} %F{$colours[vcsClean]}${symbols[branch]} %F{$colours[vcs]}%b" \
+		"%F{$colours[vcsBg]}%K{$colours[vcsBg]}%F{$colours[vcs]} %F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[vcs]}%b" \
 		"$symbols[hash] %7.7i" \
 		"%r" \
 		"%u%c (%a)"
@@ -183,6 +187,8 @@ prompt_tuurlijk_help () {
 	zstyle ':theme:tuurlijk:rootBg' colour 52
 	zstyle ':theme:tuurlijk:userHost' colour 16
 	zstyle ':theme:tuurlijk:userHostBg' colour 245
+	zstyle ':theme:tuurlijk:vcs' colour 250
+	zstyle ':theme:tuurlijk:vcsBg' colour 238
 	zstyle ':theme:tuurlijk:vcsClean' colour 28
 	zstyle ':theme:tuurlijk:vcsDirty' colour 124
 
