@@ -168,13 +168,7 @@ let g:airline#extensions#tmuxline#enabled = 0
 " Set up pretty colors
 syntax enable
 set background=dark
-let myColorscheme = 'solarized'
-"let myColorscheme = 'inkpot'
-
-" Personal preferences for users
-if $USER == 'ldx' || $USER == 'michiel' || $USER == 'vagrant'
-	let myColorscheme = 'typofree'
-endif
+let myColorscheme = 'typofree'
 
 if &term ==? 'xterm-256color' || &term ==? 'screen-256color-bce' || &term ==? 'screen-256color'
 	set t_Co=256
