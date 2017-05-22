@@ -63,7 +63,7 @@ prompt_tuurlijk_setup() {
 	autoload -Uz vcs_info
 
 	# vcs_info format strings, formatted using zformat
-	# See: man zformat
+	# See: man zshmodules
 	#
 	# max-exports: Defines the maximum number of vcs_info_msg_*_ variables vcs_info will set.
 	# %b: branch
@@ -83,14 +83,14 @@ prompt_tuurlijk_setup() {
 	zstyle ':vcs_info:*:*' unstagedstr '!'
 	zstyle ':vcs_info:*:*' stagedstr '+'
 	zstyle ':vcs_info:*:*' formats \
-		"%F{$colours[vcsBg]}%K{$colours[vcsBg]}%F{$colours[vcs]} %F{$colours[vcsClean]}${symbols[branch]} %F{$colours[vcs]}%25.25b" \
-		"%F{$colours[vcsBg]}%K{$colours[vcsBg]}%F{$colours[vcs]} %F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[vcs]}%25.25b" \
+		"%F{$colours[vcsBg]}%K{$colours[vcsBg]}%F{$colours[vcs]} %F{$colours[vcsClean]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
+		"%F{$colours[vcsBg]}%K{$colours[vcsBg]}%F{$colours[vcs]} %F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
 		"$symbols[hash] %7.7i" \
 		"%r" \
 		"%u%c"
 	zstyle ':vcs_info:*:* actionformats' \
-		"%F{$colours[vcsBg]}%K{$colours[vcsBg]}%F{$colours[vcs]} %F{$colours[vcsClean]}${symbols[branch]} %F{$colours[vcs]}%25.25b" \
-		"%F{$colours[vcsBg]}%K{$colours[vcsBg]}%F{$colours[vcs]} %F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[vcs]}%25.25b" \
+		"%F{$colours[vcsBg]}%K{$colours[vcsBg]}%F{$colours[vcs]} %F{$colours[vcsClean]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
+		"%F{$colours[vcsBg]}%K{$colours[vcsBg]}%F{$colours[vcs]} %F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
 		"$symbols[hash] %7.7i" \
 		"%r" \
 		"%u%c (%a)"
