@@ -23,6 +23,7 @@ if [[ -n ${terminfo[colors]} && ${terminfo[colors]} -ge 256 ]]; then
 	'exitBg' 245
 	'root' 245
 	'rootBg' 52
+	'exec' 208
 	'vcs' 248
 	'vcsBg' 236
 	'vcsClean' 28
@@ -38,6 +39,7 @@ else
 	'exitBg' cyan
 	'root' red
 	'rootBg' yellow
+	'exec' yellow
 	'vcs' white
 	'vcsBg' blue
 	'vcsClean' green
@@ -117,8 +119,8 @@ prompt_tuurlijk_setup() {
 	PROMPT='${PROMPT_EXIT}${(e)${PROMPT_PWD}}${PROMPT_SU}'
 
 	RPROMPT_HOST="%F{$colours[userHostBg]}${SSH_TTY:+}%K{$colours[userHostBg]}%F{$colours[userHost]}${SSH_TTY:+ %n@%m }%{%f%k%b%}"
-	RPROMPT_VCS_START="%F{$colours[pwdBg]}%K{$colours[pwdBg]}%F{$colours[pwd]} "
-	RPROMPT='$(_prompt_tuurlijk_vcs_path_and_branch)%F{yellow}$(_prompt_tuurlijk_cmd_exec_time)${RPROMPT_HOST}'
+	RPROMPT_EXEC_COLOUR="%F{$colours[exec]}"
+	RPROMPT='$(_prompt_tuurlijk_vcs_path_and_branch)${RPROMPT_EXEC_COLOUR}$(_prompt_tuurlijk_cmd_exec_time)${RPROMPT_HOST}'
 }
 
 # Fastest possible way to check if repo is dirty
@@ -187,6 +189,7 @@ prompt_tuurlijk_help () {
 	zstyle ':theme:tuurlijk:rootBg' colour 52
 	zstyle ':theme:tuurlijk:userHost' colour 16
 	zstyle ':theme:tuurlijk:userHostBg' colour 245
+	zstyle ':theme:tuurlijk:exec' colour 220
 	zstyle ':theme:tuurlijk:vcs' colour 250
 	zstyle ':theme:tuurlijk:vcsBg' colour 238
 	zstyle ':theme:tuurlijk:vcsClean' colour 28
