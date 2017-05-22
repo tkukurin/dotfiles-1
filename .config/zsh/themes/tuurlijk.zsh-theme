@@ -77,15 +77,15 @@ prompt_tuurlijk_setup() {
 	zstyle ':vcs_info:*:*' unstagedstr '!'
 	zstyle ':vcs_info:*:*' stagedstr '+'
 	zstyle ':vcs_info:*:*' formats \
-		"%F{$colours[pwdBg]}%K{$colours[pwdBg]}%F{$colours[pwd]} $symbols[hash] %7.7i" \
-		"%F{$colours[vcsClean]}${symbols[branch]} %F{$colours[pwd]}%b" \
-		"%F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[pwd]}%b" \
+		"%F{$colours[pwdBg]}%K{$colours[pwdBg]}%F{$colours[pwd]} %F{$colours[vcsClean]}${symbols[branch]} %F{$colours[pwd]}%b" \
+		"%F{$colours[pwdBg]}%K{$colours[pwdBg]}%F{$colours[pwd]} %F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[pwd]}%b" \
+		"$symbols[hash] %7.7i" \
 		"%r" \
 		"%u%c"
 	zstyle ':vcs_info:*:* actionformats' \
-		"%F{$colours[pwdBg]}%K{$colours[pwdBg]}%F{$colours[pwd]} $symbols[hash] %7.7i" \
-		"%F{$colours[vcsClean]}${symbols[branch]} %F{$colours[pwd]}%b" \
-		"%F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[pwd]}%b" \
+		"%F{$colours[pwdBg]}%K{$colours[pwdBg]}%F{$colours[pwd]} %F{$colours[vcsClean]}${symbols[branch]} %F{$colours[pwd]}%b" \
+		"%F{$colours[pwdBg]}%K{$colours[pwdBg]}%F{$colours[pwd]} %F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[pwd]}%b" \
+		"$symbols[hash] %7.7i" \
 		"%r" \
 		"%u%c (%a)"
 	autoload -Uz colors && colors
@@ -129,14 +129,14 @@ _prompt_tuurlijk_vcs_is_git_dirty() {
 # Display information about the current path and branch
 _prompt_tuurlijk_vcs_path_and_branch() {
 	local segment
-	if [[ -n "$vcs_info_msg_0_" ]]; then
-		segment+=( "$vcs_info_msg_0_" )
+	if [[ -n "$vcs_info_msg_2_" ]]; then
 		if [[ -z $vcs_info_msg_4_ ]]; then
-			segment+=( "$vcs_info_msg_1_" )
+			segment+=( "$vcs_info_msg_0_" )
 		else
+			segment+=( "$vcs_info_msg_1_" )
 			segment+=( "$vcs_info_msg_4_" )
-			segment+=( "$vcs_info_msg_2_" )
 		fi
+		segment+=( "$vcs_info_msg_2_" )
 		[[ -n "$vcs_info_msg_3_" ]] && segment+=( " $vcs_info_msg_3_ " )
 	fi
 	echo $segment
