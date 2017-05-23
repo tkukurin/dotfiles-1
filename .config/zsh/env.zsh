@@ -16,6 +16,8 @@ export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;172m' # begin underline
 export LESS=-r
 
+[[ -z $TMUX ]] && export TERM="xterm-256color"
+
 # Set GPG TTY
 export GPG_TTY=$(tty)
 
