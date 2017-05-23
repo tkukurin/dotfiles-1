@@ -11,7 +11,7 @@ This setup will work on both OSX and Linux (and may work on other platforms).
 ![](Screenshots/Dotfiles.png)
 
 ## Requirements
-* You have `zsh` installed
+* You have `zsh` installed (known to work from 4.3.17 to 5.3.1)
 * You have `tmux` installed (`2.1`+ or you will have issues with the supplied `.tmux.conf` )
 * You have `vim` installed (optionally compiled with `ruby` and `python` support)
 * You have `ruby`, `ruby-devel`, `python` and `python-pip` installed - if you wish to use Command-T plugin in vim
