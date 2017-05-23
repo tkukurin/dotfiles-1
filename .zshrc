@@ -33,6 +33,7 @@ fpath=(/${ZDOTDIR:-${HOME}}/.config/zsh/functions $fpath)
 autoload -Uz promptinit && promptinit
 prompt tuurlijk
 
+# Set keybindings
 bindkey '^w' backward-kill-word
 bindkey '^h' backward-delete-char
 bindkey '^r' history-incremental-search-backward
@@ -47,7 +48,6 @@ bindkey "^b" backward-word
 bindkey "${terminfo[khome]}" beginning-of-line # Fn-Left, Home
 bindkey "${terminfo[kend]}" end-of-line # Fn-Right, End
 
-
 # Remove whitespace after the RPROMPT
 #ZLE_RPROMPT_INDENT=0
 
@@ -58,7 +58,7 @@ if [ -x /usr/bin/dircolors ] && [ -e ${ZDOTDIR:-${HOME}}/.dircolors ]; then
 	eval "`dircolors -b ~/.dircolors`"
 fi
 
-# Secrets
+# Load secrets
 if [ -e ${ZDOTDIR:-${HOME}}/.secrets.zsh ]; then
 	source ${ZDOTDIR:-${HOME}}/.secrets.zsh
 fi
@@ -70,11 +70,9 @@ setopt auto_cd
 ssh-add -A &> /dev/null
 
 # Load settings
-setopt EXTENDED_GLOB
-local ohMyGlob='(alias|completion|env|functions|style).zsh(D)'
-for rcfile in ${ZDOTDIR:-${HOME}}/.config/zsh/${~ohMyGlob}; do
-	source ${ZDOTDIR:-${HOME}}/.config/zsh/${rcfile:t}
-done
-unset ohMyGlob
-unsetopt EXTENDED_GLOB
-
+local cachedSettingsFile=${ZDOTDIR:-${HOME}}/.config/zsh/cache/settings.zsh
+if [[ ! -s ${cachedSettingsFile} ]]; then
+	source ${ZDOTDIR:-${HOME}}/.config/zsh/functions.zsh
+	recreateCachedSettingsFile
+fi
+source $cachedSettingsFile

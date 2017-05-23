@@ -57,6 +57,31 @@ rd () {
 	popd
 }
 
+# Load all custom settings from one cached file
+recreateCachedSettingsFile() {
+	setopt EXTENDED_GLOB
+	local ohMyGlob='(alias|completion|env|functions|style).zsh(D)'
+	local recreateCache=false
+	if [[ ! -s ${cachedSettingsFile} ]]; then
+		recreateCache=true
+	else
+		for rcFile in ${ZDOTDIR:-${HOME}}/.config/zsh/${~ohMyGlob}; do
+			if [[ -s $rcFile && $rcFile -nt $cachedSettingsFile ]]; then
+				recreateCache=true
+			fi
+		done
+	fi
+	if [[ $recreateCache ]]; then
+		touch $cachedSettingsFile
+		for rcFile in ${ZDOTDIR:-${HOME}}/.config/zsh/${~ohMyGlob}; do
+			echo "# $rcFile:" >> $cachedSettingsFile
+			echo "#"          >> $cachedSettingsFile
+			cat $rcFile       >> $cachedSettingsFile
+		done
+		zcompile $cachedSettingsFile
+	fi
+}
+
 # Gather external ip address
 exip () {
 	e_header "Current External IP: "

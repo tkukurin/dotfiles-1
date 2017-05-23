@@ -9,3 +9,4 @@ vim/backup
 backup/
 .idea/
 *.zwc
+.config/zsh/cache/settings.zsh
