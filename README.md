@@ -8,6 +8,8 @@ My dotfiles `¯\_(ツ)_/¯`. I've tried to use as much native zsh code and as fe
 
 This setup will work on both OSX and Linux (and may work on other platforms).
 
+![](Screenshots/Dotfiles.png)
+
 ## Requirements
 * You have `zsh` installed
 * You have `tmux` installed (`2.1`+ or you will have issues with the supplied `.tmux.conf` )
