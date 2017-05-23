@@ -155,7 +155,7 @@ bindkey "^b" backward-word
 bindkey "${terminfo[khome]}" beginning-of-line # Fn-Left, Home
 bindkey "${terminfo[kend]}" end-of-line # Fn-Right, End
 
-umask g-w,o-w
+umask g-w,o-rwx
 
 # Remove whitespace after the RPROMPT
 #ZLE_RPROMPT_INDENT=0
