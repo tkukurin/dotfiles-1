@@ -52,7 +52,8 @@ main () {
 
 	e_header "Speeding up zsh with zcompile..."
 	source $home/.config/zsh/functions.zsh
-	(compileAllTheThings) &!
+	recreateCachedSettingsFile
+	compileAllTheThings
 
 	e_success "All done!"
 }
