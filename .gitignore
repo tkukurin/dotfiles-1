@@ -8,5 +8,6 @@ vim/backup
 .vim/backup/*
 backup/
 .idea/
+.mc/history
 *.zwc
 .config/zsh/cache/settings.zsh
