@@ -51,6 +51,7 @@ main () {
 	fi
 
 	e_header "Speeding up zsh with zcompile..."
+	source $home/.config/zsh/functions.zsh
 	(compileAllTheThings) &!
 
 	e_success "All done!"
