@@ -74,6 +74,7 @@ recreateCachedSettingsFile() {
 	fi
 	if [[ "$recreateCache" = true ]]; then
 		touch $cachedSettingsFile
+		echo > $cachedSettingsFile
 		for rcFile in ${ZDOTDIR:-${HOME}}/.config/zsh/${~ohMyGlob}; do
 			echo "# $rcFile:" >> $cachedSettingsFile
 			echo "#"          >> $cachedSettingsFile
