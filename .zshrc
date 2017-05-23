@@ -1,8 +1,8 @@
 # Colourfull messages
-function e_header()  { echo -e "\n\033[1m$@\033[0m"; }
-function e_success() { echo -e " \033[1;32m✔\033[0m  $@"; }
-function e_error()   { echo -e " \033[1;31m✖\033[0m  $@"; }
-function e_arrow()   { echo -e " \033[1;34m➜\033[0m  $@"; }
+e_header()  { echo -e "\n\033[1m$@\033[0m"; }
+e_success() { echo -e " \033[1;32m✔\033[0m  $@"; }
+e_error()   { echo -e " \033[1;31m✖\033[0m  $@"; }
+e_arrow()   { echo -e " \033[1;34m➜\033[0m  $@"; }
 
 # Profiling method 1
 #zmodload zsh/zprof
@@ -168,48 +168,22 @@ if [ -x /usr/bin/dircolors ] && [ -e ${ZDOTDIR:-${HOME}}/.dircolors ]; then
 fi
 
 # Secrets
-if [ -e ${ZDOTDIR:-${HOME}}/.secrets ]; then
-	source ${ZDOTDIR:-${HOME}}/.secrets
+if [ -e ${ZDOTDIR:-${HOME}}/.secrets.zsh ]; then
+	source ${ZDOTDIR:-${HOME}}/.secrets.zsh
 fi
 
 # Load settings
-() {
-	setopt EXTENDED_GLOB
-	local ohMyGlob='(alias|completion|env|style).zsh(D)'
-	for rcfile in ${ZDOTDIR:-${HOME}}/.config/zsh/${~ohMyGlob}; do
-		source ${ZDOTDIR:-${HOME}}/.config/zsh/${rcfile:t}
-	done
-}
+setopt EXTENDED_GLOB
+local ohMyGlob='(alias|completion|env|functions|style).zsh(D)'
+for rcfile in ${ZDOTDIR:-${HOME}}/.config/zsh/${~ohMyGlob}; do
+	source ${ZDOTDIR:-${HOME}}/.config/zsh/${rcfile:t}
+done
+unset ohMyGlob
 
 # if command is a path, cd into it
 setopt auto_cd
 
 ssh-add -A &> /dev/null
-
-# Update dotfiles
-rd () {
-	e_header "Updating dotfiles..."
-	pushd "${ZDOTDIR:-${HOME}}/dotfiles/"
-	git pull
-	if (( $? )) then
-		e_error "(ノ°Д°）ノ︵ ┻━┻)"
-		return 1
-	else
-		./setup.sh
-	fi
-	popd
-}
-
-# Gather external ip address
-exip () {
-	e_header "Current External IP: "
-	curl -s -m 5 http://ipv4.myip.dk/api/info/IPv4Address | sed -e 's/"//g'
-}
-
-# Determine local IP address
-ips () {
-	ifconfig | grep "inet " | awk '{ print $2 }'
-}
 
 # Profiling method 1
 #zprof | pbcopy
