@@ -60,6 +60,7 @@ rd () {
 # Load all custom settings from one cached file
 recreateCachedSettingsFile() {
 	setopt EXTENDED_GLOB
+	local cachedSettingsFile=${ZDOTDIR:-${HOME}}/.config/zsh/cache/settings.zsh
 	local ohMyGlob='(alias|completion|env|functions|style).zsh(D)'
 	local recreateCache=false
 	if [[ ! -s ${cachedSettingsFile} ]]; then

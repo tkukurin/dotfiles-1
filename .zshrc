@@ -70,9 +70,8 @@ setopt auto_cd
 ssh-add -A &> /dev/null
 
 # Load settings
-local cachedSettingsFile=${ZDOTDIR:-${HOME}}/.config/zsh/cache/settings.zsh
-if [[ ! -s ${cachedSettingsFile} ]]; then
+if [[ ! -s ${ZDOTDIR:-${HOME}}/.config/zsh/cache/settings.zsh ]]; then
 	source ${ZDOTDIR:-${HOME}}/.config/zsh/functions.zsh
 	recreateCachedSettingsFile
 fi
-source $cachedSettingsFile
+source ${ZDOTDIR:-${HOME}}/.config/zsh/cache/settings.zsh
