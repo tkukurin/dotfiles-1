@@ -46,19 +46,19 @@ compileAllTheThings () {
 # Update dotfiles
 rd () {
 	e_header "Updating dotfiles..."
-	pushd "${ZDOTDIR:-${HOME}}/dotfiles/"
+	pushd -q "${ZDOTDIR:-${HOME}}/dotfiles/"
 	git pull
 	if (( $? )) then
 		echo
 		git status --short
 		echo
 		e_error "(ノ°Д°）ノ︵ ┻━┻)"
-		popd
+		popd -q
 		return 1
 	else
 		./setup.sh
 	fi
-	popd
+	popd -q
 }
 
 # Load all custom settings from one cached file
