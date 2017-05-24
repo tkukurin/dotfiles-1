@@ -9,14 +9,19 @@ e_arrow()   { echo -e " \033[1;34m➜\033[0m  $@"; }
 # Croptesting
 #source ${ZDOTDIR:-${HOME}}/.config/zsh/frameworks.zsh
 
-# Load zgen
-if [[ ! -s ${ZDOTDIR:-${HOME}}/.zgen/zgen.zsh ]]; then
-  git clone --recursive https://github.com/tarjoilija/zgen.git ${ZDOTDIR:-${HOME}}/.zgen
-fi
-source ${ZDOTDIR:-${HOME}}/.zgen/zgen.zsh
+# Load zgen only if a user types a zgen command
+zgen () {
+	if [[ ! -s ${ZDOTDIR:-${HOME}}/.zgen/zgen.zsh ]]; then
+		git clone --recursive https://github.com/tarjoilija/zgen.git ${ZDOTDIR:-${HOME}}/.zgen
+	fi
+	source ${ZDOTDIR:-${HOME}}/.zgen/zgen.zsh
+	zgen "$@"
+}
 
-# Generate init script if needed
-if ! zgen saved; then
+# Source zgen init script, generate it if needed
+if [[ -s ${ZDOTDIR:-${HOME}}/.zgen/init.zsh ]]; then
+	source ${ZDOTDIR:-${HOME}}/.zgen/init.zsh
+else
 	e_header "Creating a zgen save"
 	zgen load zsh-users/zsh-autosuggestions
 	zgen load bric3/nice-exit-code
