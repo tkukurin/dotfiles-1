@@ -76,7 +76,7 @@ prompt_tuurlijk_setup() {
 	# %u: unstaged changes in the repository
 	# %c: staged changes in the repository
 	#
-	zstyle ':vcs_info:*' enable git
+	zstyle ':vcs_info:*' enable git hg
 	zstyle ':vcs_info:*' check-for-changes true
 	zstyle ':vcs_info:*' get-revision true
 	zstyle ':vcs_info:*' max-exports 5
