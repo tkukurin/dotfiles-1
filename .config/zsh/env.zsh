@@ -24,9 +24,10 @@ export COLORTERM=truecolor
 # Set GPG TTY
 export GPG_TTY=$(tty)
 
-export PATH=\
-${HOME}/Library/Python/2.7/bin:\
+path=( ${HOME}/Library/Python/2.7/bin:\
 ${HOME}/bin:\
 ${HOME}/.rvm/bin:\
-${PATH}
+$path
+)
 
+export PATH
