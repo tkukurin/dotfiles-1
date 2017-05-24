@@ -19,16 +19,7 @@ compileAllTheThings () {
 	done
 
 	# zcompile .zshrc
-	zcompare ${ZDOTDIR:-${HOME}}/.secrets.zsh
-
-	# zcompile .zshrc
 	zcompare ${ZDOTDIR:-${HOME}}/.zshrc
-
-	zsh_mods=${ZDOTDIR:-${HOME}}/.config/zsh/
-	# zcompile all .zsh files in the zsh config dir
-	for file in ${zsh_mods}/**/${~zsh_glob}; do
-		zcompare ${file}
-	done
 
 	# Zgen
 	zgen_mods=${ZDOTDIR:-${HOME}}/.zgen/
@@ -65,7 +56,7 @@ rd () {
 recreateCachedSettingsFile() {
 	setopt EXTENDED_GLOB
 	local cachedSettingsFile=${ZDOTDIR:-${HOME}}/.config/zsh/cache/settings.zsh
-	local ohMyGlob='(alias|completion|env|functions|style).zsh(D)'
+	local ohMyGlob='(env|keybindings|alias|completion|functions|style).zsh(D)'
 	local recreateCache=false
 	if [[ ! -s ${cachedSettingsFile} ]]; then
 		recreateCache=true
@@ -78,12 +69,29 @@ recreateCachedSettingsFile() {
 	fi
 	if [[ "$recreateCache" = true ]]; then
 		touch $cachedSettingsFile
-		echo > $cachedSettingsFile
+		echo "# This file is generated automatically, do not edit by hand!" > $cachedSettingsFile
+		echo "# Edit the files in ~/.config/zsh instead!" >> $cachedSettingsFile
+		# Zgen
+		if [[ -s ${ZDOTDIR:-${HOME}}/.zgen/init.zsh ]]; then
+			echo "#"              >> $cachedSettingsFile
+			echo "# Zgen:"        >> $cachedSettingsFile
+			echo "#"              >> $cachedSettingsFile
+			cat ${ZDOTDIR:-${HOME}}/.zgen/init.zsh >> $cachedSettingsFile
+		fi
+		# Rc files
 		for rcFile in ${ZDOTDIR:-${HOME}}/.config/zsh/${~ohMyGlob}; do
-			echo "# $rcFile:" >> $cachedSettingsFile
-			echo "#"          >> $cachedSettingsFile
-			cat $rcFile       >> $cachedSettingsFile
+			echo "#"              >> $cachedSettingsFile
+			echo "# ${rcFile:t}:" >> $cachedSettingsFile
+			echo "#"              >> $cachedSettingsFile
+			cat $rcFile           >> $cachedSettingsFile
 		done
+		# Secrets
+		if [ -s ${ZDOTDIR:-${HOME}}/.secrets.zsh ]; then
+			echo "#"              >> $cachedSettingsFile
+			echo "# Secrets:"     >> $cachedSettingsFile
+			echo "#"              >> $cachedSettingsFile
+			cat ${ZDOTDIR:-${HOME}}/.secrets.zsh >> $cachedSettingsFile
+		fi
 		zcompile $cachedSettingsFile
 	fi
 }
