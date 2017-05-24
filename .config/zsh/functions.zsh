@@ -3,7 +3,7 @@
 # These jobs are asynchronous, and will not impact the interactive shell
 zcompare() {
 	if [[ -s ${1} && ( ! -s ${1}.zwc || ${1} -nt ${1}.zwc) ]]; then
-		zcompile ${1}
+		zcompile -M ${1}
 	fi
 }
 
@@ -49,6 +49,9 @@ rd () {
 	pushd "${ZDOTDIR:-${HOME}}/dotfiles/"
 	git pull
 	if (( $? )) then
+		echo
+		git status --short
+		echo
 		e_error "(ノ°Д°）ノ︵ ┻━┻)"
 		return 1
 	else
