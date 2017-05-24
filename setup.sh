@@ -50,11 +50,13 @@ main () {
 		fi
 	fi
 
-	e_header "Speeding up zsh with zcompile..."
 	source $home/.config/zsh/functions.zsh
+	e_header "Concatenating .config/zsh files into single file..."
 	recreateCachedSettingsFile
+	e_header "Compiling zsh files for increased speed..."
 	compileAllTheThings
 
+	echo
 	e_success "All done!"
 }
 
