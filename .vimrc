@@ -250,9 +250,6 @@ map <leader>tm :tabmove
 map <Left> :tabprevious<cr>
 map <Right> :tabnext<cr>
 
-" When pressing <leader>cd switch to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>
-
 " Make p in Visual mode replace the selected text with the "" register.
 vnoremap p <Esc>:let current_reg = @"<cr>gvdi<C-R>=current_reg<cr><Esc>
 
@@ -265,6 +262,10 @@ endtry
 
 " http://cloudhead.io/2010/04/24/staying-the-hell-out-of-insert-mode/
 inoremap kj <Esc>
+
+" TAG Jumping
+" Create the `tags` file (may need to install ctags)
+command! MakeTags !ctags -R .
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
