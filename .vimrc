@@ -59,6 +59,7 @@ Plug 'othree/es.next.syntax.vim'
 " File type support
 Plug 'rodjek/vim-puppet'
 Plug 'tmux-plugins/vim-tmux'
+Plug 'rstacruz/sparkup'
 
 " Naviation
 Plug 'matze/vim-move'
@@ -70,12 +71,10 @@ Plug 'altercation/vim-colors-solarized'
 
 " And the rest
 Plug 'wincent/command-t'
-Plug 'scrooloose/nerdcommenter'
+Plug 'tomtom/tcomment_vim'
 Plug 'raimondi/delimitmate'
-Plug 'rstacruz/sparkup'
 Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar'
-Plug 'marcweber/vim-addon-mw-utils'
 Plug 'tpope/vim-eunuch'
 
 call plug#end()
@@ -144,13 +143,12 @@ set viminfo='10,\"100,:50,%,n~/.viminfo
 set visualbell         " Better than a beep
 set nowrap             " Don't wrap long lines
 set whichwrap=<,>,h,l,~,[,]   " Left/right motion line wrap
+set wildmenu
 " have command-line completion <Tab> (for filenames, help topics, option names)
 " first list the available options and complete the longest common part, then
 " have further <Tab>s cycle through the possibilities:
 set wildmode=list:longest,full
 set wildchar=<TAB>     " the char used for "expansion" on the command line
-set wildignore+=*.DS_Store,*.o,*.obj,.git,.svn,*.pyc " Ignore certain files in wildmenu
-
 
 " normally don't automatically format `text' as it is typed, IE only do this
 " with comments, at 79 characters:
@@ -158,12 +156,15 @@ set formatoptions-=t
 set textwidth=79
 set mouse=a
 
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
 
 " statusbar
 let g:airline_theme='distinguished'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tmuxline#enabled = 0
-
 
 " Set up pretty colors
 syntax enable
@@ -178,36 +179,24 @@ else
 	colorscheme default
 endif
 
-
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
-
-
 " Fast editing of the .vimrc
 map <leader>e :tabedit! ~/.vimrc<cr>
 " When vimrc is edited, reload it
 autocmd! bufwritepost ~/.vimrc source ~/.vimrc
-
 
 " Fast editing of the colorscheme
 silent execute "map <leader>co :tabedit! ~/.vim/colors/".myColorscheme.".vim<cr>"
 " When colorscheme is edited, reload it
 autocmd! bufwritepost ~/.vim/colors/*.vim execute "colorscheme ".myColorscheme
 
-
 " Fast editing of the .zshrc
 map <leader>z :tabedit! ~/.zshrc<cr>
-
 
 " Fast saving
 nmap <M-s> :w!<cr>
 
-
 " Make ;w work http://nvie.com/posts/how-i-boosted-my-vim/
 nnoremap ; :
-
 
 " Saving shortcuts
 nmap <F2> :w<C-M>
@@ -217,10 +206,8 @@ nmap <F10> :qall<C-M>
 " Use system-wide clipboard
 set clipboard+=unnamed
 
-
 " Copy to clipboard
 map <leader>c "+y<cr>
-
 
 " Session management
 " Maybe checkout http://peterodding.com/code/vim/session/
@@ -228,23 +215,19 @@ silent execute '!mkdir -p ~/.vim/sessions'
 nmap SM :wa<C-M>:mksession! ~/.vim/sessions/
 nmap SO :wa<C-M>:source ~/.vim/sessions/
 
-
 " View management
 au BufWritePost,BufLeave,WinLeave ?* mkview
 au BufWritePost,BufLeave,WinLeave quickfix au!
 au BufWinEnter ?* silent loadview
 au BufWinEnter quickfix au!
 
-
 " Delete trailing whitespace
 nmap <leader>wd :%s/\s\+$//<cr>
 vmap <leader>wd :s/\s\+$//<cr>
 
-
 " Use Q for formatting the current paragraph (or selection)
 vmap Q gq
 nmap Q gqap
-
 
 " Easy window navigation
 map <C-h> <C-w>h
@@ -252,15 +235,12 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-
 " Create new windows horizontal (-) and vertical (/)
 map <leader>- <C-W>n
 map <leader>/ :vne<cr>
 
-
 " Resize splits evenly automatically
 autocmd VimResized * wincmd =
-
 
 " Tab configuration
 map <leader>tn :tabnew<cr>
@@ -270,14 +250,11 @@ map <leader>tm :tabmove
 map <Left> :tabprevious<cr>
 map <Right> :tabnext<cr>
 
-
 " When pressing <leader>cd switch to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>
 
-
 " Make p in Visual mode replace the selected text with the "" register.
 vnoremap p <Esc>:let current_reg = @"<cr>gvdi<C-R>=current_reg<cr><Esc>
-
 
 " Specify the behavior when switching between buffers
 try
@@ -286,10 +263,8 @@ try
 catch
 endtry
 
-
 " http://cloudhead.io/2010/04/24/staying-the-hell-out-of-insert-mode/
 inoremap kj <Esc>
-
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -297,7 +272,6 @@ if &t_Co > 2 || has("gui_running")
 	set hlsearch
 	map <C-\> :nohlsearch<cr>
 endif
-
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -316,7 +290,6 @@ if has("autocmd")
 	augroup END
 
 endif " has("autocmd")
-
 
 " open and close folds
 " Toggle fold state between closed and opened.
@@ -341,28 +314,16 @@ endfun
 nnoremap <space> :call ToggleFold()<cr>
 vnoremap <space> :call ToggleFold()<cr>
 
-
 " have the usual indentation keystrokes still work in visual mode:
-vnoremap <C-T> >
-vnoremap <C-D> <LT>
 vmap <Tab> <C-T>
 vmap <S-Tab> <C-D>
-
 
 " Bash like keys for the command line
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
-cnoremap <C-K> <C-U>
+"cnoremap <C-K> <C-U>
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
-
-
-" command-T
-let g:CommandTMaxHeight = 30
-noremap <leader>ct :CommandT<cr>
-noremap <leader>cty :CommandTFlush<cr>
-"map <D-t> :CommandT<cr>
-
 
 " Cope
 " Do :help cope if you are unsure what cope is. It's super useful!
@@ -371,44 +332,45 @@ map <leader>\ :ccl<cr>
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 
+" Toggles
+nmap <C-n> :tabnew<CR>
 
-" Tagbar http://majutsushi.github.com/tagbar/
+" Fuzzy file, buffer, mru, tag, etc finder
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_custom_ignore = {
+	\ 'dir':  '\v[\/]\.(git|hg|svn|vim/(backup|view))$',
+	\ 'file': '\v\.(zwc|exe|so|dll)$',
+	\ }
+
+" A tree explorer plugin for vim.
+autocmd VimEnter * NERDTree
+" Move cursor to main window
+autocmd VimEnter * wincmd p
+" Close vim if NERDTree is the last open buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+map <leader>nt :NERDTreeToggle<cr>
+nmap <C-t> :NERDTreeToggle<CR>
+
+" Sparkup
+let g:sparkupNextMapping = '<c-n>'
+let g:sparkupExecuteMapping = '<c-e>'
+
+" CommandT
+let g:CommandTMaxHeight = 30
+noremap <leader>ct :CommandT<cr>
+noremap <leader>cty :CommandTFlush<cr>
+
+" TComment
+noremap <leader>cc :TComment<cr>
+
+" Supertab
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+
+" Tagbar
 let g:tagbar_autofocus = 1
 let g:tagbar_usearrows = 1
 au BufWinEnter *.js TagbarOpen
 au BufWinEnter *.php TagbarOpen
 map <leader>tb :TagbarToggle<cr>
 
-
-" Restore debug.vim from ~/.vim/plugins/attic
-"let g:debuggerMaxChildren = 64
-"let g:debuggerMaxData = 2048
-"let g:debuggerMaxDepth = 10
-
-
-" Start NERDTree
-" autocmd VimEnter * NERDTree
-" Move cursor to main window
-autocmd VimEnter * wincmd p
-" Close vim if NERDTree is the last open buffer
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-map <leader>nt :NERDTreeToggle<cr>
-
-
-" Toggles
-nmap <C-t> :NERDTreeToggle<CR>
-nmap <C-n> :tabnew<CR>
-
-
-" Sparkup
-let g:sparkupNextMapping = '<c-n>'
-let g:sparkupExecuteMapping = '<c-e>'
-
-
-" PHP Code completion
-" autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-
-
-" Add PHP Omni Completion to SuperTab
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 " http://amix.dk/vim/vimrc.html
