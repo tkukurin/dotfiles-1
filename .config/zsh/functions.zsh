@@ -58,10 +58,14 @@ recreateCachedSettingsFile() {
 	local cachedSettingsFile=${ZDOTDIR:-${HOME}}/.config/zsh/cache/settings.zsh
 	local ohMyGlob='(env|keybindings|alias|completion|functions|style).zsh(D)'
 	local recreateCache=false
+	local rcFiles
 	if [[ ! -s ${cachedSettingsFile} ]]; then
 		recreateCache=true
 	else
-		for rcFile in ${ZDOTDIR:-${HOME}}/.config/zsh/${~ohMyGlob}; do
+		rcFiles=(${ZDOTDIR:-${HOME}}/.zgen/init.zsh)
+		rcFiles+=(${ZDOTDIR:-${HOME}}/.config/zsh/${~ohMyGlob})
+		rcFiles+=(${ZDOTDIR:-${HOME}}/.secrets.zsh)
+		for rcFile in $rcFiles; do
 			if [[ -s $rcFile && $rcFile -nt $cachedSettingsFile ]]; then
 				recreateCache=true
 			fi
