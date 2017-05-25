@@ -24,7 +24,6 @@ zgen () {
 # Generate zgen init script if needed
 if [[ ! -s ${ZDOTDIR:-${HOME}}/.zgen/init.zsh ]]; then
 	zgen load zsh-users/zsh-autosuggestions
-	zgen load bric3/nice-exit-code
 	zgen load zdharma/fast-syntax-highlighting
 	zgen load zsh-users/zsh-history-substring-search
 	zgen oh-my-zsh plugins/shrink-path
