@@ -350,7 +350,7 @@ autocmd VimEnter * wincmd p
 " Close vim if NERDTree is the last open buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <leader>nt :NERDTreeToggle<cr>
-nmap <C-t> :NERDTreeToggle<CR>
+nmap <leader>t :NERDTreeToggle<CR>
 
 " Sparkup
 let g:sparkupNextMapping = '<c-n>'
