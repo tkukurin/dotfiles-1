@@ -44,7 +44,7 @@ Plug 'chr4/sslsecure.vim'
 Plug 'marijnh/tern_for_vim'
 " Plug 'Valloric/YouCompleteMe'
 
-" Strip whitespace
+" Show trailing whitespace in red background
 Plug 'bronson/vim-trailing-whitespace'
 
 " JSON
@@ -98,6 +98,7 @@ set ignorecase         " Ignore the case when searching
 set smartcase          " Override the 'ignorecase' option if the search pattern contains ucase
 set laststatus=2       " Show status only when there are more than two windows
 set lazyredraw         " Don't redraw while executing macros (good performance config)
+set listchars=tab:>-,space:␣,extends:>,precedes:<
 set cmdheight=2        " Helps avoiding 'hit enter' prompt
 set foldmethod=indent
 set foldminlines=5
@@ -306,6 +307,9 @@ if has("autocmd")
 
 endif " has("autocmd")
 
+" Toggle display of whitespace
+nnoremap <F3> :set list!<cr>
+
 " open and close folds
 " Toggle fold state between closed and opened.
 "
@@ -389,7 +393,7 @@ let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 " Tagbar
 let g:tagbar_autofocus = 1
 let g:tagbar_usearrows = 1
-au BufWinEnter *.js TagbarOpen
-au BufWinEnter *.php TagbarOpen
+au BufWinEnter *.js TagbarOpenAutoClose
+au BufWinEnter *.php TagbarOpenAutoClose
 map <leader>tb :TagbarToggle<cr>
 
