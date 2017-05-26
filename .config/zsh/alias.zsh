@@ -27,6 +27,7 @@ alias h="history"
 alias j="jobs"
 
 # Vim shortcuts
+alias vi=vim
 alias :e="\$EDITOR"
 alias :q="exit"
 
