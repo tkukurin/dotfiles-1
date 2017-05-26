@@ -59,6 +59,12 @@ done
 
 # Define prompts
 prompt_tuurlijk_setup() {
+	if (( ! $+commands[shrink_path] )); then
+		echo -e " \033[1;31m✖\033[0m Please install the 'shrink-path' plugin:"
+		echo "   https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/shrink-path"
+		echo "   This prompt uses it to generate a short readable path."
+	fi
+
 	# Load required modules
 	autoload -Uz vcs_info
 
@@ -177,6 +183,9 @@ prompt_tuurlijk_help () {
 
 	You will need a Powerline capable font:
 	https://github.com/powerline/powerline
+
+	And the 'shrink-path' plugin:
+	https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/shrink-path
 
 	You can style this prompt using zstyles in your .zshrc:
 
