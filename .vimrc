@@ -357,10 +357,13 @@ let g:ctrlp_custom_ignore = {
 	\ 'file': '\v\.(zwc|exe|so|dll)$',
 	\ }
 
-" A tree explorer plugin for vim.
-autocmd VimEnter * NERDTree
-" Move cursor to main window
-autocmd VimEnter * wincmd p
+" NERDTree
+" https://github.com/scrooloose/nerdtree
+autocmd StdinReadPre * let s:std_in=1
+" Show tree if no file was given
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" Show tree if a dir was given
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 " Close vim if NERDTree is the last open buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <leader>nt :NERDTreeToggle<cr>
@@ -390,4 +393,3 @@ au BufWinEnter *.js TagbarOpen
 au BufWinEnter *.php TagbarOpen
 map <leader>tb :TagbarToggle<cr>
 
-" http://amix.dk/vim/vimrc.html
