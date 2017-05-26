@@ -173,6 +173,17 @@ else
 	colorscheme default
 endif
 
+" Map key to toggle opt - http://vim.wikia.com/wiki/Quick_generic_option_toggling
+function MapToggle(key, opt)
+  let cmd = ':set '.a:opt.'! \| set '.a:opt."?\<CR>"
+  exec 'nnoremap '.a:key.' '.cmd
+  exec 'inoremap '.a:key." \<C-O>".cmd
+endfunction
+command -nargs=+ MapToggle call MapToggle(<f-args>)
+
+MapToggle <F3> list
+MapToggle <F2> wrap
+
 " Fast editing of the .vimrc
 map <leader>e :tabedit! ~/.vimrc<cr>
 " When vimrc is edited, reload it
@@ -306,9 +317,6 @@ if has("autocmd")
 	augroup END
 
 endif " has("autocmd")
-
-" Toggle display of whitespace
-nnoremap <F3> :set list!<cr>
 
 " open and close folds
 " Toggle fold state between closed and opened.
