@@ -59,7 +59,7 @@ done
 
 # Define prompts
 prompt_tuurlijk_setup() {
-	if (( $+commands[shrink_path] )); then
+	if ! type shrink_path > /dev/null; then
 		echo -e " \033[1;31m✖\033[0m Please install the 'shrink-path' plugin:"
 		echo "   https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/shrink-path"
 		echo "   This prompt uses it to generate a short readable path."
