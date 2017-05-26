@@ -1,4 +1,5 @@
 " Modified: Fri 05 May 2017 02:25:39 PM CEST
+" Inspired by https://github.com/amix/vimrc/blob/master/vimrcs/basic.vim
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -62,7 +63,6 @@ Plug 'tmux-plugins/vim-tmux'
 Plug 'rstacruz/sparkup'
 
 " Naviation
-Plug 'matze/vim-move'
 Plug 'easymotion/vim-easymotion'
 
 " Colors
@@ -83,13 +83,10 @@ call plug#end()
 filetype on
 filetype plugin on
 filetype indent on
-"set backspace=2      " allow backspacing over everything in insert mode
-" allow <BkSpc> to delete line breaks, beyond the start of the current
-" insertion, and over indentations:
 silent execute '!mkdir -p ~/.vim/backup'
 set backupdir=~/.vim/backup/
 set backupskip=/tmp/*,/private/tmp/*
-"helptags ~/.vim/doc
+helptags ~/.vim/doc
 set backup             " keep a backup file
 set cindent
 set complete=k,.,w,b,u,t,i
@@ -97,7 +94,7 @@ set cursorline         " Highlight the current line number
 set directory=~/.vim/backup,/tmp " This is where the swapfiles go
 set history=1000       " keep 50 lines of command line history
 set undolevels=1000
-"set ignorecase         " Ignore the case when searching
+set ignorecase         " Ignore the case when searching
 set smartcase          " Override the 'ignorecase' option if the search pattern contains ucase
 set laststatus=2       " Show status only when there are more than two windows
 set lazyredraw         " Don't redraw while executing macros (good performance config)
@@ -114,14 +111,10 @@ set copyindent
 set nostartofline      " Don't jump to start of line on pagedown
 set nrformats+=alpha   " Allows CTRL-A and CTRL-X to increment/decrement letters
 set pastetoggle=<F11>
-"if exists('+colorcolumn')
-"	set colorcolumn=+1
-"endif
 set scrolloff=3        " Keep 3 lines above and below the cursor
-set shell=/bin/bash    " Shell to use for ! and :! commands
 set shiftwidth=2
 set shortmess=aI       " Avoid 'Hit enter to continue' message, no intro msg
-set showbreak=+        " Show character at beginning of wrapped line
+set showbreak=➦        " Show character at beginning of wrapped line
 set showcmd            " Show uncompleted command
 set showmatch          " Show the matching closing bracket
 set showmode           " Show current edit mode
@@ -203,6 +196,10 @@ nmap <F2> :w<C-M>
 nmap <F4> :wq<C-M>
 nmap <F10> :qall<C-M>
 
+" :W sudo saves the file
+" (useful for handling the permission-denied error)
+command W w !sudo tee % > /dev/null
+
 " Use system-wide clipboard
 set clipboard+=unnamed
 
@@ -234,6 +231,23 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+" Remap VIM 0 to first non-blank character
+map 0 ^
+
+" Move a line of text using ALT+[jk] or Command+[jk] on mac
+nmap <M-k> mz:m-2<cr>`z
+nmap <M-j> mz:m+<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+
+" Only works in GUI mode
+if has("mac") || has("macunix")
+  nmap <D-j> <M-j>
+  nmap <D-k> <M-k>
+  vmap <D-j> <M-j>
+  vmap <D-k> <M-k>
+endif
 
 " Create new windows horizontal (-) and vertical (/)
 map <leader>- <C-W>n
@@ -322,7 +336,7 @@ vmap <S-Tab> <C-D>
 " Bash like keys for the command line
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
-"cnoremap <C-K> <C-U>
+"inoremap <C-K> <C-U>
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
 
@@ -351,6 +365,8 @@ autocmd VimEnter * wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <leader>nt :NERDTreeToggle<cr>
 nmap <leader>t :NERDTreeToggle<CR>
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeWinPos = 'right'
 
 " Sparkup
 let g:sparkupNextMapping = '<c-n>'
