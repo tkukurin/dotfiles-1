@@ -17,7 +17,7 @@ endif
 let colors_name = "typofree"
 
 hi Normal        ctermfg=249   ctermbg=NONE  cterm=NONE
-hi SpecialKey    ctermfg=127   ctermbg=NONE  cterm=bold " control characters and listchars
+hi SpecialKey    ctermfg=236   ctermbg=NONE  cterm=bold " control characters and listchars
 hi NonText       ctermfg=236   ctermbg=NONE  cterm=NONE " e.g. the + symbol on line wrap
 hi PreProc       ctermfg=67    ctermbg=NONE  cterm=NONE
 hi Directory     ctermfg=67    ctermbg=NONE  cterm=NONE
