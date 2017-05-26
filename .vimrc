@@ -249,6 +249,13 @@ if has("mac") || has("macunix")
   vmap <D-k> <M-k>
 endif
 
+" http://codingfearlessly.com/vim-putting-arrows-to-use
+nmap <Left> <<
+nmap <Right> >>
+
+vmap <Left> <gv
+vmap <Right> >gv
+
 " Create new windows horizontal (-) and vertical (/)
 map <leader>- <C-W>n
 map <leader>/ :vne<cr>
