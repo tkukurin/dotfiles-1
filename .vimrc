@@ -243,10 +243,10 @@ vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 " Only works in GUI mode
 if has("mac") || has("macunix")
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
+	nmap <D-j> <M-j>
+	nmap <D-k> <M-k>
+	vmap <D-j> <M-j>
+	vmap <D-k> <M-k>
 endif
 
 " Create new windows horizontal (-) and vertical (/)
@@ -353,9 +353,9 @@ nmap <C-n> :tabnew<CR>
 " Fuzzy file, buffer, mru, tag, etc finder
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\v[\/]\.(git|hg|svn|vim/(backup|view))$',
-	\ 'file': '\v\.(zwc|exe|so|dll)$',
-	\ }
+			\ 'dir':  '\v[\/]\.(git|hg|svn|vim/(backup|view))$',
+			\ 'file': '\v\.(zwc|exe|so|dll)$',
+			\ }
 
 " NERDTree
 " https://github.com/scrooloose/nerdtree
