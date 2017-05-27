@@ -56,14 +56,13 @@ rd () {
 recreateCachedSettingsFile() {
 	setopt EXTENDED_GLOB
 	local cachedSettingsFile=${ZDOTDIR:-${HOME}}/.config/zsh/cache/settings.zsh
-	local ohMyGlob='(env|keybindings|alias|completion|functions|style).zsh(D)'
 	local recreateCache=false
 	local rcFiles
 	if [[ ! -s ${cachedSettingsFile} ]]; then
 		recreateCache=true
 	else
 		rcFiles=(${ZDOTDIR:-${HOME}}/.zgen/init.zsh)
-		rcFiles+=(${ZDOTDIR:-${HOME}}/.config/zsh/${~ohMyGlob})
+		rcFiles+=(${ZDOTDIR:-${HOME}}/.config/zsh/*.zsh)
 		rcFiles+=(${ZDOTDIR:-${HOME}}/.secrets.zsh)
 		for rcFile in $rcFiles; do
 			if [[ -s $rcFile && $rcFile -nt $cachedSettingsFile ]]; then
@@ -83,7 +82,7 @@ recreateCachedSettingsFile() {
 			cat ${ZDOTDIR:-${HOME}}/.zgen/init.zsh >> $cachedSettingsFile
 		fi
 		# Rc files
-		for rcFile in ${ZDOTDIR:-${HOME}}/.config/zsh/${~ohMyGlob}; do
+		for rcFile in ${ZDOTDIR:-${HOME}}/.config/zsh/*.zsh; do
 			echo "#"              >> $cachedSettingsFile
 			echo "# ${rcFile:t}:" >> $cachedSettingsFile
 			echo "#"              >> $cachedSettingsFile
