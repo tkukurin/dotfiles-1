@@ -50,6 +50,10 @@ Plug 'bronson/vim-trailing-whitespace'
 " JSON
 Plug 'elzr/vim-json'
 
+" Haskell
+Plug 'dag/vim2hs'
+Plug 'lukerandall/haskellmode-vim'
+
 " Snippets
 Plug 'honza/vim-snippets'
 
@@ -182,7 +186,8 @@ endfunction
 command -nargs=+ MapToggle call MapToggle(<f-args>)
 
 MapToggle <F3> list
-MapToggle <F2> wrap
+MapToggle <F5> wrap
+MapToggle <F4> number
 
 " Fast editing of the .vimrc
 map <leader>e :tabedit! ~/.vimrc<cr>
@@ -205,12 +210,7 @@ nnoremap ; :
 
 " Saving shortcuts
 nmap <F2> :w<C-M>
-nmap <F4> :wq<C-M>
 nmap <F10> :qall<C-M>
-
-" :W sudo saves the file
-" (useful for handling the permission-denied error)
-command W w !sudo tee % > /dev/null
 
 " Use system-wide clipboard
 set clipboard+=unnamed
@@ -368,6 +368,9 @@ let g:ctrlp_custom_ignore = {
 			\ 'dir':  '\v[\/]\.(git|hg|svn|vim/(backup|view))$',
 			\ 'file': '\v\.(zwc|exe|so|dll)$',
 			\ }
+
+" Haskell
+let g:haddock_browser="/usr/bin/env lynx"
 
 " NERDTree
 " https://github.com/scrooloose/nerdtree
