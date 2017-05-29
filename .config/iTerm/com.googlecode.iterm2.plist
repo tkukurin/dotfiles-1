@@ -712,12 +712,26 @@
 			<key>Text</key>
 			<string>0x02 0x6B</string>
 		</dict>
+		<key>0xf700-0x320000</key>
+		<dict>
+			<key>Action</key>
+			<integer>13</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
 		<key>0xf701-0x300000</key>
 		<dict>
 			<key>Action</key>
 			<integer>11</integer>
 			<key>Text</key>
 			<string>0x02 0x6A</string>
+		</dict>
+		<key>0xf701-0x320000</key>
+		<dict>
+			<key>Action</key>
+			<integer>13</integer>
+			<key>Text</key>
+			<string></string>
 		</dict>
 		<key>0xf702-0x280000</key>
 		<dict>
@@ -1290,11 +1304,11 @@
 	<key>NSWindow Frame SUUpdateAlertFrame</key>
 	<string>264 156 908 669 0 0 1440 878 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>174 385 796 473 0 0 1920 1057 </string>
+	<string>1991 368 937 465 1920 -344 1920 1177 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>155 593 592 584 0 0 1920 1177 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>226 10 1529 1047 0 0 1920 1057 </string>
+	<string>226 45 1410 1132 0 0 1920 1177 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>410 180 1130 927 0 0 1920 1177 </string>
 	<key>NSWindow Frame iTerm Window 10</key>
@@ -2360,6 +2374,10 @@
 	<true/>
 	<key>NoSyncInstallationId</key>
 	<string>6C6802D0-3D17-446B-8B56-7007FC4CFED3</string>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>0</integer>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>467037815.03106803</real>
 	<key>NoSyncTimeOfLastPromo</key>
@@ -2442,7 +2460,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-05-22T09:04:15Z</date>
+	<date>2017-05-27T17:19:18Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -2500,7 +2518,6 @@
 	<key>ToolbeltTools</key>
 	<array>
 		<string>Profiles</string>
-		<string>Jobs</string>
 	</array>
 	<key>TripleClickSelectsFullWrappedLines</key>
 	<true/>
