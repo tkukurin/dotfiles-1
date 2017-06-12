@@ -1304,11 +1304,11 @@
 	<key>NSWindow Frame SUUpdateAlertFrame</key>
 	<string>264 156 908 669 0 0 1440 878 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>1991 368 937 465 1920 -344 1920 1177 </string>
+	<string>511 538 918 512 0 0 1920 1057 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>155 593 592 584 0 0 1920 1177 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>226 45 1410 1132 0 0 1920 1177 </string>
+	<string>2102 -55 1557 1047 1920 -120 1920 1177 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>410 180 1130 927 0 0 1920 1177 </string>
 	<key>NSWindow Frame iTerm Window 10</key>
@@ -2437,6 +2437,8 @@
 	</dict>
 	<key>PrefsCustomFolder</key>
 	<string>~/.config/iTerm/</string>
+	<key>Print In Black And White</key>
+	<true/>
 	<key>PromptOnClose</key>
 	<true/>
 	<key>PromptOnQuit</key>
@@ -2460,7 +2462,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-05-27T17:19:18Z</date>
+	<date>2017-05-31T18:19:29Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>

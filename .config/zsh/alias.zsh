@@ -55,4 +55,4 @@ done
 
 # Tmux
 alias tmux="TERM=xterm-256color tmux"
-alias mu="tmuxomatic ${ZDOTDIR:-${HOME}}/.tmuxomatic/work"
+alias mu="tmuxinator start work"
