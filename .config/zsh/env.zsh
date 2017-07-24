@@ -21,7 +21,7 @@ export LESS=-r
 # Midnight commander wants this:
 export COLORTERM=truecolor
 
-export JAVA_HOME=$(/usr/libexec/java_home
+export JAVA_HOME=$(/usr/libexec/java_home)
 
 # Set GPG TTY
 export GPG_TTY=$(tty)
