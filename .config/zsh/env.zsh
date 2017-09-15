@@ -26,5 +26,5 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 # Set GPG TTY
 export GPG_TTY=$(tty)
 
-path=(${HOME}/bin ${HOME}/.rvm/bin ${HOME}/.composer/vendor/bin $path)
+path=(${HOME}/bin ${HOME}/.node/bin ${HOME}/.rvm/bin ${HOME}/.composer/vendor/bin $path)
 export PATH
