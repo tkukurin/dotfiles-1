@@ -23,7 +23,9 @@ export COLORTERM=truecolor
 
 export GOPATH=${HOME}/Projects/Go
 
-export JAVA_HOME=$(/usr/libexec/java_home)
+if [[ -e /usr/libexec/java_home ]]; then
+  export JAVA_HOME=$(/usr/libexec/java_home)
+fi
 
 # Set GPG TTY
 export GPG_TTY=$(tty)
