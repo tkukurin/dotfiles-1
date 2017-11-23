@@ -32,5 +32,5 @@ export GPG_TTY=$(tty)
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
-path=(${HOME}/.rvm/gems/ruby-2.4.1/bin ${HOME}/bin ${GOPATH}/bin ${HOME}/.node/bin ${HOME}/.rvm/bin ${HOME}/.composer/vendor/bin $path)
+path=(${HOME}/.rvm/gems/ruby-2.4.1/bin ${HOME}/bin ${GOPATH}/bin ${HOME}/.node/bin ${HOME}/.npm-packages/bin ${HOME}/.rvm/bin ${HOME}/.composer/vendor/bin $path)
 export PATH
