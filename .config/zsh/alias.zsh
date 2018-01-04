@@ -38,7 +38,9 @@ alias la="ls -a"
 alias lsd='ls -ld *(-/DN)'
 # List only file beginning with "."
 alias lsa='ls -ld .*'
-alias grep="grep --color=auto"
+if [[ -f /etc/alpine-version ]]; then
+	alias grep="grep --color=auto"
+fi
 alias know="vim ${HOME}/.ssh/known_hosts"
 alias mc="mc --nosubshell"
 alias reload!=". ${HOME}/.zshrc"
