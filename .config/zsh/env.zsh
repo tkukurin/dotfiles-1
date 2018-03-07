@@ -4,7 +4,6 @@ SAVEHIST=3000
 # Share history between tmux windows
 setopt SHARE_HISTORY
 
-export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='38;5;202'
 
 export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
@@ -37,5 +36,5 @@ export GPG_TTY=$(tty)
 export NVM_DIR="$HOME/.nvm"
 [[ -s "/usr/local/opt/nvm/nvm.sh" ]] && . "/usr/local/opt/nvm/nvm.sh"
 
-path=(${HOME}/.rvm/gems/ruby-2.4.1/bin ${HOME}/bin ${GOPATH}/bin ${HOME}/.node/bin ${HOME}/.npm-packages/bin ${HOME}/.rvm/bin ${HOME}/.composer/vendor/bin $path)
+path=(${HOME}/.rvm/gems/ruby-2.4.1/bin ${HOME}/Applications/PhpStorm/bin ${HOME}/bin ${GOPATH}/bin ${HOME}/.node/bin ${HOME}/.npm-packages/bin ${HOME}/.rvm/bin ${HOME}/.composer/vendor/bin $path)
 export PATH
