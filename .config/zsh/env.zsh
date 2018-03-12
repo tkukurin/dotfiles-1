@@ -17,6 +17,9 @@ export LESS=-r
 
 [[ -z $TMUX ]] && export TERM="xterm-256color"
 
+# Makeflags
+export MAKEFLAGS="-j$(nproc)"
+
 # Midnight commander wants this:
 export COLORTERM=truecolor
 

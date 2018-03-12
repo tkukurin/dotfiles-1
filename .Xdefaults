@@ -48,7 +48,7 @@ URxvt.italicFont:     xft:Hack:italic:pixelsize=13
 URxvt.boldItalicFont: xft:Hack:bold:italic:pixelsize=13
 
 URxvt.intensityStyles:	false
-URxvt.background:       [70]#000000
+URxvt.background:       [30]#000000
 !URxvt.depth:		32
 URxvt.scrollBar:	false
 URxvt.cursorColor:	white
