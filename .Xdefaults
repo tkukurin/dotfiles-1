@@ -4,10 +4,10 @@
 *background:      #1b1918
 
 URxvt.depth:            32
-URxvt.fading:           0
+URxvt.fading:           20
 URxvt.loginShell:       true
 URxvt.saveLines:        1000
-URxvt.internalBorder:   2
+URxvt.internalBorder:   6
 URxvt.lineSpace:        0
 URxvt.letterSpace:      0
 
@@ -17,15 +17,18 @@ URxvt.boldFont:         xft:DejaVuSansMono Nerd Font Mono:bold:pixelsize=13
 URxvt.italicFont:       xft:DejaVuSansMono Nerd Font Mono:italic:pixelsize=13
 URxvt.boldItalicFont:   xft:DejaVuSansMono Nerd Font Mono:bold:italic:pixelsize=13
 
-URxvt.intensityStyles:  false
 URxvt.background:       [90]#000000
+URxvt.borderColor:      [90]#000000
 URxvt.scrollBar:        false
-URxvt.cursorColor:      #d07500
+URxvt.cursorBlink:      false
+URxvt.cursorColor:      #af5f00
+URxvt.cursorUnderline:  false
 
 URxvt.geometry:         166x56
-URxvt*backgroundPixmap: /home/michiel/Pictures/Backgrounds/dwm.trans.png;style=tiled
-URxvt*blendType:        darken
-
+!URxvt*backgroundPixmap: /home/michiel/Pictures/Backgrounds/dwm.trans.png;style=tiled
+URxvt*.transparent:     true
+URxvt*.shading:         20
+URxvt*.blurRadius:      80
 ! Behavior
 URxvt*scrollTtyOutput:   false
 URxvt*scrollTtyKeypress: true
@@ -33,7 +36,6 @@ URxvt*scrollTtyKeypress: true
 ! Misc
 ! delimiters for double-click selection
 URxvt*cutchars:          BACKSLASH '"'&()*,;<=>?@[]^{|}
-
 
 ! Xft settings
 Xft.autohint:   0
@@ -45,7 +47,7 @@ Xft.hintstyle:  hintslight
 Xft.lcdfilter:  lcddefault
 
 !! Extensions
-URxvt.perl-ext-common: default,matcher,resize-font,url-select,keyboard-select
+URxvt.perl-ext-common: default,matcher,url-select,keyboard-select
 URxvt.colorUL:         #4682B4
 !! url-select
 URxvt.keysym.M-u:      perl:url-select:select_next
@@ -53,9 +55,6 @@ URxvt.url-select.launcher: webview
 URxvt.url-select.underline: true
 !! keyboard-select:
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
-!! resize-font
-URxvt.resize-font.smaller: C-Down
-URxvt.resize-font.bigger:  C-Up
 !! Matcher
 URxvt.url-launcher:   webview
 URxvt.matcher.button: 1
@@ -73,3 +72,34 @@ rofi.opacity:           "20"
 rofi.hide-scrollbar:    true
 rofi.width:             30
 
+!! black dark/light
+*color0: #494949
+*color8: #686868
+
+!! red dark/light
+*color1: #870000
+*color9: #cb4b16
+
+!! green dark/light
+*color2: #008700
+*color10: #5e8770
+
+!! yellow dark/light
+*color3: #ffaf5f
+*color11: #bfc37b
+
+!! blue dark/light
+*color4: #5f87af
+*color12: #9391bd
+
+!! magenta dark/light
+*color5: #d33682
+*color13: #bd91b3
+
+!! cyan dark/light
+*color6: #2aa198
+*color14: #8bb7b3
+
+!! white dark/light
+*color7: #eee8d5
+*color15: #fdf6e3
