@@ -61,4 +61,4 @@ alias tmux="TERM=xterm-256color tmux"
 alias mu="tmuxinator start work"
 
 # Docker
-alias composer5="docker run --rm -v $(pwd):/app --volume ~/.ssh/known_hosts:/etc/ssh/ssh_known_hosts composer/composer:php5"
+alias composer5="docker run --rm -v \$(pwd):/app --volume ~/.ssh/known_hosts:/etc/ssh/ssh_known_hosts composer/composer:php5"
