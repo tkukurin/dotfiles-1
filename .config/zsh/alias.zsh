@@ -38,7 +38,7 @@ alias la="ls -a"
 alias lsd='ls -ld *(-/DN)'
 # List only file beginning with "."
 alias lsa='ls -ld .*'
-if [[ -f /etc/alpine-version ]]; then
+if [[ -f /etc/arch-release ]] || [[ -f /etc/debian_version ]]; then
 	alias grep="grep --color=auto"
 fi
 alias know="vim ${HOME}/.ssh/known_hosts"
