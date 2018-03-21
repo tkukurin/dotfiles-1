@@ -39,5 +39,19 @@ export GPG_TTY=$(tty)
 export NVM_DIR="$HOME/.nvm"
 [[ -s "/usr/local/opt/nvm/nvm.sh" ]] && . "/usr/local/opt/nvm/nvm.sh"
 
-path=(${HOME}/.rvm/gems/ruby-2.4.1/bin ${HOME}/Applications/PhpStorm/bin ${HOME}/bin ${GOPATH}/bin ${HOME}/.node/bin ${HOME}/.npm-packages/bin ${HOME}/.rvm/bin ${HOME}/.composer/vendor/bin $path)
+path=(\
+    ${GOPATH}/bin \
+    ${HOME}/.rvm/gems/ruby-2.4.1/bin \
+    ${HOME}/Applications/GoLand/bin \
+    ${HOME}/Applications/PhpStorm/bin \
+    ${HOME}/Applications/pycharm/bin \
+    ${HOME}/Applications/RubyMine/bin \
+    ${HOME}/Applications/WebStorm/bin \
+    ${HOME}/bin \
+    ${HOME}/.composer/vendor/bin \
+    ${HOME}/.node/bin \
+    ${HOME}/.npm-packages/bin \
+    ${HOME}/.rvm/bin \
+    $path\
+    )
 export PATH
