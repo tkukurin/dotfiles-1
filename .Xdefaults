@@ -4,7 +4,7 @@
 *background:      #1b1918
 
 URxvt.depth:            32
-URxvt.fading:           20
+URxvt.fading:           10
 URxvt.loginShell:       true
 URxvt.saveLines:        1000
 URxvt.internalBorder:   6
@@ -74,7 +74,7 @@ rofi.width:             30
 
 !! black dark/light
 *color0: #494949
-*color8: #686868
+*color8: #5c5c5c
 
 !! red dark/light
 *color1: #870000
@@ -82,11 +82,11 @@ rofi.width:             30
 
 !! green dark/light
 *color2: #008700
-*color10: #5e8770
+*color10: #3eb53e
 
 !! yellow dark/light
 *color3: #ffaf5f
-*color11: #bfc37b
+*color11: #fdd68a
 
 !! blue dark/light
 *color4: #5f87af
@@ -97,7 +97,7 @@ rofi.width:             30
 *color13: #bd91b3
 
 !! cyan dark/light
-*color6: #2aa198
+*color6: #009aa0
 *color14: #8bb7b3
 
 !! white dark/light
