@@ -3,6 +3,9 @@
 zstyle ':completion::complete:*' use-cache on               # completion caching, use rehash to clear
 zstyle ':completion:*' cache-path ${ZDOTDIR:-${HOME}}/.config/zsh/cache              # cache path
 
+# Case insensitive completion
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
+
 # Ignore completion functions for commands you don’t have
 zstyle ':completion:*:functions' ignored-patterns '_*'
 
