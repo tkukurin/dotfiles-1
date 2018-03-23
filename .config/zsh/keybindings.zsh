@@ -2,6 +2,8 @@ bindkey '^w' backward-kill-word
 bindkey '^h' backward-delete-char
 bindkey '^r' history-incremental-search-backward
 bindkey '^s' history-incremental-search-forward
+bindkey '\e[A' history-beginning-search-backward
+bindkey '\e[B' history-beginning-search-forward
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^a' beginning-of-line
