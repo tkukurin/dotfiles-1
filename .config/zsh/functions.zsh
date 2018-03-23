@@ -112,5 +112,5 @@ ips () {
 
 # Create directory and cd into it
 mkcd() {
-	mkdir ${1} && cd ${1}
+	mkdir -p "${1}" && cd "${1}"
 }
