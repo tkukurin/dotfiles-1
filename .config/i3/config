@@ -44,7 +44,7 @@ floating_modifier $mod
 # client.urgent           $cbg    $cunfo  $ccolor $cindi   $cunfo
 
 smart_gaps on
-gaps inner 5
+gaps inner 8
 gaps outer 2
 
 new_window 1pixel
@@ -220,12 +220,14 @@ bar {
 	separator_symbol "⋆"
 	tray_output primary
 	status_command i3status --config ~/.config/i3/i3status.conf
+	# status_command i3blocks --config ~/.config/i3/i3blocks.conf
+	# status_command j4status --config ~/.config/i3/j4status.conf
 }
 
 exec_always feh --bg-scale  Pictures/Backgrounds/Wiki-gadget-fo3terminaleditor.jpg
 exec_always xsetwacom --set "Wacom Intuos PT M Pen stylus" button 3 2
 exec_always xsetwacom --set "Wacom Intuos PT M Pen stylus" button 2 3
-exec_always compton -b
-exec_always xrandr --output VIRTUAL1 --off --output eDP1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output DP1 --off --output HDMI3 --off --output HDMI2 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP2 --off
+exec compton -b
+exec_always xrandr --output eDP1 --primary --mode 1920x1080 --pos 1920x0 --output HDMI1 --mode 1920x1080 --pos 0x0
 exec_always dropbox start
 exec_always ~/.config/i3/scripts/gnome-keyring.sh

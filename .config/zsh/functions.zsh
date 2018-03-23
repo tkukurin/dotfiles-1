@@ -112,5 +112,12 @@ ips () {
 
 # Create directory and cd into it
 mkcd() {
-	mkdir -p "${1}" && cd "${1}"
+	if [[ ! -n "$1" ]]; then
+		echo "Usage: mkcd [directory]"
+	elif [ -d $1 ]; then
+		echo "'$1' already exists"
+		cd "${1}"
+	else
+		mkdir -p "${1}" && cd "${1}"
+	fi
 }
