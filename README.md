@@ -4,17 +4,18 @@ My dotfiles `¯\_(ツ)_/¯`. I've tried to use as much native zsh code and as fe
 
 ## How Snappy?
 ```
-~  repeat 10 {/usr/bin/time zsh -i -c exit}
-        0.06 real         0.04 user         0.01 sys
-        0.06 real         0.05 user         0.01 sys
-        0.06 real         0.04 user         0.01 sys
-        0.07 real         0.04 user         0.01 sys
-        0.06 real         0.04 user         0.01 sys
-        0.07 real         0.04 user         0.01 sys
-        0.06 real         0.04 user         0.01 sys
-        0.06 real         0.04 user         0.01 sys
-        0.06 real         0.04 user         0.01 sys
-        0.06 real         0.04 user         0.01 sys
+~  TIMEFMT=$'real %E\tuser %U\tsys %S'
+~  repeat 10 {time zsh -i -c exit}
+real 0.04s      user 0.03s      sys 0.02s
+real 0.04s      user 0.03s      sys 0.01s
+real 0.04s      user 0.03s      sys 0.01s
+real 0.04s      user 0.03s      sys 0.01s
+real 0.04s      user 0.03s      sys 0.01s
+real 0.04s      user 0.03s      sys 0.01s
+real 0.04s      user 0.02s      sys 0.02s
+real 0.04s      user 0.03s      sys 0.01s
+real 0.04s      user 0.03s      sys 0.01s
+real 0.04s      user 0.03s      sys 0.02s
 ```
 
 60ms for a tmux pane split is nice :-)
