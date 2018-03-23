@@ -13,3 +13,4 @@ bindkey "^f" forward-word
 bindkey "^b" backward-word
 bindkey "${terminfo[khome]}" beginning-of-line # Fn-Left, Home
 bindkey "${terminfo[kend]}" end-of-line # Fn-Right, End
+bindkey '^[^?' backward-kill-dir

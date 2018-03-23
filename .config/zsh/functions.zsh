@@ -76,6 +76,7 @@ recreateCachedSettingsFile() {
 		echo "# Edit the files in ~/.config/zsh instead!" >> $cachedSettingsFile
 		# Zgen
 		if [[ -s ${ZDOTDIR:-${HOME}}/.zgen/init.zsh ]]; then
+			echo ""               >> $cachedSettingsFile
 			echo "#"              >> $cachedSettingsFile
 			echo "# Zgen:"        >> $cachedSettingsFile
 			echo "#"              >> $cachedSettingsFile
@@ -83,6 +84,7 @@ recreateCachedSettingsFile() {
 		fi
 		# Rc files
 		for rcFile in ${ZDOTDIR:-${HOME}}/.config/zsh/*.zsh; do
+			echo ""               >> $cachedSettingsFile
 			echo "#"              >> $cachedSettingsFile
 			echo "# ${rcFile:t}:" >> $cachedSettingsFile
 			echo "#"              >> $cachedSettingsFile
@@ -90,6 +92,7 @@ recreateCachedSettingsFile() {
 		done
 		# Secrets
 		if [ -s ${ZDOTDIR:-${HOME}}/.secrets.zsh ]; then
+			echo ""               >> $cachedSettingsFile
 			echo "#"              >> $cachedSettingsFile
 			echo "# Secrets:"     >> $cachedSettingsFile
 			echo "#"              >> $cachedSettingsFile
@@ -121,3 +124,10 @@ mkcd() {
 		mkdir -p "${1}" && cd "${1}"
 	fi
 }
+
+# Remove last segment of path
+backward-kill-dir () {
+	local WORDCHARS=${WORDCHARS/\/}
+	zle backward-kill-word
+}
+zle -N backward-kill-dir
