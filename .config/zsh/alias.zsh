@@ -23,6 +23,7 @@ alias gca="git commit -a -m"
 alias gd="git diff"
 alias gp="git push"
 alias s="git status"
+alias sa="ssh-add ~/.ssh/id_rsa"
 alias h="history"
 alias j="jobs"
 
