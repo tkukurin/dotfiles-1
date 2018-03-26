@@ -14,3 +14,4 @@ backup/
 tags
 __pycache__/
 *.py[cod]
+cache/
