@@ -12,10 +12,10 @@ URxvt.lineSpace:        0
 URxvt.letterSpace:      0
 
 ! Appearance
-URxvt.font:             xft:DejaVuSansMono Nerd Font Mono:pixelsize=13
-URxvt.boldFont:         xft:DejaVuSansMono Nerd Font Mono:bold:pixelsize=13
-URxvt.italicFont:       xft:DejaVuSansMono Nerd Font Mono:italic:pixelsize=13
-URxvt.boldItalicFont:   xft:DejaVuSansMono Nerd Font Mono:bold:italic:pixelsize=13
+URxvt.font:             xft:DejaVuSansMono Nerd Font:pixelsize=13
+URxvt.boldFont:         xft:DejaVuSansMono Nerd Font:bold:pixelsize=13
+URxvt.italicFont:       xft:DejaVuSansMono Nerd Font:italic:pixelsize=13
+URxvt.boldItalicFont:   xft:DejaVuSansMono Nerd Font:bold:italic:pixelsize=13
 
 URxvt.background:       [90]#000000
 URxvt.borderColor:      [90]#000000
@@ -25,7 +25,7 @@ URxvt.cursorColor:      #af5f00
 URxvt.cursorUnderline:  false
 
 URxvt.geometry:         166x56
-!URxvt*backgroundPixmap: /home/michiel/Pictures/Backgrounds/dwm.trans.png;style=tiled
+URxvt*backgroundPixmap: /home/michiel/dotfiles/Background/dwm-mypattern.png;style=tiled
 URxvt*.transparent:     true
 URxvt*.shading:         20
 URxvt*.blurRadius:      80
