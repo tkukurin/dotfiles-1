@@ -1,7 +1,10 @@
 bindkey '^w' backward-kill-word
 bindkey '^h' backward-delete-char
-bindkey '^r' history-incremental-search-backward
-bindkey '^s' history-incremental-search-forward
+autoload -Uz history-search-end
+zle -N history-incremental-search-backward-end history-search-end
+zle -N history-incremental-search-forward-end history-search-end
+bindkey '^r' history-incremental-search-backward-end
+bindkey '^s' history-incremental-search-forward-end
 bindkey '\e[A' history-beginning-search-backward
 bindkey '\e[B' history-beginning-search-forward
 bindkey '^p' history-search-backward
