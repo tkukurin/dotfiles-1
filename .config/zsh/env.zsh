@@ -42,11 +42,6 @@ export NVM_DIR="$HOME/.nvm"
 path=(\
     ${GOPATH}/bin \
     ${HOME}/.rvm/gems/ruby-2.4.1/bin \
-    ${HOME}/Applications/GoLand/bin \
-    ${HOME}/Applications/PhpStorm/bin \
-    ${HOME}/Applications/pycharm/bin \
-    ${HOME}/Applications/RubyMine/bin \
-    ${HOME}/Applications/WebStorm/bin \
     ${HOME}/bin \
     ${HOME}/.composer/vendor/bin \
     ${HOME}/.node/bin \
