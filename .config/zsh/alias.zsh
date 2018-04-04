@@ -59,7 +59,10 @@ done
 
 # Tmux
 alias tmux="TERM=xterm-256color tmux"
-alias mu="tmuxinator start work"
+alias tw="tmux new-session -A -s work"
+alias tp="tmux new-session -A -s play"
 
-# Docker
+# Composer
 alias composer5="docker run --rm -v \$(pwd):/app --volume ~/.ssh/known_hosts:/etc/ssh/ssh_known_hosts composer/composer:php5"
+alias composer7="docker run --rm -v \$(pwd):/app -v \$(dirname $SSH_AUTH_SOCK):\$(dirname $SSH_AUTH_SOCK) -e SSH_AUTH_SOCK=\$SSH_AUTH_SOCK --volume ~/.ssh/known_hosts:/etc/ssh/ssh_known_hosts composer/composer:php7"
+alias ch70="COMPOSER_HOME=~/Projects/composer-config/php-7.0/"
