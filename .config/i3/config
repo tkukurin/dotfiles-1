@@ -231,4 +231,3 @@ exec_always xsetwacom --set "Wacom Intuos PT M Pen stylus" button 2 3
 exec compton -b
 exec_always xrandr --output eDP1 --primary --mode 1920x1080 --pos 1920x0 --output HDMI1 --mode 1920x1080 --pos 0x0
 exec_always dropbox start
-exec_always ~/.config/i3/scripts/gnome-keyring.sh

@@ -58,7 +58,7 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 done
 
 # Tmux
-alias tmux="TERM=xterm-256color tmux"
+alias tmux="export HOSTNAME=\$(hostname); sshAuthSave; tmux"
 alias tw="tmux new-session -A -s work"
 alias tp="tmux new-session -A -s play"
 alias tl="tmux list-sessions"

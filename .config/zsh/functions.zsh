@@ -131,3 +131,8 @@ backward-kill-dir () {
 	zle backward-kill-word
 }
 zle -N backward-kill-dir
+
+# Save ssh auth socket
+sshAuthSave() {
+    ln -sf "$SSH_AUTH_SOCK" "$HOME/.ssh/ssh-auth-sock.$HOSTNAME"
+}

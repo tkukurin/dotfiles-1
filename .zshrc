@@ -27,7 +27,7 @@ if [[ ! -s ${ZDOTDIR:-${HOME}}/.zgen/init.zsh ]]; then
 	zgen load zdharma/fast-syntax-highlighting
 	zgen load zsh-users/zsh-history-substring-search
 	zgen oh-my-zsh plugins/shrink-path
-	#zgen oh-my-zsh plugins/tmux
+	zgen oh-my-zsh plugins/ssh-agent
 	zgen save
 	zcompile ${ZDOTDIR:-${HOME}}/.zgen/init.zsh
 fi
