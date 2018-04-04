@@ -216,13 +216,13 @@ bindsym $mod+r mode "resize"
 bar {
 	position top
 	strip_workspace_numbers yes
-#tray_output none
-	font pango: FontAwesome 11
-	separator_symbol "⋆"
+	font pango: FontAwesome 9
+	separator_symbol "•"
 	tray_output primary
-	status_command i3status --config ~/.config/i3/i3status.conf
-	# status_command i3blocks --config ~/.config/i3/i3blocks.conf
-	# status_command j4status --config ~/.config/i3/j4status.conf
+	#status_command i3status --config ~/.config/i3/i3status.conf
+	#status_command i3blocks --config ~/.config/i3/i3blocks.conf
+	#status_command j4status --config ~/.config/i3/j4status.conf
+	status_command bumblebee-status -m cpu load nic pulseaudio memory battery datetime -t gruvbox-powerline
 }
 
 exec_always feh --bg-scale  Pictures/Backgrounds/Wiki-gadget-fo3terminaleditor.jpg
