@@ -5,8 +5,10 @@ zle -N history-incremental-search-backward-end history-search-end
 zle -N history-incremental-search-forward-end history-search-end
 bindkey '^r' history-incremental-search-backward-end
 bindkey '^s' history-incremental-search-forward-end
-bindkey '\e[A' history-beginning-search-backward
-bindkey '\e[B' history-beginning-search-forward
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey '\e[A' history-beginning-search-backward-end
+bindkey '\e[B' history-beginning-search-forward-end
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^a' beginning-of-line
