@@ -61,6 +61,7 @@ done
 alias tmux="TERM=xterm-256color tmux"
 alias tw="tmux new-session -A -s work"
 alias tp="tmux new-session -A -s play"
+alias tl="tmux list-sessions"
 
 # Composer
 alias composer5="docker run --rm -v \$(pwd):/app --volume ~/.ssh/known_hosts:/etc/ssh/ssh_known_hosts composer/composer:php5"
