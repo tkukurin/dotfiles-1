@@ -231,3 +231,11 @@ exec_always xsetwacom --set "Wacom Intuos PT M Pen stylus" button 2 3
 exec compton -b
 exec_always xrandr --output eDP1 --primary --mode 1920x1080 --pos 1920x0 --output HDMI1 --mode 1920x1080 --pos 0x0
 exec_always dropbox start
+
+# Touchpad
+# Enable tap to click
+exec_always xinput set-prop 10 275 1
+# Enable natural scrolling
+exec_always xinput set-prop 10 283 1
+# Disable touchpad when typing
+exec_always xinput set-prop 10 285 1
