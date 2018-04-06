@@ -31,17 +31,17 @@ font pango: Hack 9
 floating_modifier $mod
 
 # #color
-# set $cbg "#7d9f7d"
-# set $ccolor "#efebe0"
-# set $cunfo "#616c61"
-# set $cindi "#145ba7"
-# set $cindiu "#8a9db1"
-#
-# #<colorclass>           <border> <background> <text> <indicator> <child_border>
-# client.focused          $cbg    $cbg    $ccolor $cindi   $cbg
-# client.focused_inactive $cbg    $cunfo  $ccolor $cindiu   $cunfo
-# client.unfocused        $cbg    $cunfo  $ccolor $cindiu   $cunfo
-# client.urgent           $cbg    $cunfo  $ccolor $cindi   $cunfo
+set $cbg "#7d9f7d"
+set $ccolor "#efebe0"
+set $cunfo "#616c61"
+set $cindi "#145ba7"
+set $cindiu "#8a9db1"
+
+#<colorclass>           <border> <background> <text> <indicator> <child_border>
+client.focused          $cbg    $cbg    $ccolor $cindi   $cbg
+client.focused_inactive $cbg    $cunfo  $ccolor $cindiu   $cunfo
+client.unfocused        $cbg    $cunfo  $ccolor $cindiu   $cunfo
+client.urgent           $cbg    $cunfo  $ccolor $cindi   $cunfo
 
 smart_gaps on
 gaps inner 8
@@ -183,32 +183,31 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+	# These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+	# Pressing left will shrink the window’s width.
+	# Pressing right will grow the window’s width.
+	# Pressing up will shrink the window’s height.
+	# Pressing down will grow the window’s height.
+	bindsym j resize shrink width 10 px or 10 ppt
+	bindsym k resize grow height 10 px or 10 ppt
+	bindsym l resize shrink height 10 px or 10 ppt
+	bindsym semicolon resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+	# same bindings, but for the arrow keys
+	bindsym Left resize shrink width 10 px or 10 ppt
+	bindsym Down resize grow height 10 px or 10 ppt
+	bindsym Up resize shrink height 10 px or 10 ppt
+	bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+	# back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
 }
-
 bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -225,17 +224,19 @@ bar {
 	status_command bumblebee-status -m cpu load nic pulseaudio memory battery datetime -t gruvbox-powerline
 }
 
-exec_always feh --bg-scale  Pictures/Backgrounds/Wiki-gadget-fo3terminaleditor.jpg
-exec_always xsetwacom --set "Wacom Intuos PT M Pen stylus" button 3 2
-exec_always xsetwacom --set "Wacom Intuos PT M Pen stylus" button 2 3
-exec compton -b
-exec_always xrandr --output eDP1 --primary --mode 1920x1080 --pos 1920x0 --output HDMI1 --mode 1920x1080 --pos 0x0
-exec_always dropbox start
+exec --no-startup-id dropbox start
+exec_always --no-startup-id xrandr --output eDP1 --primary --mode 1920x1080 --pos 1920x0 --output HDMI1 --mode 1920x1080 --pos 0x0
+exec --no-startup-id xcompmgr -c -C -f -r 10
+exec_always --no-startup-id feh --bg-scale  ~/dotfiles/Background/dwm-mypattern.png
+
+# Switch pen buttons; click button is secondary
+exec --no-startup-id xsetwacom --set "Wacom Intuos PT M Pen stylus" button 3 2
+exec --no-startup-id xsetwacom --set "Wacom Intuos PT M Pen stylus" button 2 3
 
 # Touchpad
 # Enable tap to click
-exec_always xinput set-prop 10 275 1
+exec --no-startup-id xinput set-prop 10 275 1
 # Enable natural scrolling
-exec_always xinput set-prop 10 283 1
+exec --no-startup-id xinput set-prop 10 283 1
 # Disable touchpad when typing
-exec_always xinput set-prop 10 285 1
+exec --no-startup-id xinput set-prop 10 285 1

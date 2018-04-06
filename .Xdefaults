@@ -24,11 +24,11 @@ URxvt.cursorBlink:      false
 URxvt.cursorColor:      #af5f00
 URxvt.cursorUnderline:  false
 
-URxvt.geometry:         166x56
-URxvt*backgroundPixmap: /home/michiel/dotfiles/Background/dwm-mypattern.png;style=tiled
+!URxvt.geometry:         166x56
+!URxvt*backgroundPixmap: /home/michiel/dotfiles/Background/dwm-mypattern.png;style=tiled
 URxvt*.transparent:     true
-URxvt*.shading:         20
-URxvt*.blurRadius:      80
+URxvt*.shading:         60
+!URxvt*.blurRadius:      21
 ! Behavior
 URxvt*scrollTtyOutput:   false
 URxvt*scrollTtyKeypress: true
