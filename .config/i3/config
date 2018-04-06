@@ -228,6 +228,8 @@ exec --no-startup-id dropbox start
 exec_always --no-startup-id xrandr --output eDP1 --primary --mode 1920x1080 --pos 1920x0 --output HDMI1 --mode 1920x1080 --pos 0x0
 exec --no-startup-id xcompmgr -c -C -f -r 8 -l -10 -t -10
 exec_always --no-startup-id feh --bg-scale  ~/dotfiles/Background/dwm-mypattern.png
+exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+exec_always --no-startup-id gnome-power-manager
 
 # Switch pen buttons; click button is secondary
 exec --no-startup-id xsetwacom --set "Wacom Intuos PT M Pen stylus" button 3 2
