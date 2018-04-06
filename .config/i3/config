@@ -50,7 +50,7 @@ gaps outer 2
 new_window 1pixel
 
 # lock and suspend
-bindsym $mod+Control+l exec ~/bin/lock.sh
+bindsym $mod+Control+l exec betterlockscreen --lock
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -226,7 +226,7 @@ bar {
 
 exec --no-startup-id dropbox start
 exec_always --no-startup-id xrandr --output eDP1 --primary --mode 1920x1080 --pos 1920x0 --output HDMI1 --mode 1920x1080 --pos 0x0
-exec --no-startup-id xcompmgr -c -C -f -r 10
+exec --no-startup-id xcompmgr -c -C -f -r 5
 exec_always --no-startup-id feh --bg-scale  ~/dotfiles/Background/dwm-mypattern.png
 
 # Switch pen buttons; click button is secondary
