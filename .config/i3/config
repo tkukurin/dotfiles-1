@@ -152,8 +152,8 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
+bindsym $mod+1 workspace number 1: Web
+bindsym $mod+2 workspace number 2: Team
 bindsym $mod+3 workspace 3
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
@@ -164,8 +164,8 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+1 move container to workspace number 1: Web
+bindsym $mod+Shift+2 move container to workspace number 2: Team
 bindsym $mod+Shift+3 move container to workspace 3
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
@@ -175,8 +175,8 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
-workspace 1 output eDP-1-1
-workspace 2 output HDMI-1-1
+workspace 1 output HDMI1
+workspace 2 output eDP1
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -226,7 +226,7 @@ bar {
 
 exec --no-startup-id dropbox start
 exec_always --no-startup-id xrandr --output eDP1 --primary --mode 1920x1080 --pos 1920x0 --output HDMI1 --mode 1920x1080 --pos 0x0
-exec --no-startup-id xcompmgr -c -C -f -r 5
+exec --no-startup-id xcompmgr -c -C -f -r 8 -l -10 -t -10
 exec_always --no-startup-id feh --bg-scale  ~/dotfiles/Background/dwm-mypattern.png
 
 # Switch pen buttons; click button is secondary
@@ -240,3 +240,21 @@ exec --no-startup-id xinput set-prop 10 275 1
 exec --no-startup-id xinput set-prop 10 283 1
 # Disable touchpad when typing
 exec --no-startup-id xinput set-prop 10 285 1
+
+# Start applications
+exec --no-startup-id i3-msg 'workspace 1; exec chromium'
+exec --no-startup-id i3-msg 'workspace 2; exec hipchat4'
+exec --no-startup-id i3-msg 'workspace 2; exec urxvt'
+
+#    
+exec --no-startup-id i3-msg 'rename workspace 1 to "1: Web "'
+exec --no-startup-id i3-msg 'rename workspace 2 to "2: Team "'
+exec --no-startup-id i3-msg 'rename workspace 3 to "3: Config "'
+exec --no-startup-id i3-msg 'rename workspace 4 to "4: Music "'
+
+# force a window on a named workspace
+assign [class="Chromium"] number 1
+assign [class="chromium"] number 1
+assign [class="HipChat4"] number 2
+assign [class="hipchat4"] number 2
+
