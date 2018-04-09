@@ -31,7 +31,7 @@ font pango: Hack 9
 floating_modifier $mod
 
 # #color
-set $cbg "#7d9f7d"
+set $cbg "#af5f00"
 set $ccolor "#efebe0"
 set $cunfo "#616c61"
 set $cindi "#145ba7"
@@ -66,6 +66,9 @@ bindsym $mod+d exec --no-startup-id exec zsh -c "rofi -show run"
 # installed.
 bindsym $mod+p exec --no-startup-id j4-dmenu-desktop
 bindsym $mod+space exec --no-startup-id synapse
+
+# Split
+bindsym $mod+x layout toggle stacking tabbed splith splitv
 
 # Window Focus (vim)
 bindsym $mod+Tab focus right
@@ -152,8 +155,8 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # switch to workspace
-bindsym $mod+1 workspace number 1: Web
-bindsym $mod+2 workspace number 2: Team
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
 bindsym $mod+3 workspace 3
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
@@ -164,8 +167,8 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number 1: Web
-bindsym $mod+Shift+2 move container to workspace number 2: Team
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
 bindsym $mod+Shift+3 move container to workspace 3
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
@@ -213,6 +216,15 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+	colors {
+		background #504945
+		statusline #d5c4a1
+		separator #3c3836
+		focused_workspace #3c3836 #32302f #fabd2f
+		active_workspace #3c3836 #504945 #d5c4a1
+		inactive_workspace #3c3836 #504945 #d5c4a1
+		urgent_workspace   #7c6f64 #fabd2f #3c3836
+	}
 	position top
 	strip_workspace_numbers yes
 	font pango: FontAwesome 9
@@ -221,15 +233,15 @@ bar {
 	#status_command i3status --config ~/.config/i3/i3status.conf
 	#status_command i3blocks --config ~/.config/i3/i3blocks.conf
 	#status_command j4status --config ~/.config/i3/j4status.conf
-	status_command bumblebee-status -m cpu load nic pulseaudio memory battery datetime -t gruvbox-powerline
+	status_command bumblebee-status -m amixer load disk memory nic traffic pacman battery datetime -t gruvbox-powerline -p interval=1 nic.states=^down nic.exclude=lo,br,virbr,docker,vboxnet,boxnet,veth memory.format="{used} {percent:05.02f}%" pulseaudio.autostart=true datetime.format="%b %-d %Y %H:%M w%W" traffic.exclude=lo,br,virbr,docker,vboxnet,boxnet,veth traffic.states=^down disk.format="{used} {percent:05.02f}%" disk.path=/home
 }
 
-exec --no-startup-id dropbox start
 exec_always --no-startup-id xrandr --output eDP1 --primary --mode 1920x1080 --pos 1920x0 --output HDMI1 --mode 1920x1080 --pos 0x0
 exec --no-startup-id xcompmgr -c -C -f -r 8 -l -10 -t -10
 exec_always --no-startup-id feh --bg-scale  ~/dotfiles/Background/dwm-mypattern.png
-exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
-exec_always --no-startup-id gnome-power-manager
+exec --no-startup-id dunst
+exec --no-startup-id udiskie
+exec --no-startup-id nm-applet
 
 # Switch pen buttons; click button is secondary
 exec --no-startup-id xsetwacom --set "Wacom Intuos PT M Pen stylus" button 3 2
@@ -259,4 +271,3 @@ assign [class="Chromium"] number 1
 assign [class="chromium"] number 1
 assign [class="HipChat4"] number 2
 assign [class="hipchat4"] number 2
-
