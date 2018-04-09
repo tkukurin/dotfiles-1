@@ -27,6 +27,10 @@ alias sa="ssh-add ~/.ssh/id_rsa"
 alias h="history"
 alias j="jobs"
 
+# ddev
+alias up="ddev start"
+alias down="ddev stop"
+
 # Vim shortcuts
 alias vi=vim
 alias :e="\$EDITOR"
