@@ -4,6 +4,8 @@ SAVEHIST=3000
 # Share history between tmux windows
 setopt SHARE_HISTORY
 
+export TERMINAL='urxvt'
+
 export GREP_COLOR='38;5;202'
 
 export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
