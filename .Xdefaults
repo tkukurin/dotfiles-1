@@ -4,10 +4,10 @@
 *background:      #1b1918
 
 URxvt.depth:            32
-URxvt.fading:           10
+URxvt.fading:           0
 URxvt.loginShell:       true
-URxvt.saveLines:        1000
-URxvt.internalBorder:   3
+URxvt.saveLines:        10000
+URxvt.internalBorder:   0
 URxvt.lineSpace:        0
 URxvt.letterSpace:      0
 
@@ -26,16 +26,31 @@ URxvt.cursorUnderline:  false
 
 !URxvt.geometry:         166x56
 !URxvt*backgroundPixmap: /home/michiel/dotfiles/Background/dwm-mypattern.png;style=tiled
-URxvt*.transparent:     true
-URxvt*.shading:         60
-!URxvt*.blurRadius:      21
+! Leave transparency to compton
+!URxvt*.transparent:      true
+!URxvt*.shading:          10
+!URxvt*.blurRadius:       21
 ! Behavior
 URxvt*scrollTtyOutput:   false
 URxvt*scrollTtyKeypress: true
 
+!! Keybinding
+URxvt.keysym.C-Up:       perl:font-size:increase
+URxvt.keysym.C-Down:     perl:font-size:decrease
+URxvt.keysym.C-S-Up:     perl:font-size:incglobal
+URxvt.keysym.C-S-Down:   perl:font-size:decglobal
+!Home and End keys to jump to the beginning and end of lines
+URxvt*keysym.Home:       \033[1~
+URxvt*keysym.End:        \033[4~
+
+!! Disable the stupid ctrl+shift 'feature'
+URxvt.iso14755:          false
+URxvt.iso14755_52:       false
+
 ! Misc
 ! delimiters for double-click selection
 URxvt*cutchars:          BACKSLASH '"'&()*,;<=>?@[]^{|}
+URxvt*urgentOnBell:      true
 
 ! Xft settings
 Xft.autohint:   0
@@ -47,7 +62,7 @@ Xft.hintstyle:  hintslight
 Xft.lcdfilter:  lcddefault
 
 !! Extensions
-URxvt.perl-ext-common: default,matcher,url-select,keyboard-select
+URxvt.perl-ext-common: default,matcher,url-select,keyboard-select,font-size
 URxvt.colorUL:         #4682B4
 !! url-select
 URxvt.keysym.M-u:      perl:url-select:select_next
