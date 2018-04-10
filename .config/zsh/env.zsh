@@ -39,6 +39,10 @@ export GPG_TTY=$(tty)
 export NVM_DIR="$HOME/.nvm"
 [[ -s "/usr/local/opt/nvm/nvm.sh" ]] && . "/usr/local/opt/nvm/nvm.sh"
 
+if (( $+commands[luarocks] )); then
+	eval `luarocks path --bin`
+fi
+
 path=(\
     ${GOPATH}/bin \
     ${HOME}/.rvm/gems/ruby-2.4.1/bin \
