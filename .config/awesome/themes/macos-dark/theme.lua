@@ -29,8 +29,8 @@ theme.tasklist_bg_focus             = "#101010a0"
 theme.tasklist_bg_normal            = "#404040a0"
 theme.bg_systray                    = "#404040a0"
 
-theme.titlebar_bg_normal            = "#202020e0"
-theme.titlebar_bg_focus             = "#101010e0"
+theme.titlebar_bg_normal            = "#202020b0"
+theme.titlebar_bg_focus             = "#101010b0"
 
 theme.menu_height                   = "20"
 theme.menu_width                    = "200"
