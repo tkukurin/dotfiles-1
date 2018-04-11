@@ -172,7 +172,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
+--mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
@@ -282,7 +282,7 @@ awful.screen.connect_for_each_screen(function(s)
         {
             -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
+--            mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
@@ -347,6 +347,8 @@ globalkeys = gears.table.join(awful.key({ modkey, }, "s", hotkeys_popup.show_hel
         { description = "reload awesome", group = "awesome" }),
     awful.key({ modkey, "Shift" }, "q", awesome.quit,
         { description = "quit awesome", group = "awesome" }),
+    awful.key({ modkey, "Mod1" }, "l", function() awful.spawn("betterlockscreen --lock") end,
+        { description = "lock screen", group = "awesome" }),
 
     awful.key({ modkey, }, "l", function() awful.tag.incmwfact(0.05) end,
         { description = "increase master width factor", group = "layout" }),
