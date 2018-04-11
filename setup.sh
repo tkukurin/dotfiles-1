@@ -23,7 +23,7 @@ main () {
 	mkdir -p $dotfileDir/backup
 
 	setopt EXTENDED_GLOB
-	local ohMyGlob='^(.idea|.git*|.config|bin|backup|README*|Screenshots|setup.sh|tags)(D)'
+	local ohMyGlob='^(.idea|.git*|.config|Background|bin|backup|README*|Screenshots|setup.sh|tags)(D)'
 	for dir ('/' '/bin/' '/.config/'); do
 		mkdir -p ${home}${dir}
 		mkdir -p $dotfileDir/backup${dir}
