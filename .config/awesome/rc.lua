@@ -110,11 +110,12 @@ run_once("xrandr --output eDP1 --primary --mode 1920x1080 --pos 1920x0 --output 
 run_once("compton -b")
 -- run_once("xcompmgr -c -C -f -r 5 -l -5 -t -5")
 -- run_once("feh --bg-scale  ~/dotfiles/Background/dwm-mypattern.light.jpg")
-run_once("udiskie")
+run_once("batterymon")
 run_once("dropbox start")
 run_once("nm-applet")
-run_once("batterymon")
+run_once("pa-applet")
 run_once("pactray")
+run_once("udiskie")
 
 -- Switch pen buttons; click button is secondary
 run_once("xsetwacom --set 'Wacom Intuos PT M Pen stylus' button 3 2")
