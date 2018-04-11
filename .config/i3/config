@@ -46,8 +46,10 @@ client.urgent           $cbg    $cunfo  $ccolor $cindi   $cunfo
 smart_gaps on
 gaps inner 8
 gaps outer 2
+# Hides borders on workspaces with only one window visible, but keeps them on workspaces with multiple windows visible
+hide_edge_borders smart
 
-new_window 1pixel
+default_border pixel 1
 
 # lock and suspend
 bindsym $mod+Control+l exec betterlockscreen --lock
@@ -196,10 +198,10 @@ mode "resize" {
 	# Pressing right will grow the window’s width.
 	# Pressing up will shrink the window’s height.
 	# Pressing down will grow the window’s height.
-	bindsym j resize shrink width 10 px or 10 ppt
-	bindsym k resize grow height 10 px or 10 ppt
-	bindsym l resize shrink height 10 px or 10 ppt
-	bindsym semicolon resize grow width 10 px or 10 ppt
+	bindsym h resize shrink width 10 px or 10 ppt
+	bindsym j resize grow height 10 px or 10 ppt
+	bindsym k resize shrink height 10 px or 10 ppt
+	bindsym l resize grow width 10 px or 10 ppt
 
 	# same bindings, but for the arrow keys
 	bindsym Left resize shrink width 10 px or 10 ppt
@@ -229,7 +231,7 @@ bar {
 	strip_workspace_numbers yes
 	font pango: FontAwesome 9
 	separator_symbol "•"
-	tray_output primary
+	tray_output HDMI1
 	#status_command i3status --config ~/.config/i3/i3status.conf
 	#status_command i3blocks --config ~/.config/i3/i3blocks.conf
 	#status_command j4status --config ~/.config/i3/j4status.conf
