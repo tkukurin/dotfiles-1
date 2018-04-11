@@ -1,24 +1,20 @@
 
 --[[
-
     macos dark awesome wm theme
 
     based on
-      Copland Awesome WM config 
-      github.com/copycat-killer 
-                               
+      Copland Awesome WM config
+      github.com/copycat-killer
+
 --]]
 
 theme                                           = {}
 
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/macos-dark"
--- theme.wallpaper                                 = "/home/neo/Bilder/Wallpaper/wallhaven-474197.jpg"
+theme.wallpaper                                 = os.getenv("HOME") .. "/dotfiles/Background/dwm-mypattern.light.jpg"
 
 theme.font                                      = "SNFS Display UltraLight 8"
-theme.fg_normal                                 = "#ffffff"
-theme.fg_focus                                  = "#ffffff"
-theme.bg_normal                                 = "#202020A0"
-theme.bg_focus                                  = "#20202000"
+theme.fg_normal                                 = "#d0d0d0"
 theme.fg_urgent                                 = "#FF0000"
 theme.bg_urgent                                 = "#12121200"
 theme.border_width                              = 0
@@ -27,17 +23,15 @@ theme.border_focus                              = "#848484"
 
 theme.tasklist_fg_focus                         = "#ffffff"
 theme.tasklist_fg_normal                        = "#848484"
-theme.tasklist_bg_focus                         = "#20202000"
+theme.tasklist_bg_focus                         = "#10101000"
 theme.tasklist_bg_normal                        = "#20202000"
 
 theme.titlebar_bg_normal                        = "#202020"
-theme.titlebar_bg_focus                         = "#202020"
-theme.menu_height                               = "10"
-theme.menu_width                                = "150"
+theme.titlebar_bg_focus                         = "#101010"
 theme.bg_systray                                = "#202020"
 
-theme.menu_height = 20
-theme.menu_width  = 200
+theme.menu_height                               = 20
+theme.menu_width                                = 200
 
 theme.tasklist_sticky                           = ""
 theme.tasklist_ontop                            = ""
@@ -46,7 +40,7 @@ theme.tasklist_maximized_horizontal             = ""
 theme.tasklist_maximized_vertical               = ""
 theme.tasklist_disable_icon                     = true
 
-theme.awesome_icon                              = theme.dir .."/icons/awesome2.png"
+theme.awesome_icon                              = theme.dir .."/icons/awesome.png"
 theme.submenu_icon                              = theme.dir .."/icons/submenu.png"
 theme.taglist_squares_sel                       = theme.dir .. "/icons/square_unsel.png"
 theme.taglist_squares_unsel                     = theme.dir .. "/icons/square_unsel.png"
