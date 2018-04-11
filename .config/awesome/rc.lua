@@ -105,7 +105,7 @@ function run_once(cmd)
 end
 
 run_once("systemctl --user start awesome.target")
-run_once("xrandr --output eDP1 --primary --mode 1920x1080 --pos 1920x0 --output HDMI1 --mode 1920x1080 --pos 0x0")
+run_once("xrandr --output eDP1 --mode 1920x1080 --pos 1920x0 --output HDMI1 --primary --mode 1920x1080 --pos 0x0")
 -- run_once("xmodmap ~/.Xmodmap")
 run_once("compton -b")
 -- run_once("xcompmgr -c -C -f -r 5 -l -5 -t -5")
@@ -410,7 +410,9 @@ clientkeys = gears.table.join(awful.key({ modkey, }, "f",
         c:raise()
     end,
     { description = "toggle fullscreen", group = "client" }),
-    awful.key({ modkey, "Shift" }, "c", function(c) c:kill() end,
+    awful.key({ "Mod1" }, "F4", function(c) c:kill() end,
+        { description = "close", group = "client" }),
+    awful.key({ "Control" }, "q", function(c) c:kill() end,
         { description = "close", group = "client" }),
     awful.key({ modkey, "Control" }, "space", awful.client.floating.toggle,
         { description = "toggle floating", group = "client" }),
