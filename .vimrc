@@ -111,7 +111,7 @@ set magic              " Use some magic in search patterns
 set matchtime=2        " Show the match for n tenths of a second
 set noerrorbells       " Damn error bells!
 set noexpandtab
-set number             " Show line numbers
+set number relativenumber     " Show relative line numbers
 set copyindent
 set nostartofline      " Don't jump to start of line on pagedown
 set nrformats+=alpha   " Allows CTRL-A and CTRL-X to increment/decrement letters
@@ -164,6 +164,13 @@ let g:airline_theme='distinguished'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tmuxline#enabled = 0
 
+" Toggle relative line numbers
+augroup numbertoggle
+	autocmd!
+	autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+	autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
 " Set up pretty colors
 syntax enable
 set background=dark
@@ -187,7 +194,6 @@ command -nargs=+ MapToggle call MapToggle(<f-args>)
 
 MapToggle <F3> list
 MapToggle <F5> wrap
-MapToggle <F4> number
 
 " Fast editing of the .vimrc
 map <leader>e :tabedit! ~/.vimrc<cr>
