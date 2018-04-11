@@ -1,4 +1,3 @@
-
 --[[
     macos dark awesome wm theme
 
@@ -8,40 +7,43 @@
 
 --]]
 
-theme                                           = {}
+theme                               = {}
 
-theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/macos-dark"
-theme.wallpaper                                 = os.getenv("HOME") .. "/dotfiles/Background/awesome-paint.jpg"
+theme.dir                           = os.getenv("HOME") .. "/.config/awesome/themes/macos-dark"
+theme.wallpaper                     = os.getenv("HOME") .. "/dotfiles/Background/awesome-paint.jpg"
 
-theme.font                                      = "SNFS Display UltraLight 8"
-theme.fg_normal                                 = "#d0d0d0"
-theme.fg_urgent                                 = "#FF0000"
-theme.bg_urgent                                 = "#12121200"
-theme.border_width                              = 0
-theme.border_normal                             = "#121212"
-theme.border_focus                              = "#848484"
+theme.font                          = "sans 8"
+theme.fg_focus                      = "#f0f0f0"
+theme.fg_normal                     = "#b0b0b0"
+theme.fg_urgent                     = "#f00000"
+theme.bg_focus                      = "#101010"
+theme.bg_normal                     = "#202020"
+theme.bg_urgent                     = "#121212"
+theme.border_width                  = "0"
+theme.border_normal                 = "#121212"
+theme.border_focus                  = "#848484"
 
-theme.tasklist_fg_focus                         = "#ffffff"
-theme.tasklist_fg_normal                        = "#848484"
-theme.tasklist_bg_focus                         = "#10101000"
-theme.tasklist_bg_normal                        = "#20202000"
+theme.tasklist_fg_focus             = "#f0f0f0"
+theme.tasklist_fg_normal            = "#b0b0b0"
+theme.tasklist_bg_focus             = "#101010a0"
+theme.tasklist_bg_normal            = "#404040a0"
+theme.bg_systray                    = "#404040a0"
 
-theme.titlebar_bg_normal                        = "#202020"
-theme.titlebar_bg_focus                         = "#101010"
-theme.bg_systray                                = "#202020"
+theme.titlebar_bg_normal            = "#202020e0"
+theme.titlebar_bg_focus             = "#101010e0"
 
-theme.menu_height                               = 20
-theme.menu_width                                = 200
+theme.menu_height                   = "20"
+theme.menu_width                    = "200"
 
-theme.tasklist_sticky                           = ""
-theme.tasklist_ontop                            = ""
-theme.tasklist_floating                         = ""
-theme.tasklist_maximized_horizontal             = ""
-theme.tasklist_maximized_vertical               = ""
-theme.tasklist_disable_icon                     = true
+theme.tasklist_sticky               = ""
+theme.tasklist_ontop                = ""
+theme.tasklist_floating             = ""
+theme.tasklist_maximized_horizontal = ""
+theme.tasklist_maximized_vertical   = ""
+theme.tasklist_disable_icon         = true
 
-theme.awesome_icon                              = theme.dir .."/icons/awesome.png"
-theme.submenu_icon                              = theme.dir .."/icons/submenu.png"
+theme.awesome_icon                              = theme.dir .. "/icons/awesome.png"
+theme.submenu_icon                              = theme.dir .. "/icons/submenu.png"
 theme.taglist_squares_sel                       = theme.dir .. "/icons/square_unsel.png"
 theme.taglist_squares_unsel                     = theme.dir .. "/icons/square_unsel.png"
 theme.widget_bg                                 = theme.dir .. "/icons/widget_bg.png"
@@ -88,8 +90,8 @@ theme.titlebar_floating_button_normal_active    = theme.dir .. "/icons/titlebar/
 theme.titlebar_floating_button_focus_inactive   = theme.dir .. "/icons/titlebar/floating_focus_inactive.png"
 theme.titlebar_floating_button_normal_inactive  = theme.dir .. "/icons/titlebar/floating_normal_inactive.png"
 
-theme.titlebar_minimize_button_focus    = theme.dir .. "/icons/titlebar/minimize_focus.png"
-theme.titlebar_minimize_button_normal   = theme.dir .. "/icons/titlebar/minimize_normal.png"
+theme.titlebar_minimize_button_focus            = theme.dir .. "/icons/titlebar/minimize_focus.png"
+theme.titlebar_minimize_button_normal           = theme.dir .. "/icons/titlebar/minimize_normal.png"
 
 theme.titlebar_maximized_button_focus_active    = theme.dir .. "/icons/titlebar/maximized_focus_active.png"
 theme.titlebar_maximized_button_normal_active   = theme.dir .. "/icons/titlebar/maximized_normal_active.png"
