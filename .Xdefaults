@@ -7,7 +7,7 @@ URxvt.depth:            32
 URxvt.fading:           0
 URxvt.loginShell:       true
 URxvt.saveLines:        10000
-URxvt.internalBorder:   0
+URxvt.internalBorder:   2
 URxvt.lineSpace:        0
 URxvt.letterSpace:      0
 
@@ -17,8 +17,8 @@ URxvt.boldFont:         xft:DejaVuSansMono Nerd Font:bold:pixelsize=13
 URxvt.italicFont:       xft:DejaVuSansMono Nerd Font:italic:pixelsize=13
 URxvt.boldItalicFont:   xft:DejaVuSansMono Nerd Font:bold:italic:pixelsize=13
 
-URxvt.background:       [90]#000000
-URxvt.borderColor:      [90]#000000
+URxvt.background:       [85]#000000
+URxvt.borderColor:      [85]#000000
 URxvt.scrollBar:        false
 URxvt.cursorBlink:      false
 URxvt.cursorColor:      #af5f00
