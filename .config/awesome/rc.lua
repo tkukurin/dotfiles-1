@@ -63,10 +63,10 @@ modkey = "Mod4"
 browser = "chromium"
 gui_editor = "vim"
 graphics = "gimp"
-borderRadius = 4
+borderRadius = 6
 
 -- set gaps
-beautiful.useless_gap = 4
+beautiful.useless_gap = 6
 -- beautiful.gap_single_client = true
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
@@ -105,10 +105,11 @@ function run_once(cmd)
 end
 
 run_once("systemctl --user start awesome.target")
+run_once("xrandr --output eDP1 --primary --mode 1920x1080 --pos 1920x0 --output HDMI1 --mode 1920x1080 --pos 0x0")
 -- run_once("xmodmap ~/.Xmodmap")
-run_once("compton")
+run_once("compton -b")
 -- run_once("xcompmgr -c -C -f -r 5 -l -5 -t -5")
-run_once("feh --bg-scale  ~/dotfiles/Background/dwm-mypattern.light.jpg")
+-- run_once("feh --bg-scale  ~/dotfiles/Background/dwm-mypattern.light.jpg")
 run_once("udiskie")
 run_once("dropbox start")
 run_once("nm-applet")
@@ -238,6 +239,9 @@ end
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
+
+-- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9"},1,awful.layout.layouts[1])
+-- sharedtaglist = screen[1].tags
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
