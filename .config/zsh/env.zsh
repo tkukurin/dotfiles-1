@@ -4,6 +4,8 @@ SAVEHIST=3000
 # Share history between tmux windows
 setopt SHARE_HISTORY
 
+export TERMINAL='urxvt'
+
 export GREP_COLOR='38;5;202'
 
 export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
@@ -38,6 +40,10 @@ export GPG_TTY=$(tty)
 # Node version manager
 export NVM_DIR="$HOME/.nvm"
 [[ -s "/usr/local/opt/nvm/nvm.sh" ]] && . "/usr/local/opt/nvm/nvm.sh"
+
+if (( $+commands[luarocks] )); then
+	eval `luarocks path --bin`
+fi
 
 path=(\
     ${GOPATH}/bin \
