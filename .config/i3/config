@@ -71,6 +71,7 @@ bindsym $mod+space exec --no-startup-id synapse
 
 # Split
 bindsym $mod+x layout toggle stacking tabbed splith splitv
+bindsym $mod+v splitv
 
 # Window Focus (vim)
 bindsym $mod+Tab focus right
