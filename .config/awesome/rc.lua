@@ -14,6 +14,12 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+local sharedtags = require("sharedtags")
+local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
+local sprtr = wibox.widget.textbox()
+sprtr:set_text("  ")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -72,11 +78,11 @@ beautiful.useless_gap = 6
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
     awful.layout.suit.tile,
-    awful.layout.suit.fair,
-    awful.layout.suit.max,
-    awful.layout.suit.spiral,
+    -- awful.layout.suit.fair,
+    -- awful.layout.suit.max,
+    -- awful.layout.suit.spiral,
     awful.layout.suit.floating,
-    awful.layout.suit.magnifier,
+    -- awful.layout.suit.magnifier,
     -- awful.layout.suit.tile.left,
     -- awful.layout.suit.tile.bottom,
     -- awful.layout.suit.tile.top,
@@ -108,9 +114,6 @@ run_once("systemctl --user start awesome.target")
 run_once("xrandr --output eDP1 --mode 1920x1080 --pos 1920x0 --output HDMI1 --primary --mode 1920x1080 --pos 0x0")
 -- run_once("xmodmap ~/.Xmodmap")
 run_once("compton -b")
--- run_once("xcompmgr -c -C -f -r 5 -l -5 -t -5")
--- run_once("feh --bg-scale  ~/dotfiles/Background/dwm-mypattern.light.jpg")
-run_once("batterymon")
 run_once("dropbox start")
 run_once("nm-applet")
 run_once("pa-applet")
@@ -128,6 +131,8 @@ run_once("xinput set-prop 10 277 1")
 run_once("xinput set-prop 10 283 1")
 -- Touchpad: disable touchpad while typing
 run_once("xinput set-prop 10 285 1")
+
+run_once("xss-lock -- betterlockscreen -s dim")
 -- }}}
 
 -- {{{ Helper functions
@@ -177,8 +182,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
-
+mytextclock = wibox.widget.textclock(" %b %d %Y, %H:%M")
 -- Attach calendar to clock
 local month_calendar = awful.widget.calendar_popup.month()
 month_calendar:attach(mytextclock, "tr")
@@ -243,13 +247,22 @@ screen.connect_signal("property::geometry", set_wallpaper)
 
 -- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9"},1,awful.layout.layouts[1])
 -- sharedtaglist = screen[1].tags
+local tags = sharedtags({
+    { name = "main", layout = awful.layout.layouts[1] },
+    { name = "www", layout = awful.layout.layouts[1] },
+    { name = "game", layout = awful.layout.layouts[1] },
+    { name = "misc", layout = awful.layout.layouts[1] },
+    { name = "chat", screen = 2, layout = awful.layout.layouts[1] },
+    { layout = awful.layout.layouts[1] },
+    { screen = 2, layout = awful.layout.layouts[1] }
+})
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    -- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -283,8 +296,12 @@ awful.screen.connect_for_each_screen(function(s)
         {
             -- Right widgets
             layout = wibox.layout.fixed.horizontal,
---            mykeyboardlayout,
+            --            mykeyboardlayout,
+            cpu_widget,
+            sprtr,
             wibox.widget.systray(),
+            sprtr,
+            battery_widget,
             mytextclock,
             s.mylayoutbox,
         },
@@ -401,8 +418,7 @@ globalkeys = gears.table.join(awful.key({ modkey, }, "s", hotkeys_popup.show_hel
     awful.key({}, "XF86MonBrightnessUp", function() awful.spawn("light -A 5") end),
     awful.key({}, "XF86MonBrightnessDown", function() awful.spawn("light -U 5") end),
     awful.key({ "Mod1" }, "space", function() awful.spawn("synapse") end,
-        { description = "show Synapse", group = "launcher" })
-)
+        { description = "show Synapse", group = "launcher" }))
 
 clientkeys = gears.table.join(awful.key({ modkey, }, "f",
     function(c)
@@ -459,7 +475,8 @@ for i = 1, 9 do
                 local screen = awful.screen.focused()
                 local tag = screen.tags[i]
                 if tag then
-                    tag:view_only()
+                    -- tag:view_only()
+                    sharedtags.viewonly(tag, screen)
                 end
             end,
             { description = "view tag #" .. i, group = "tag" }),
@@ -469,7 +486,8 @@ for i = 1, 9 do
                 local screen = awful.screen.focused()
                 local tag = screen.tags[i]
                 if tag then
-                    awful.tag.viewtoggle(tag)
+                    -- awful.tag.viewtoggle(tag)
+                    sharedtags.viewtoggle(tag, screen)
                 end
             end,
             { description = "toggle tag #" .. i, group = "tag" }),
