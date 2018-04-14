@@ -45,9 +45,6 @@ editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- user defined
-browser = "chromium"
-gui_editor = "vim"
-graphics = "gimp"
 borderRadius = 6
 
 -- set gaps
