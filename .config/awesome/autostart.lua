@@ -6,6 +6,7 @@ autorunApps = {
     "xrandr --output eDP1 --mode 1920x1080 --pos 1920x0 --output HDMI1 --primary --mode 1920x1080 --pos 0x0",
     "compton -b",
     -- "pactray",
+    "/usr/lib/gsd-xsettings",
     "dex -a -e awesome",
     "udiskie",
 
