@@ -16,8 +16,8 @@ local keys = {}
 keys.modkey = modkey
 
 keys.globalkeys = gears.table.join(keys.globalkeys,
-		awful.key({ modkey, }, "s", hotkeys_popup.show_help,
-			  { description = "Show help", group = "awesome" }),
+    awful.key({ modkey, }, "s", hotkeys_popup.show_help,
+        { description = "Show help", group = "awesome" }),
     awful.key({ modkey, }, "Left", awful.tag.viewprev,
         { description = "View previous", group = "tag" }),
     awful.key({ modkey, }, "Right", awful.tag.viewnext,
@@ -68,6 +68,11 @@ keys.globalkeys = gears.table.join(keys.globalkeys,
     awful.key({ modkey, "Mod1" }, "l", function() awful.spawn("betterlockscreen --lock") end,
         { description = "Lock screen", group = "awesome" }),
 
+    awful.key({ modkey, "Mod1" }, "Right", function() awful.tag.incmwfact(0.05) end),
+    awful.key({ modkey, "Mod1" }, "Left", function() awful.tag.incmwfact(-0.05) end),
+    awful.key({ modkey, "Mod1" }, "Up", function() awful.client.incwfact(0.05) end),
+    awful.key({ modkey, "Mod1" }, "Down", function() awful.client.incwfact(-0.05) end),
+
     awful.key({ modkey, }, "l", function() awful.tag.incmwfact(0.05) end,
         { description = "Increase master width factor", group = "layout" }),
     awful.key({ modkey, }, "h", function() awful.tag.incmwfact(-0.05) end,
@@ -110,33 +115,44 @@ keys.globalkeys = gears.table.join(keys.globalkeys,
             }
         end,
         { description = "Lua execute prompt", group = "awesome" }),
-    -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
-        { description = "Show the menubar", group = "launcher" }),
 
     -- Brightness
     awful.key({}, "XF86MonBrightnessUp", function() awful.spawn("light -A 5") end),
     awful.key({}, "XF86MonBrightnessDown", function() awful.spawn("light -U 5") end),
-		-- Volume
-    awful.key({}, "XF86AudioMute", function() awful.spawn("pactl set-sink-mute 0 toggle") end),
 
-		-- Application launcher
-    awful.key({ "Mod1" }, "space", function() awful.spawn("synapse") end,
-        { description = "Show Application Launcher", group = "launcher" }))
+    -- Volume
+    awful.key({}, "XF86AudioMute", function() awful.spawn("pactl set-sink-mute 0 toggle") end),
+    awful.key({}, "XF86AudioRaiseVolume", function() awful.spawn("pactl set-sink-volume 0 +3%") end),
+    awful.key({}, "XF86AudioLowerVolume", function() awful.spawn("pactl set-sink-volume 0 -3%") end))
 
 keys.clientkeys = gears.table.join(keys.clientkeys,
+
+    awful.key({ modkey, "Shift" }, "Down", function(c) c:relative_move(0, 20, 0, 0) end,
+        { description = "  Move window down", group = "client" }),
+    awful.key({ modkey, "Shift" }, "Up", function(c) c:relative_move(0, -20, 0, 0) end,
+        { description = "  Move window up", group = "client" }),
+    awful.key({ modkey, "Shift" }, "Left", function(c) c:relative_move(-20, 0, 0, 0) end,
+        { description = "  Move window left", group = "client" }),
+    awful.key({ modkey, "Shift" }, "Right", function(c) c:relative_move(20, 0, 0, 0) end,
+        { description = "  Move window right", group = "client" }),
+
+    awful.key({ modkey, "Control" }, "Down", function(c) c:relative_move(20, 20, -40, -40) end,
+        { description = "  Shrink window", group = "client" }),
+    awful.key({ modkey, "Control" }, "Up", function(c) c:relative_move(-20, -20, 40, 40) end,
+        { description = "  Grow window", group = "client" }),
+
     awful.key({ modkey, }, "f",
-    function(c)
-        c.fullscreen = not c.fullscreen
-        c:raise()
-    end,
-    { description = "Toggle fullscreen", group = "client" }),
+        function(c)
+            c.fullscreen = not c.fullscreen
+            c:raise()
+        end,
+        { description = "Toggle fullscreen", group = "client" }),
     awful.key({ "Mod1" }, "F4", function(c) c:kill() end,
         { description = "Close", group = "client" }),
     awful.key({ "Control" }, "q", function(c) c:kill() end,
         { description = "Close", group = "client" }),
     awful.key({ modkey, "Control" }, "space", awful.client.floating.toggle,
-        { description = "Toggle floating", group = "client" }),
+        { description = "  Toggle floating", group = "client" }),
     awful.key({ modkey, "Control" }, "Return", function(c) c:swap(awful.client.getmaster()) end,
         { description = "Move to master", group = "client" }),
     awful.key({ modkey, }, "o", function(c) c:move_to_screen() end,
@@ -167,8 +183,7 @@ keys.clientkeys = gears.table.join(keys.clientkeys,
             c.maximized_horizontal = not c.maximized_horizontal
             c:raise()
         end,
-        { description = "(un)maximize horizontally", group = "client" })
-)
+        { description = "(un)maximize horizontally", group = "client" }))
 
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it work on any keyboard layout.
@@ -221,8 +236,7 @@ for i = 1, 9 do
             { description = "Toggle focused client on tag #" .. i, group = "tag" }))
 end
 
-keys.clientbuttons = gears.table.join(
-    awful.button({}, 1, function(c) client.focus = c; c:raise() end),
+keys.clientbuttons = gears.table.join(awful.button({}, 1, function(c) client.focus = c; c:raise() end),
     awful.button({ modkey }, 1, awful.mouse.client.move),
     awful.button({ modkey }, 3, awful.mouse.client.resize))
 
