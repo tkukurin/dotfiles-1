@@ -219,10 +219,10 @@ nmap <F2> :w<C-M>
 nmap <F10> :qall<C-M>
 
 " Use system-wide clipboard
-set clipboard+=unnamed
+set clipboard+=unnamedplus
 
 " Copy to clipboard
-map <leader>c "+y<cr>
+map <leader>c :!xclip -f -sel clip<cr>
 
 " Session management
 " Maybe checkout http://peterodding.com/code/vim/session/
