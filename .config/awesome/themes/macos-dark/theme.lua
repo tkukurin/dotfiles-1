@@ -34,8 +34,8 @@ theme.bg_systray                    = "#404040a0"
 theme.titlebar_bg_normal            = "#202020b0"
 theme.titlebar_bg_focus             = "#101010b0"
 
-theme.menu_height                   = "20"
-theme.menu_width                    = "200"
+theme.menu_height                   = 24
+theme.menu_width                    = 200
 
 theme.tasklist_sticky               = ""
 theme.tasklist_ontop                = ""
