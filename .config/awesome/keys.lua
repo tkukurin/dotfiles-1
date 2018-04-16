@@ -41,12 +41,12 @@ keys.globalkeys = gears.table.join(keys.globalkeys,
     awful.key({ modkey, }, "Escape", awful.tag.history.restore,
         { description = "Go back", group = "tag" }),
 
-    awful.key({ modkey, }, "j",
+    awful.key({ modkey, }, "Tab",
         function()
             awful.client.focus.byidx(1)
         end,
         { description = "Focus next by index", group = "client" }),
-    awful.key({ modkey, }, "k",
+    awful.key({ modkey, "Shift" }, "Tab",
         function()
             awful.client.focus.byidx(-1)
         end,
@@ -65,7 +65,7 @@ keys.globalkeys = gears.table.join(keys.globalkeys,
         { description = "Focus the previous screen", group = "screen" }),
     awful.key({ modkey, }, "u", awful.client.urgent.jumpto,
         { description = "Jump to urgent client", group = "client" }),
-    awful.key({ modkey, }, "Tab",
+    awful.key({ modkey, }, "Escape",
         function()
             awful.client.focus.history.previous()
             if client.focus then
@@ -203,7 +203,10 @@ keys.clientkeys = gears.table.join(keys.clientkeys,
             c.maximized_horizontal = not c.maximized_horizontal
             c:raise()
         end,
-        { description = "(un)maximize horizontally", group = "client" }))
+        { description = "(un)maximize horizontally", group = "client" }),
+        awful.key({ modkey, "Shift" }, "t", awful.titlebar.toggle,
+                { description = "Toggle titlebar", group = "client" })
+)
 
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it work on any keyboard layout.
