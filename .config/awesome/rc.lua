@@ -223,7 +223,6 @@ root.buttons(gears.table.join(awful.button({}, 3, function() mymainmenu:toggle()
     awful.button({}, 5, awful.tag.viewprev)))
 -- }}}
 
-
 clientButtons = gears.table.join(awful.button({}, 1, function(c) client.focus = c; c:raise() end),
     awful.button({ keys.modkey }, 1, awful.mouse.client.move),
     awful.button({ keys.modkey }, 3, awful.mouse.client.resize))
@@ -323,7 +322,7 @@ client.connect_signal("request::titlebars", function(c)
             awful.mouse.client.resize(c)
         end))
 
-    awful.titlebar(c):setup {
+    awful.titlebar(c, { size = 18 }):setup {
         {
             -- Left
             awful.titlebar.widget.iconwidget(c),
@@ -342,6 +341,7 @@ client.connect_signal("request::titlebars", function(c)
         },
         {
             -- Right
+            awful.titlebar.widget.floatingbutton(c),
             awful.titlebar.widget.minimizebutton(c),
             awful.titlebar.widget.maximizedbutton(c),
             awful.titlebar.widget.closebutton(c),
