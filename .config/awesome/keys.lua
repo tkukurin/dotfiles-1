@@ -1,6 +1,5 @@
 local gears = require("gears")
 local awful = require("awful")
-local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 local sharedtags = require("sharedtags")
 
@@ -10,6 +9,23 @@ local sharedtags = require("sharedtags")
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
 local modkey = "Mod4"
+
+-- Table of layouts to cover with awful.layout.inc, order matters.
+-- https://awesomewm.org/apidoc/libraries/awful.layout.html
+awful.layout.layouts = {
+    awful.layout.suit.tile,
+    awful.layout.suit.floating,
+}
+
+-- Shared tags: https://github.com/Drauthius/awesome-sharedtags
+local tags = sharedtags({
+    { name = "www", layout = awful.layout.layouts[1] },
+    { name = "main", layout = awful.layout.layouts[1] },
+    { name = "misc", layout = awful.layout.layouts[1] },
+    { name = "chat", screen = 2, layout = awful.layout.layouts[1] },
+    { layout = awful.layout.layouts[1] },
+    { screen = 2, layout = awful.layout.layouts[1]}
+})
 
 local keys = {}
 
@@ -68,15 +84,19 @@ keys.globalkeys = gears.table.join(keys.globalkeys,
     awful.key({ modkey, "Mod1" }, "l", function() awful.spawn("betterlockscreen --lock") end,
         { description = "Lock screen", group = "awesome" }),
 
-    awful.key({ modkey, "Mod1" }, "Right", function() awful.tag.incmwfact(0.05) end),
-    awful.key({ modkey, "Mod1" }, "Left", function() awful.tag.incmwfact(-0.05) end),
-    awful.key({ modkey, "Mod1" }, "Up", function() awful.client.incwfact(0.05) end),
-    awful.key({ modkey, "Mod1" }, "Down", function() awful.client.incwfact(-0.05) end),
+    awful.key({ modkey, "Mod1" }, "Right", function() awful.tag.incmwfact(0.05) end,
+        { description = "Increase client width", group = "client" }),
+    awful.key({ modkey, "Mod1" }, "Left", function() awful.tag.incmwfact(-0.05) end,
+        { description = "Decrease client width", group = "client" }),
+    awful.key({ modkey, "Mod1" }, "Up", function() awful.client.incwfact(0.05) end,
+        { description = "Increase client height", group = "client" }),
+    awful.key({ modkey, "Mod1" }, "Down", function() awful.client.incwfact(-0.05) end,
+        { description = "Decrease client height", group = "client" }),
 
     awful.key({ modkey, }, "l", function() awful.tag.incmwfact(0.05) end,
-        { description = "Increase master width factor", group = "layout" }),
+        { description = "Increase client width", group = "client" }),
     awful.key({ modkey, }, "h", function() awful.tag.incmwfact(-0.05) end,
-        { description = "Decrease master width factor", group = "layout" }),
+        { description = "Decrease client width", group = "client" }),
     awful.key({ modkey, "Shift" }, "h", function() awful.tag.incnmaster(1, nil, true) end,
         { description = "Increase the number of master clients", group = "layout" }),
     awful.key({ modkey, "Shift" }, "l", function() awful.tag.incnmaster(-1, nil, true) end,
@@ -194,7 +214,7 @@ for i = 1, 9 do
         awful.key({ modkey }, "#" .. i + 9,
             function()
                 local screen = awful.screen.focused()
-                local tag = screen.tags[i]
+                local tag = tags[i]
                 if tag then
                     -- tag:view_only()
                     sharedtags.viewonly(tag, screen)
@@ -205,7 +225,7 @@ for i = 1, 9 do
         awful.key({ modkey, "Control" }, "#" .. i + 9,
             function()
                 local screen = awful.screen.focused()
-                local tag = screen.tags[i]
+                local tag = tags[i]
                 if tag then
                     -- awful.tag.viewtoggle(tag)
                     sharedtags.viewtoggle(tag, screen)
@@ -216,7 +236,7 @@ for i = 1, 9 do
         awful.key({ modkey, "Shift" }, "#" .. i + 9,
             function()
                 if client.focus then
-                    local tag = client.focus.screen.tags[i]
+                    local tag = tags[i]
                     if tag then
                         client.focus:move_to_tag(tag)
                     end
@@ -227,7 +247,7 @@ for i = 1, 9 do
         awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
             function()
                 if client.focus then
-                    local tag = client.focus.screen.tags[i]
+                    local tag = tags[i]
                     if tag then
                         client.focus:toggle_tag(tag)
                     end
@@ -235,9 +255,5 @@ for i = 1, 9 do
             end,
             { description = "Toggle focused client on tag #" .. i, group = "tag" }))
 end
-
-keys.clientbuttons = gears.table.join(awful.button({}, 1, function(c) client.focus = c; c:raise() end),
-    awful.button({ modkey }, 1, awful.mouse.client.move),
-    awful.button({ modkey }, 3, awful.mouse.client.resize))
 
 return keys

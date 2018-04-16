@@ -10,7 +10,6 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 
 -- Notification library/home/michiel/Projects/Awesome/awesome-config
-local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 
@@ -18,14 +17,14 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
-local keys = require("keys")
-root.keys(keys.globalkeys)
-
 -- Third pary libraries
 local freedesktop = require("freedesktop")
-local sharedtags = require("sharedtags")
 local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
 local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
+
+local keys = require("keys")
+keys.tags = tags
+root.keys(keys.globalkeys)
 
 -- Separator widget
 local separator = wibox.widget.textbox()
@@ -50,31 +49,6 @@ borderRadius = 6
 -- set gaps
 beautiful.useless_gap = 6
 beautiful.gap_single_client = true
-
--- Table of layouts to cover with awful.layout.inc, order matters.
-awful.layout.layouts = {
-    awful.layout.suit.tile,
-    awful.layout.suit.tile.top,
-    -- awful.layout.suit.fair,
-    -- awful.layout.suit.max,
-    -- awful.layout.suit.spiral,
-    awful.layout.suit.floating,
-    -- awful.layout.suit.magnifier,
-    -- awful.layout.suit.tile.left,
-    -- awful.layout.suit.tile.bottom,
-    -- awful.layout.suit.fair,
-    -- awful.layout.suit.fair.horizontal,
-    -- awful.layout.suit.spiral,
-    -- awful.layout.suit.spiral.dwindle,
-    -- awful.layout.suit.max,
-    -- awful.layout.suit.max.fullscreen,
-    -- awful.layout.suit.magnifier,
-    -- awful.layout.suit.corner.nw,
-    -- awful.layout.suit.corner.ne,
-    -- awful.layout.suit.corner.sw,
-    -- awful.layout.suit.corner.se,
-}
--- }}}
 
 require("autostart")
 
@@ -192,17 +166,6 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
--- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9"},1,awful.layout.layouts[1])
--- sharedtaglist = screen[1].tags
-local tags = sharedtags({
-    { name = "www", layout = awful.layout.layouts[1] },
-    { name = "main", layout = awful.layout.layouts[1] },
-    { name = "misc", layout = awful.layout.layouts[1] },
-    { name = "chat", screen = 2, layout = awful.layout.layouts[1] },
-    { layout = awful.layout.layouts[1] },
-    { screen = 2, layout = awful.layout.layouts[1] }
-})
-
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
@@ -242,7 +205,6 @@ awful.screen.connect_for_each_screen(function(s)
         {
             -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            --            mykeyboardlayout,
             cpu_widget,
             separator,
             wibox.widget.systray(),
@@ -261,6 +223,11 @@ root.buttons(gears.table.join(awful.button({}, 3, function() mymainmenu:toggle()
     awful.button({}, 5, awful.tag.viewprev)))
 -- }}}
 
+
+clientButtons = gears.table.join(awful.button({}, 1, function(c) client.focus = c; c:raise() end),
+    awful.button({ keys.modkey }, 1, awful.mouse.client.move),
+    awful.button({ keys.modkey }, 3, awful.mouse.client.resize))
+
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
@@ -273,7 +240,7 @@ awful.rules.rules = {
             focus = awful.client.focus.filter,
             raise = true,
             keys = keys.clientkeys,
-            buttons = clientbuttons,
+            buttons = clientButtons,
             screen = awful.screen.preferred,
             placement = awful.placement.no_overlap + awful.placement.no_offscreen
         }
@@ -317,8 +284,8 @@ awful.rules.rules = {
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
+    { rule = { class = "Firefox" },
+      properties = { screen = 1, tag = "www"} },
 }
 -- }}}
 
