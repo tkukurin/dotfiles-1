@@ -23,6 +23,14 @@ def drawCircle(dot, defaults)
 						-draw 'translate " + translate + "," + translate + " circle 0,0 " + defaults['radius'].to_s + ",0' \
 						" + dot['name'] + ".png")
 
+	# Compress image
+	def hasOptipng
+		return system('optipng -v')
+	end
+	if hasOptipng
+		system('optipng -o7 ' + dot['name'] + '.png')
+	end
+
 	# Copy image to its filenames
 	dot['filenames'].each do |name|
 		system('cp ' + dot['name'] + '.png ' + name)
