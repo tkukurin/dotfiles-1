@@ -9,9 +9,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="21cm"
-   height="29.699999cm"
-   viewBox="0 0 210 297"
+   width="13.928331cm"
+   height="6.5200005cm"
+   viewBox="0 0 139.28331 65.200007"
    version="1.1"
    id="svg8"
    inkscape:export-filename="/home/michiel/tmp/dots.png"
@@ -43,8 +43,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="971.60753"
-     inkscape:cy="952.22903"
+     inkscape:cx="232.86566"
+     inkscape:cy="151.6041"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -54,16 +54,22 @@
      inkscape:snap-path-clip="true"
      inkscape:snap-page="true"
      inkscape:window-width="1920"
-     inkscape:window-height="1042"
+     inkscape:window-height="1060"
      inkscape:window-x="0"
      inkscape:window-y="20"
      inkscape:window-maximized="1"
-     units="cm">
+     units="cm"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0">
     <inkscape:grid
        type="xygrid"
        id="grid5299"
        spacingx="2.6458333"
-       spacingy="2.6458333" />
+       spacingy="2.6458333"
+       originx="-12.379162"
+       originy="-216.10833" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
@@ -80,7 +86,8 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-12.379162,-15.691662)">
     <circle
        style="fill:#2c75ff;fill-opacity:1;stroke:#0026c9;stroke-width:1.70000005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
        id="path824"
@@ -90,32 +97,38 @@
     <circle
        r="13.229166"
        cy="29.770828"
-       cx="74.083328"
+       cx="63.499996"
        id="circle828"
        style="fill:#ffd42c;fill-opacity:1;stroke:#ffa510;stroke-width:1.70000005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
     <circle
        style="fill:#05d60b;fill-opacity:1;stroke:#0da500;stroke-width:1.70000005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
        id="circle830"
-       cx="121.70831"
+       cx="100.54165"
        cy="29.770828"
        r="13.229166" />
     <circle
        r="13.229166"
        cy="29.770828"
-       cx="169.33334"
+       cx="137.58331"
        id="circle832"
        style="fill:#d61f05;fill-opacity:1;stroke:#a50900;stroke-width:1.70000005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
     <circle
-       style="fill:#6e6e6e;fill-opacity:1;stroke:#535252;stroke-width:1.70000005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       style="fill:#575757;fill-opacity:1;stroke:#767676;stroke-width:1.70000005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
        id="circle834"
-       cx="216.95839"
-       cy="29.770828"
+       cx="100.54165"
+       cy="66.8125"
        r="13.229166" />
     <circle
        r="13.229166"
-       cy="29.770828"
-       cx="264.5834"
-       id="circle829"
-       style="fill:#6e6e6e;fill-opacity:1;stroke:#6e6e6e;stroke-width:1.70000005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+       cy="66.8125"
+       cx="26.458328"
+       id="circle821"
+       style="fill:#eff5ff;fill-opacity:1;stroke:#d8d8d8;stroke-width:1.70000005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <circle
+       style="fill:#ff2cf3;fill-opacity:1;stroke:#bf11ff;stroke-width:1.70000005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="circle823"
+       cx="63.499996"
+       cy="66.8125"
+       r="13.229166" />
   </g>
 </svg>

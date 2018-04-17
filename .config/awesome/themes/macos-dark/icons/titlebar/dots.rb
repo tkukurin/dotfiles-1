@@ -11,22 +11,25 @@ if File.exist?(path + '/dots.yml')
 	configuration = YAML::load(File.read(path + '/dots.yml')) || {}
 end
 
+def hasOptipng
+	return system('optipng -v > /dev/null')
+end
+
 def drawCircle(dot, defaults)
 	translate = (defaults['canvasSize'] / 2).to_s
 	edge = defaults['canvasSize'].to_s
+	strokeWidth = dot['strokeWidth'] || defaults['strokeWidth']
+	radius = dot['radius'] || defaults['radius']
 
 	# Generate base image
 	system("convert -size " + edge + "x" + edge + " xc:none \
 						-stroke '#" + dot['stroke'] + "' \
 						-fill '#" + dot['fill'] + "' \
-						-strokewidth " + defaults['strokeWidth'].to_s + " \
-						-draw 'translate " + translate + "," + translate + " circle 0,0 " + defaults['radius'].to_s + ",0' \
+						-strokewidth " + strokeWidth.to_s + " \
+						-draw 'translate " + translate + "," + translate + " circle 0,0 " + radius.to_s + ",0' \
 						" + dot['name'] + ".png")
 
 	# Compress image
-	def hasOptipng
-		return system('optipng -v')
-	end
 	if hasOptipng
 		system('optipng -o7 ' + dot['name'] + '.png')
 	end
