@@ -1,0 +1,62 @@
+---
+defaults:
+  strokeWidth: 3
+  radius: 20
+  canvasSize: 100
+dots:
+  - name: float
+    type: circle
+    stroke: 1940ff
+    fill: 4180ff
+    filenames:
+      - floating_focus_active.png
+  - name: minimize
+    type: circle
+    stroke: ffa510
+    fill: ffd42cff
+    filenames:
+      - minimize_focus.png
+  - name: maximise
+    type: circle
+    stroke: 0dbc00ff
+    fill: 05d60bff
+    filenames:
+      - maximized_focus_active.png
+      - maximized_focus_inactive.png
+  - name: close
+    type: circle
+    stroke: eb2005ff
+    fill: cc0900ff
+    filenames:
+      - close_focus.png
+  - name: ontop
+    type: circle
+    stroke: d8d8d8ff
+    fill: eff5ffff
+    filenames:
+      - ontop_focus_active.png
+  - name: sticky
+    type: circle
+    stroke: ff2cf3ff
+    fill: bf11ffff
+    filenames:
+      - sticky_focus_active.png
+  - name: inactive
+    type: circle
+    stroke: a1a1a1ff
+    fill: 7e7e7eff
+    filenames:
+      - close_normal.png
+      - floating_focus_inactive.png
+      - floating_normal_active.png
+      - floating_normal_inactive.png
+      - maximized_normal_active.png
+      - maximized_normal_inactive.png
+      - minimize_normal.png
+      - ontop_focus_inactive.png
+      - ontop_normal_active.png
+      - ontop_normal_inactive.png
+      - sticky_focus_inactive.png
+      - sticky_normal_active.png
+      - sticky_normal_inactive.png
+
