@@ -37,12 +37,13 @@ theme.titlebar_bg_focus             = "#101010b0"
 theme.menu_height                   = 24
 theme.menu_width                    = 200
 
-theme.tasklist_sticky               = ""
-theme.tasklist_ontop                = ""
-theme.tasklist_floating             = ""
-theme.tasklist_maximized_horizontal = ""
-theme.tasklist_maximized_vertical   = ""
-theme.tasklist_disable_icon         = true
+theme.tasklist_sticky                           = "<span color='#ff2cf3'>● </span>"
+theme.tasklist_ontop                            = "<span color='#d8d8d8'>● </span>"
+theme.tasklist_floating                         = "<span color='#1940ff'>● </span>"
+theme.tasklist_maximized                        = "<span color='#0dbc00'>● </span>"
+theme.tasklist_maximized_horizontal             = "<span color='#0dbc00'>● </span>"
+theme.tasklist_maximized_vertical               = "<span color='#0dbc00'>● </span>"
+theme.tasklist_disable_icon                     = false
 
 theme.awesome_icon                              = theme.dir .. "/icons/awesome.png"
 theme.submenu_icon                              = theme.dir .. "/icons/submenu.png"
