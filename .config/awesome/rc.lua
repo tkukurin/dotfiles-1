@@ -47,7 +47,7 @@ editor_cmd = terminal .. " -e " .. editor
 borderRadius = 6
 
 -- set gaps
-beautiful.useless_gap = 6
+beautiful.useless_gap = 5
 beautiful.gap_single_client = true
 
 require("autostart")
