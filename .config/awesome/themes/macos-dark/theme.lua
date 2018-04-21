@@ -10,7 +10,7 @@
 theme                               = {}
 
 theme.dir                           = os.getenv("HOME") .. "/.config/awesome/themes/macos-dark"
-theme.wallpaper                     = os.getenv("HOME") .. "/dotfiles/Background/shroom.jpg"
+theme.wallpaper                     = os.getenv("HOME") .. "/dotfiles/Background/paardebloem.jpg"
 
 theme.icon_theme                    = "Adwaita"
 
