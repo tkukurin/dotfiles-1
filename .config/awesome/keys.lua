@@ -1,3 +1,4 @@
+local lain = require("lain")
 local gears = require("gears")
 local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
@@ -39,6 +40,15 @@ keys.globalkeys = gears.table.join(keys.globalkeys,
         end,
         { description = "Toggle statusbar", group = "awesome" }
     ),
+
+    -- On the fly useless gaps change
+        awful.key({ modkey, "Control" }, "=", function()
+            lain.util.useless_gaps_resize(1)
+        end),
+        awful.key({ modkey, "Control" }, "-", function()
+            lain.util.useless_gaps_resize(-1)
+        end),
+
     awful.key({ modkey, }, "s", hotkeys_popup.show_help,
         { description = "Show help", group = "awesome" }),
     awful.key({ modkey, }, "Left", awful.tag.viewprev,

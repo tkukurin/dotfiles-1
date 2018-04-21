@@ -20,7 +20,7 @@ require("awful.hotkeys_popup.keys")
 -- Third pary libraries
 local freedesktop = require("freedesktop")
 local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
-local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
+local cpu_widget = require("widgets.cpu")
 
 local keys = require("keys")
 keys.tags = tags
