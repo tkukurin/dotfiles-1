@@ -26,10 +26,6 @@ local keys = require("keys")
 keys.tags = tags
 root.keys(keys.globalkeys)
 
--- Separator widget
-local separator = wibox.widget.textbox()
-separator:set_text("  ")
-
 -- Error handling
 require("errorHandling")
 
@@ -44,11 +40,29 @@ editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- user defined
-borderRadius = 6
+borderRadius = 5
+titleBarBorderRadius = 6
+separatorWidth = 5
 
 -- set gaps
 beautiful.useless_gap = 5
 beautiful.gap_single_client = true
+
+-- Separator widget
+local separator = wibox.widget {
+    widget = wibox.widget.textbox,
+    forced_width = separatorWidth
+}
+
+-- Create shape for use in task- and taglist
+local listShape = function(cr, width, height, tl, tr, br, bl, rad)
+    gears.shape.partially_rounded_rect(cr, width, height, true, true, br, bl, borderRadius)
+end
+
+-- Create shape for use in a client
+local clientShape = function(cr, width, height, tl, tr, br, bl, rad)
+    gears.shape.partially_rounded_rect(cr, width, height, true, true, br, bl, titleBarBorderRadius)
+end
 
 require("autostart")
 
@@ -183,15 +197,22 @@ awful.screen.connect_for_each_screen(function(s)
         awful.button({}, 4, function() awful.layout.inc(1) end),
         awful.button({}, 5, function() awful.layout.inc(-1) end)))
     -- Create a taglist widget
-    s.mytaglist = awful.widget.taglist(
-            s,
-            awful.widget.taglist.filter.all,
-            taglist_buttons,
-            {
-                shape_border_width = 1,
-                shape = gears.shape.rectangle,
-                spacing = 3
-            }
+    s.mytaglist = wibox.container.margin(
+            awful.widget.taglist(
+                    s,
+                    awful.widget.taglist.filter.all,
+                    taglist_buttons,
+                    {
+                        shape_border_width = 1,
+                        shape_border_color = '#606060b0',
+                        shape = listShape,
+                        spacing = separatorWidth
+                    }
+            ),
+            0,
+            0,
+            0,
+            -1
     )
 
     -- Create a tasklist widget
@@ -201,8 +222,9 @@ awful.screen.connect_for_each_screen(function(s)
             tasklist_buttons,
             {
                 shape_border_width = 1,
-                shape = gears.shape.rectangle,
-                spacing = 3
+                shape_border_color = '#606060b0',
+                shape = listShape,
+                spacing = separatorWidth
             }
     )
 
@@ -222,6 +244,7 @@ awful.screen.connect_for_each_screen(function(s)
             mylauncher,
             s.mytaglist,
             s.mypromptbox,
+            separator,
         },
         s.mytasklist, -- Middle widget
         {
@@ -313,10 +336,7 @@ awful.rules.rules = {
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function(c)
-    -- Enable round corners with the shape api
-    c.shape = function(cr, w, h)
-        gears.shape.rounded_rect(cr, w, h, borderRadius)
-    end
+    c.shape = clientShape
 
     -- Set the windows at the slave,
     -- i.e. put it at the end of others instead of setting it master.
