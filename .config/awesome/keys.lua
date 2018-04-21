@@ -221,8 +221,10 @@ keys.clientkeys = gears.table.join(keys.clientkeys,
             c:raise()
         end,
         { description = "(un)maximize horizontally", group = "client" }),
-        awful.key({ modkey, "Shift" }, "t", awful.titlebar.toggle,
-                { description = "Toggle titlebar", group = "client" })
+    awful.key({ modkey, "Shift" }, "t", awful.titlebar.toggle,
+        { description = "Toggle titlebar", group = "client" }),
+    awful.key({ modkey, "Control" }, "m", lain.util.magnify_client,
+        { description = "Magnify client", group = "client" })
 )
 
 -- Bind all key numbers to tags.
