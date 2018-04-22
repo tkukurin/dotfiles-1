@@ -7,6 +7,15 @@
 
 --]]
 
+local gears = require("gears")
+
+local titleBarBorderRadius = 6
+
+local hotkeysShape = function(cr, width, height, tl, tr, br, bl, rad)
+    gears.shape.rounded_rect(cr, width, height, titleBarBorderRadius)
+end
+local notificationShape = hotkeysShape
+
 theme                               = {}
 
 theme.dir                           = os.getenv("HOME") .. "/.config/awesome/themes/macos-dark"
@@ -29,13 +38,25 @@ theme.tasklist_fg_focus             = "#f0f0f0"
 theme.tasklist_fg_normal            = "#f0f0f0"
 theme.tasklist_bg_focus             = "#101010d0"
 theme.tasklist_bg_normal            = "#404040d0"
-theme.bg_systray                    = "#404040d0"
+theme.bg_systray                    = "#40404000"
 
 theme.titlebar_bg_normal            = "#202020b0"
 theme.titlebar_bg_focus             = "#101010b0"
 
 theme.menu_height                   = 24
 theme.menu_width                    = 200
+
+theme.wibar_bg                      = "#00000060"
+theme.wibar_fg                      = "#f0f0f0f0"
+
+theme.hotkeys_bg                    = "#101010f0"
+theme.hotkeys_fg                    = "#f0f0f0"
+theme.hotkeys_label_fg              = "#101010"
+theme.hotkeys_modifiers_fg          = "#808080"
+theme.hotkeys_shape                 = hotkeysShape
+
+theme.notification_shape            = notificationShape
+theme.notification_border_color     = "#808080f0"
 
 theme.tasklist_sticky                           = "<span color='#ff2cf3'>● </span>"
 theme.tasklist_ontop                            = "<span color='#d8d8d8'>● </span>"
