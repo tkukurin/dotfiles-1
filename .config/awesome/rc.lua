@@ -40,9 +40,9 @@ editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- user defined
-borderRadius = 5
-titleBarBorderRadius = 6
-separatorWidth = 5
+local listBorderRadius = 5
+local titleBarBorderRadius = 6
+local separatorWidth = 5
 
 -- set gaps
 beautiful.useless_gap = 5
@@ -56,7 +56,7 @@ local separator = wibox.widget {
 
 -- Create shape for use in task- and taglist
 local listShape = function(cr, width, height, tl, tr, br, bl, rad)
-    gears.shape.partially_rounded_rect(cr, width, height, true, true, br, bl, borderRadius)
+    gears.shape.partially_rounded_rect(cr, width, height, true, true, br, bl, listBorderRadius)
 end
 
 -- Create shape for use in a client
@@ -196,16 +196,30 @@ awful.screen.connect_for_each_screen(function(s)
         awful.button({}, 3, function() awful.layout.inc(-1) end),
         awful.button({}, 4, function() awful.layout.inc(1) end),
         awful.button({}, 5, function() awful.layout.inc(-1) end)))
+
     -- Create a taglist widget
-    s.mytaglist = wibox.container.margin(
-            awful.widget.taglist(
+    s.mytaglist = awful.widget.taglist(
+            s,
+            awful.widget.taglist.filter.all,
+            taglist_buttons,
+            {
+                shape_border_width = 1,
+                shape_border_color = '#a0a0a0f0',
+                shape = gears.shape.circle,
+                spacing = separatorWidth
+            }
+    )
+
+    -- Create a tasklist widget
+    s.mytasklist = wibox.container.margin(
+            awful.widget.tasklist(
                     s,
-                    awful.widget.taglist.filter.all,
-                    taglist_buttons,
+                    awful.widget.tasklist.filter.minimizedcurrenttags,
+                    tasklist_buttons,
                     {
                         shape_border_width = 1,
-                        shape_border_color = '#606060b0',
-                        shape = gears.shape.circle,
+                        shape_border_color = '#a0a0a0a0',
+                        shape = listShape,
                         spacing = separatorWidth
                     }
             ),
@@ -215,24 +229,10 @@ awful.screen.connect_for_each_screen(function(s)
             -1
     )
 
-    -- Create a tasklist widget
-    s.mytasklist = awful.widget.tasklist(
-            s,
-            awful.widget.tasklist.filter.minimizedcurrenttags,
-            tasklist_buttons,
-            {
-                shape_border_width = 1,
-                shape_border_color = '#606060b0',
-                shape = listShape,
-                spacing = separatorWidth
-            }
-    )
-
     -- Create the wibox
     s.mywibox = awful.wibar({
         position = 'bottom',
         screen = s,
-        bg = '#00000060'
     })
 
     -- Add widgets to the wibox
