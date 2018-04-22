@@ -205,7 +205,7 @@ awful.screen.connect_for_each_screen(function(s)
                     {
                         shape_border_width = 1,
                         shape_border_color = '#606060b0',
-                        shape = listShape,
+                        shape = gears.shape.circle,
                         spacing = separatorWidth
                     }
             ),
