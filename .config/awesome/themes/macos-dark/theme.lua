@@ -54,6 +54,7 @@ theme.hotkeys_fg                    = "#f0f0f0"
 theme.hotkeys_label_fg              = "#101010"
 theme.hotkeys_modifiers_fg          = "#808080"
 theme.hotkeys_shape                 = hotkeysShape
+theme.hotkeys_group_margin          = 20
 
 theme.notification_shape            = notificationShape
 theme.notification_border_color     = "#808080f0"
