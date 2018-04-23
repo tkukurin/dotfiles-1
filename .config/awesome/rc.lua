@@ -35,9 +35,9 @@ beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/macos-dark/theme.lu
 -- {{{ Variable definitions
 
 -- This is used later as the default terminal and editor to run.
-local terminal = os.getenv("TERMINAL") or "urxvt"
-local editor = os.getenv("EDITOR") or "vim"
-local editor_cmd = terminal .. " -e " .. editor
+terminal = os.getenv("TERMINAL") or "urxvt"
+editor = os.getenv("EDITOR") or "vim"
+editor_cmd = terminal .. " -e " .. editor
 
 -- user defined
 local listBorderRadius = 5
