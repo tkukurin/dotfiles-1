@@ -312,7 +312,13 @@ awful.rules.rules = {
                 "Wpa_gui",
                 "pinentry",
                 "veromix",
-                "xtightvncviewer"
+                "xtightvncviewer",
+                "jetbrains-goland",
+                "jetbrains-idea",
+                "jetbrains-phpstorm",
+                "jetbrains-pycharm",
+                "jetbrains-rubymine",
+                "jetbrains-webstorm"
             },
             name = {
                 "Event Tester", -- xev.
@@ -321,6 +327,7 @@ awful.rules.rules = {
                 "AlarmWindow", -- Thunderbird's calendar.
                 "pop-up", -- e.g. Google Chrome's (detached) Developer Tools.
             }
+
         },
         properties = { floating = true }
     },
