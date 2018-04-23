@@ -19,7 +19,7 @@ require("awful.hotkeys_popup.keys")
 
 -- Third pary libraries
 local freedesktop = require("freedesktop")
-local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+local battery_widget = require("widgets.battery")
 local cpu_widget = require("widgets.cpu")
 
 local keys = require("keys")
@@ -261,6 +261,7 @@ awful.screen.connect_for_each_screen(function(s)
             wibox.widget.systray(),
             separator,
             battery_widget,
+            separator,
             mytextclock,
             s.mylayoutbox,
         },
@@ -356,7 +357,8 @@ awful.rules.rules = {
                 "Gnome-system-monitor",
                 "Gnome-tweaks",
                 "Nautilus",
-                "Org.gnome.DejaDup"
+                "Org.gnome.DejaDup",
+                "Pamac-updater"
             }
         },
         properties = { titlebars_enabled = false }
