@@ -16,6 +16,7 @@ URxvt.font:             xft:DejaVuSansMono Nerd Font:pixelsize=13
 URxvt.boldFont:         xft:DejaVuSansMono Nerd Font:bold:pixelsize=13
 URxvt.italicFont:       xft:DejaVuSansMono Nerd Font:italic:pixelsize=13
 URxvt.boldItalicFont:   xft:DejaVuSansMono Nerd Font:bold:italic:pixelsize=13
+URxvt.iconFile:         /home/michiel/dotfiles/Icon/terminal.svg
 
 URxvt.background:       [85]#000000
 URxvt.borderColor:      [85]#000000
