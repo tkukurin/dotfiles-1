@@ -10,7 +10,7 @@
 
 local gears = require("gears")
 
-local titleBarBorderRadius = 6
+local titleBarBorderRadius = 8
 
 local hotkeysShape = function(cr, width, height, tl, tr, br, bl, rad)
     gears.shape.rounded_rect(cr, width, height, titleBarBorderRadius)

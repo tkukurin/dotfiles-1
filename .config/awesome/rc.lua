@@ -41,7 +41,7 @@ editor_cmd = terminal .. " -e " .. editor
 
 -- user defined
 local listBorderRadius = 5
-local titleBarBorderRadius = 6
+local titleBarBorderRadius = 8
 local separatorWidth = 5
 
 -- set gaps
