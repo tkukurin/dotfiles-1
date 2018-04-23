@@ -3,7 +3,8 @@
 
     based on
       Copland Awesome WM config
-      github.com/copycat-killer
+      https://github.com/copycat-killer
+      https://github.com/dj95/awesome-macos
 
 --]]
 
@@ -41,7 +42,7 @@ theme.tasklist_bg_normal            = "#404040d0"
 theme.bg_systray                    = "#40404000"
 
 theme.titlebar_bg_normal            = "#202020b0"
-theme.titlebar_bg_focus             = "#101010b0"
+theme.titlebar_bg_focus             = "#101010d0"
 
 theme.menu_height                   = 24
 theme.menu_width                    = 200
@@ -49,7 +50,7 @@ theme.menu_width                    = 200
 theme.wibar_bg                      = "#00000060"
 theme.wibar_fg                      = "#f0f0f0f0"
 
-theme.hotkeys_bg                    = "#101010f0"
+theme.hotkeys_bg                    = "png:" .. os.getenv("HOME") .. "/dotfiles/Background/dwm-mypattern.jpg"
 theme.hotkeys_fg                    = "#f0f0f0"
 theme.hotkeys_label_fg              = "#101010"
 theme.hotkeys_modifiers_fg          = "#808080"
