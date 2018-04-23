@@ -23,7 +23,7 @@ local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
 local cpu_widget = require("widgets.cpu")
 
 local keys = require("keys")
-keys.tags = tags
+
 root.keys(keys.globalkeys)
 
 -- Error handling
@@ -35,9 +35,9 @@ beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/macos-dark/theme.lu
 -- {{{ Variable definitions
 
 -- This is used later as the default terminal and editor to run.
-terminal = os.getenv("TERMINAL") or "urxvt"
-editor = os.getenv("EDITOR") or "vim"
-editor_cmd = terminal .. " -e " .. editor
+local terminal = os.getenv("TERMINAL") or "urxvt"
+local editor = os.getenv("EDITOR") or "vim"
+local editor_cmd = terminal .. " -e " .. editor
 
 -- user defined
 local listBorderRadius = 5
@@ -333,9 +333,34 @@ awful.rules.rules = {
         properties = { titlebars_enabled = true }
     },
 
-    -- Set Firefox to always map on the tag named "2" on screen 1.
-    { rule = { class = "Firefox" },
-      properties = { screen = 1, tag = "www"} },
+    -- Set Firefox to always map on the tag named ""
+    {
+        rule_any = {
+            class = {
+                "Chromium",
+                "Firefox"
+            }
+        },
+        properties = { tag = keys.tags[1] }
+    },
+    {
+        rule_any = {
+            class = { "MPlayer", "Nitrogen" },
+            instance = { "xterm" }
+        },
+        properties = { floating = true }
+    },
+    {
+        rule_any = {
+            class = {
+                "HipChat",
+                "Slack"
+            }
+        },
+        properties = { tag = keys.tags[2] }
+    },
+    { rule = { class = "Gimp-2.8" },
+      properties = { tag = keys.tags[4], floating = true } },
 }
 -- }}}
 
