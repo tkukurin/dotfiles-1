@@ -20,12 +20,12 @@ awful.layout.layouts = {
 
 -- Shared tags: https://github.com/Drauthius/awesome-sharedtags
 local tags = sharedtags({
-    { name = "", screen = 2, layout = awful.layout.layouts[1] },
-    { name = "", screen = 1, layout = awful.layout.layouts[1] },
+    { name = "", screen = 1, layout = awful.layout.layouts[1] },
+    { name = "", screen = 2, layout = awful.layout.layouts[1] },
     { name = "", layout = awful.layout.layouts[1] },
     { name = "", layout = awful.layout.layouts[1] },
-    { name = "", layout = awful.layout.layouts[1] },
-    { name = "", screen = 2, layout = awful.layout.layouts[1] }
+    { name = "", screen = 2, layout = awful.layout.layouts[1] },
+    { name = "", screen = 1, layout = awful.layout.layouts[1] }
 })
 
 local keys = {}
