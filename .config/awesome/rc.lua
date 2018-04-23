@@ -340,6 +340,28 @@ awful.rules.rules = {
         properties = { titlebars_enabled = true }
     },
 
+    -- Remove titlebars from clients that provide custom close buttons
+    {
+        rule_any = {
+            class = {
+                "Gedit",
+                "Gnome-calculator",
+                "Gnome-calendar",
+                "Gnome-control-center",
+                "Gnome-dictionary",
+                "Gnome-disks",
+                "Gnome-font-viewer",
+                "Gnome-logs",
+                "Gnome-software",
+                "Gnome-system-monitor",
+                "Gnome-tweaks",
+                "Nautilus",
+                "Org.gnome.DejaDup"
+            }
+        },
+        properties = { titlebars_enabled = false }
+    },
+
     -- Set Firefox to always map on the tag named ""
     {
         rule_any = {
@@ -350,6 +372,7 @@ awful.rules.rules = {
         },
         properties = { tag = keys.tags[1] }
     },
+
     {
         rule_any = {
             class = { "MPlayer", "Nitrogen" },
@@ -357,6 +380,7 @@ awful.rules.rules = {
         },
         properties = { floating = true }
     },
+
     {
         rule_any = {
             class = {
@@ -367,6 +391,7 @@ awful.rules.rules = {
         },
         properties = { tag = keys.tags[2] }
     },
+
     { rule = { class = "Gimp-2.8" },
       properties = { tag = keys.tags[4], floating = true } },
 }
