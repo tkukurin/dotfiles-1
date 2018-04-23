@@ -354,6 +354,7 @@ awful.rules.rules = {
         rule_any = {
             class = {
                 "HipChat",
+                "Keybase",
                 "Slack"
             }
         },
