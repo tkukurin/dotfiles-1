@@ -69,6 +69,14 @@ local function setDischarging()
     batteryWidget.widget = nul
 end
 
+local function setWarning()
+    textWidget.markup = "<span color='#ffbf1f'></span>"
+    batteryWidget.widget = wibox.container.mirror(
+            textWidget,
+            { horizontal = true }
+    )
+end
+
 awful.widget.watch(
         "acpi",
         10,
@@ -87,6 +95,7 @@ awful.widget.watch(
             else
                 setDischarging()
                 if (charge >= 0 and charge < 15) then
+                    setWarning()
                     showBatteryWarning()
                 end
             end
