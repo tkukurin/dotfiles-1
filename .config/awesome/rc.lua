@@ -358,6 +358,7 @@ awful.rules.rules = {
                 "Gnome-tweaks",
                 "Nautilus",
                 "Org.gnome.DejaDup",
+                "Pamac-manager",
                 "Pamac-updater"
             }
         },
