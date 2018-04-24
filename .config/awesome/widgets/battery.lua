@@ -1,6 +1,5 @@
 local awful = require("awful")
 local wibox = require("wibox")
-local gears = require("gears")
 local naughty = require("naughty")
 
 -- acpi sample outputs
@@ -25,8 +24,8 @@ end
 
 local function showBatteryWarning()
     naughty.notify {
-        text = "Huston, we have a problem",
-        title = "Battery is dying",
+        text = "Houston, we have a problem",
+        title = "Battery is dying . . . give it some juice!",
         timeout = 5, hover_timeout = 0.5,
         position = "bottom_right",
         bg = "#F06060",
@@ -35,22 +34,20 @@ local function showBatteryWarning()
     }
 end
 
-local batteryWidget = wibox.widget {
-    max_value = 1,
-    forced_height = 6,
-    background_color = "#00000000",
-    shape = batteryShape,
-    bar_shape = gears.shape.rect,
-    border_width = 0,
-    widget = wibox.widget.progressbar,
-}
-
 local colors = {
     "#8f0000",
     "#bd7500",
     "#d4c600",
     "#568e00",
+    "#008f00",
     "#008f00"
+}
+
+local batteryWidget = wibox.widget {
+    max_value = 100,
+    thickness = 2,
+    start_angle = math.pi + math.pi / 2,
+    widget = wibox.container.arcchart
 }
 
 awful.widget.watch(
@@ -61,16 +58,18 @@ awful.widget.watch(
             local charge = tonumber(charge_str)
             local stepSize = 100 / #colors
             local rangeIndex = math.floor(charge / stepSize) + 1
-            widget.color = colors[rangeIndex]
-            widget:set_value(charge / 100)
+            widget.value = charge
+            widget.colors = { colors[rangeIndex] }
+            if rangeIndex > #colors then
+                widget.colors = { colors[rangeIndex - 1] }
+            end
             if status == 'Charging' then
-                widget.border_color = colors[rangeIndex]
-                widget.border_width = 1
+                widget.thickness = 4
             else
+                widget.thickness = 2
                 if (charge >= 0 and charge < 15) then
                     showBatteryWarning()
                 end
-                widget.border_width = 0
             end
 
         end,
@@ -84,8 +83,13 @@ batteryWidget:connect_signal("mouse::leave", function()
     naughty.destroy(notification)
 end)
 
-return wibox.widget {
-    batteryWidget,
-    direction = 'east',
-    layout = wibox.container.rotate,
-}
+return wibox.container.margin(
+        wibox.container.mirror(
+                batteryWidget,
+                { horizontal = true }
+        ),
+        2,
+        2,
+        2,
+        2
+)
