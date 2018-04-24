@@ -26,7 +26,8 @@ local function showBatteryWarning()
     naughty.notify {
         text = "Houston, we have a problem",
         title = "Battery is dying . . . give it some juice!",
-        timeout = 5, hover_timeout = 0.5,
+        timeout = 5,
+        hover_timeout = 0.5,
         position = "bottom_right",
         bg = "#F06060",
         fg = "#EEE9EF",
@@ -43,12 +44,30 @@ local colors = {
     "#008f00"
 }
 
+local textWidget = wibox.widget {
+    markup = "<span color='#ffbf1f'></span>",
+    align = 'center',
+    valign = 'center',
+    widget = wibox.widget.textbox
+}
+
 local batteryWidget = wibox.widget {
     max_value = 100,
     thickness = 2,
     start_angle = math.pi + math.pi / 2,
     widget = wibox.container.arcchart
 }
+
+local function setCharging()
+    batteryWidget.widget = wibox.container.mirror(
+            textWidget,
+            { horizontal = true }
+    )
+end
+
+local function setDischarging()
+    batteryWidget.widget = nul
+end
 
 awful.widget.watch(
         "acpi",
@@ -64,9 +83,9 @@ awful.widget.watch(
                 widget.colors = { colors[rangeIndex - 1] }
             end
             if status == 'Charging' then
-                widget.thickness = 4
+                setCharging()
             else
-                widget.thickness = 2
+                setDischarging()
                 if (charge >= 0 and charge < 15) then
                     showBatteryWarning()
                 end
