@@ -6,6 +6,8 @@ local naughty = require("naughty")
 -- Battery 0: Discharging, 75%, 01:51:38 remaining
 -- Battery 0: Charging, 53%, 00:57:43 until charged
 
+local updateInterval = 30
+
 -- Popup with battery info
 -- One way of creating a pop-up notification - naughty.notify
 local notification
@@ -45,7 +47,7 @@ local colors = {
 }
 
 local textWidget = wibox.widget {
-    markup = "<span color='#ffbf1f'></span>",
+    markup = "<span color='#a0a0a0a0'></span>",
     align = 'center',
     valign = 'center',
     widget = wibox.widget.textbox
@@ -58,14 +60,15 @@ local batteryWidget = wibox.widget {
     widget = wibox.container.arcchart
 }
 
-local function setCharging()
+local function showIcon()
+    textWidget.markup = "<span color='#a0a0a0a0'></span>"
     batteryWidget.widget = wibox.container.mirror(
             textWidget,
             { horizontal = true }
     )
 end
 
-local function setDischarging()
+local function hideIcon()
     batteryWidget.widget = nul
 end
 
@@ -79,7 +82,7 @@ end
 
 awful.widget.watch(
         "acpi",
-        10,
+        updateInterval,
         function(widget, stdout, stderr, exitreason, exitcode)
             local _, status, charge_str, time = string.match(stdout, '(.+): (%a+), (%d?%d?%d)%%,? ?.*')
             local charge = tonumber(charge_str)
@@ -91,9 +94,9 @@ awful.widget.watch(
                 widget.colors = { colors[rangeIndex - 1] }
             end
             if status == 'Charging' then
-                setCharging()
+                showIcon()
             else
-                setDischarging()
+                hideIcon()
                 if (charge >= 0 and charge < 15) then
                     setWarning()
                     showBatteryWarning()
@@ -105,10 +108,12 @@ awful.widget.watch(
 )
 
 batteryWidget:connect_signal("mouse::enter", function()
+    showIcon()
     showBatteryStatus()
 end)
 batteryWidget:connect_signal("mouse::leave", function()
     naughty.destroy(notification)
+    hideIcon()
 end)
 
 return wibox.container.margin(
