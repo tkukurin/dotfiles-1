@@ -21,6 +21,7 @@ require("awful.hotkeys_popup.keys")
 local freedesktop = require("freedesktop")
 local battery_widget = require("widgets.battery")
 local cpu_widget = require("widgets.cpu")
+local volumeWidget = require("widgets.volume")
 
 local keys = require("keys")
 
@@ -258,6 +259,9 @@ awful.screen.connect_for_each_screen(function(s)
         {
             -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            separator(),
+            volumeWidget,
+            separator(),
             cpu_widget,
             separator(),
             battery_widget,
