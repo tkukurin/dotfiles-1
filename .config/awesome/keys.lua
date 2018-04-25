@@ -50,7 +50,7 @@ keys.globalkeys = gears.table.join(keys.globalkeys,
             lain.util.useless_gaps_resize(-1)
         end),
 
-    awful.key({ modkey, }, "s", hotkeys_popup.show_help,
+    awful.key({ modkey, }, "F1", hotkeys_popup.show_help,
         { description = "Show help", group = "awesome" }),
     awful.key({ modkey, }, "Left", awful.tag.viewprev,
         { description = "View previous", group = "tag" }),
@@ -213,7 +213,7 @@ keys.clientkeys = gears.table.join(keys.clientkeys,
         { description = "Move to screen", group = "client" }),
     awful.key({ modkey, }, "t", function(c) c.ontop = not c.ontop end,
         { description = "Toggle keep on top", group = "client" }),
-    awful.key({ modkey, "Control"}, "s", function(c) c.sticky = not c.sticky end,
+    awful.key({ modkey, }, "s", function(c) c.sticky = not c.sticky end,
         { description = "Toggle sticky", group = "client" }),
     awful.key({ modkey, }, "n",
         function(c)

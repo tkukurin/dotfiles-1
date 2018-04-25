@@ -104,18 +104,18 @@ theme.titlebar_close_button_normal              = theme.dir .. "/icons/titlebar/
 
 theme.titlebar_ontop_button_focus_active        = theme.dir .. "/icons/titlebar/ontop_focus_active.png"
 theme.titlebar_ontop_button_normal_active       = theme.dir .. "/icons/titlebar/ontop_normal_active.png"
-theme.titlebar_ontop_button_focus_inactive      = theme.dir .. "/icons/titlebar/ontop_focus_inactive.png"
-theme.titlebar_ontop_button_normal_inactive     = theme.dir .. "/icons/titlebar/ontop_normal_inactive.png"
+theme.titlebar_ontop_button_focus_inactive      = theme.dir .. "/icons/titlebar/trance.png"
+theme.titlebar_ontop_button_normal_inactive     = theme.dir .. "/icons/titlebar/trance.png"
 
 theme.titlebar_sticky_button_focus_active       = theme.dir .. "/icons/titlebar/sticky_focus_active.png"
 theme.titlebar_sticky_button_normal_active      = theme.dir .. "/icons/titlebar/sticky_normal_active.png"
-theme.titlebar_sticky_button_focus_inactive     = theme.dir .. "/icons/titlebar/sticky_focus_inactive.png"
-theme.titlebar_sticky_button_normal_inactive    = theme.dir .. "/icons/titlebar/sticky_normal_inactive.png"
+theme.titlebar_sticky_button_focus_inactive     = theme.dir .. "/icons/titlebar/trance.png"
+theme.titlebar_sticky_button_normal_inactive    = theme.dir .. "/icons/titlebar/trance.png"
 
 theme.titlebar_floating_button_focus_active     = theme.dir .. "/icons/titlebar/floating_focus_active.png"
 theme.titlebar_floating_button_normal_active    = theme.dir .. "/icons/titlebar/floating_normal_active.png"
-theme.titlebar_floating_button_focus_inactive   = theme.dir .. "/icons/titlebar/floating_focus_inactive.png"
-theme.titlebar_floating_button_normal_inactive  = theme.dir .. "/icons/titlebar/floating_normal_inactive.png"
+theme.titlebar_floating_button_focus_inactive   = theme.dir .. "/icons/titlebar/trance.png"
+theme.titlebar_floating_button_normal_inactive  = theme.dir .. "/icons/titlebar/trance.png"
 
 theme.titlebar_minimize_button_focus            = theme.dir .. "/icons/titlebar/minimize_focus.png"
 theme.titlebar_minimize_button_normal           = theme.dir .. "/icons/titlebar/minimize_normal.png"
