@@ -179,6 +179,7 @@ keys.clientkeys = gears.table.join(keys.clientkeys,
     awful.key({ modkey, "Control" }, "Up", function(c) c:relative_move(-10, -10, 40, 40) end,
         { description = "  Grow window", group = "client" }),
         awful.key({ modkey, "Control" }, "Left", function(c)
+            c.floating = true
             local axis = 'vertically'
             local f = awful.placement.scale
                     + awful.placement.left
@@ -187,6 +188,7 @@ keys.clientkeys = gears.table.join(keys.clientkeys,
         end,
                 { description = "  Snap left", group = "client" }),
         awful.key({ modkey, "Control" }, "Right", function(c)
+            c.floating = true
             local axis = 'vertically'
             local f = awful.placement.scale
                     + awful.placement.right
