@@ -4,6 +4,7 @@
 -------------------------------------------------
 
 local awful = require("awful")
+local gears = require("gears")
 local wibox = require("wibox")
 
 local updateInterval = 1
@@ -16,12 +17,15 @@ local volumeWidget = wibox.widget {
     max_value = 100,
     thickness = 2,
     start_angle = math.pi + math.pi / 2,
+    bg = gears.color("#c0c0c020"),
     widget = wibox.container.arcchart
 }
 
 local function hideIcon()
     volumeWidget.widget = nul
 end
+
+--
 
 local function showIcon()
     volumeWidget.widget = wibox.widget {
@@ -32,6 +36,9 @@ local function showIcon()
         buttons = awful.util.table.join(
                 awful.button({}, 1, function()
                     awful.spawn('pactl set-sink-mute 0 toggle')
+                    --if os.execute("pamixer --get-mute") == 'true' then
+                    --    volumeWidget.markup = "<span color='#c0c0c0'></span>"
+                    --end
                 end),
                 awful.button({}, 3, function()
                     awful.spawn('pavucontrol')

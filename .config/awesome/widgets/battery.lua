@@ -1,4 +1,5 @@
 local awful = require("awful")
+local gears = require("gears")
 local wibox = require("wibox")
 local naughty = require("naughty")
 
@@ -57,6 +58,7 @@ local batteryWidget = wibox.widget {
     max_value = 100,
     thickness = 2,
     start_angle = math.pi + math.pi / 2,
+    bg = gears.color("#c0c0c020"),
     widget = wibox.container.arcchart
 }
 

@@ -8,6 +8,7 @@
 -------------------------------------------------
 
 local awful = require("awful")
+local gears = require("gears")
 local wibox = require("wibox")
 
 local updateInterval = 2
@@ -26,6 +27,7 @@ local cpuWidget = wibox.widget {
     max_value = 100,
     thickness = 2,
     start_angle = math.pi + math.pi / 2,
+    bg = gears.color("#c0c0c020"),
     widget = wibox.container.arcchart
 }
 
@@ -72,7 +74,7 @@ local cpuWidgetTooltip = awful.tooltip({
     objects = { cpuWidget },
 
     timer_function = function()
-        return os.date("Today is %A %B %d %Y\nThe time is %T")
+        return "cpu"
     end,
 })
 
