@@ -35,7 +35,7 @@ end
 
 local function showIcon()
     cpuWidget.widget = wibox.widget {
-        markup = "<span color='#a0a0a0a0'></span>",
+        markup = "<span color='#c0c0c0'></span>",
         align = 'center',
         valign = 'center',
         widget = wibox.widget.textbox

@@ -10,7 +10,7 @@
 
 local gears = require("gears")
 
-local titleBarBorderRadius = 8
+local titleBarBorderRadius = 6
 
 local hotkeysShape = function(cr, width, height, tl, tr, br, bl, rad)
     gears.shape.rounded_rect(cr, width, height, titleBarBorderRadius)
@@ -59,6 +59,7 @@ theme.hotkeys_group_margin          = 20
 
 theme.notification_shape            = notificationShape
 theme.notification_border_color     = "#808080f0"
+theme.notification_width            = 550
 
 theme.tasklist_sticky                           = "<span color='#ff2cf3'>● </span>"
 theme.tasklist_ontop                            = "<span color='#d8d8d8'>● </span>"

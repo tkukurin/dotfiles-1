@@ -178,6 +178,22 @@ keys.clientkeys = gears.table.join(keys.clientkeys,
         { description = "  Shrink window", group = "client" }),
     awful.key({ modkey, "Control" }, "Up", function(c) c:relative_move(-10, -10, 40, 40) end,
         { description = "  Grow window", group = "client" }),
+        awful.key({ modkey, "Control" }, "Left", function(c)
+            local axis = 'vertically'
+            local f = awful.placement.scale
+                    + awful.placement.left
+                    + (axis and awful.placement['maximize_'..axis] or nil)
+            local geo = f(client.focus, {honor_workarea=true, to_percent = 0.5})
+        end,
+                { description = "  Snap left", group = "client" }),
+        awful.key({ modkey, "Control" }, "Right", function(c)
+            local axis = 'vertically'
+            local f = awful.placement.scale
+                    + awful.placement.right
+                    + (axis and awful.placement['maximize_'..axis] or nil)
+            local geo = f(client.focus, {honor_workarea=true, to_percent = 0.5})
+        end,
+                { description = "  Snap Right", group = "client" }),
 
     awful.key({ modkey, }, "f",
         function(c)

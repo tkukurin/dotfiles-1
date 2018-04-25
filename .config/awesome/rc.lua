@@ -40,19 +40,21 @@ editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- user defined
-local listBorderRadius = 5
-local titleBarBorderRadius = 8
+local listBorderRadius = 0
+local titleBarBorderRadius = 0
 local separatorWidth = 5
 
 -- set gaps
-beautiful.useless_gap = 5
+beautiful.useless_gap = 4
 beautiful.gap_single_client = true
 
 -- Separator widget
-local separator = wibox.widget {
-    widget = wibox.widget.textbox,
-    forced_width = separatorWidth
-}
+local function separator (width)
+    return wibox.widget {
+        widget = wibox.widget.textbox,
+        forced_width = width or separatorWidth
+    }
+end
 
 -- Create shape for use in task- and taglist
 local listShape = function(cr, width, height, tl, tr, br, bl, rad)
@@ -61,7 +63,7 @@ end
 
 -- Create shape for use in a client
 local clientShape = function(cr, width, height, tl, tr, br, bl, rad)
-    gears.shape.partially_rounded_rect(cr, width, height, true, true, br, bl, titleBarBorderRadius)
+    gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, titleBarBorderRadius)
 end
 
 require("autostart")
@@ -220,7 +222,7 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytasklist = wibox.container.margin(
             awful.widget.tasklist(
                     s,
-                    awful.widget.tasklist.filter.minimizedcurrenttags,
+                    awful.widget.tasklist.filter.currenttags,
                     tasklist_buttons,
                     {
                         shape_border_width = 1,
@@ -250,18 +252,18 @@ awful.screen.connect_for_each_screen(function(s)
             mylauncher,
             s.mytaglist,
             s.mypromptbox,
-            separator,
+            separator(),
         },
         s.mytasklist, -- Middle widget
         {
             -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             cpu_widget,
-            separator,
+            separator(),
             battery_widget,
-            separator,
+            separator(),
             wibox.widget.systray(),
-            separator,
+            separator(),
             mytextclock,
             s.mylayoutbox,
         },
@@ -420,32 +422,32 @@ end)
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
 client.connect_signal("request::titlebars", function(c)
     -- buttons for the titlebar
-    local buttons = gears.table.join(awful.button({}, 1, function()
-        client.focus = c
-        c:raise()
-        awful.mouse.client.move(c)
-    end),
-        awful.button({}, 3, function()
-            client.focus = c
-            c:raise()
-            awful.mouse.client.resize(c)
-        end))
+    local buttons = gears.table.join(
+            awful.button({}, 1, function()
+                client.focus = c
+                c:raise()
+                awful.mouse.client.move(c)
+            end),
+            awful.button({}, 3, function()
+                client.focus = c
+                c:raise()
+                awful.mouse.client.resize(c)
+            end)
+    )
 
-    awful.titlebar(c, { size = 18 }):setup {
+    --if c.floating then
+    --    local floatButton = awful.titlebar.widget.floatingbutton(c)
+    --else
+    --    local floatButton = nil
+    --end
+
+    awful.titlebar(c, { size = 10, position = "top" }):setup {
         {
             -- Left
-            separator,
-            awful.titlebar.widget.iconwidget(c),
             buttons = buttons,
             layout = wibox.layout.fixed.horizontal
         },
         {
-            -- Middle
-            {
-                -- Title
-                align = "center",
-                widget = awful.titlebar.widget.titlewidget(c)
-            },
             buttons = buttons,
             layout = wibox.layout.flex.horizontal
         },
@@ -458,6 +460,15 @@ client.connect_signal("request::titlebars", function(c)
             layout = wibox.layout.fixed.horizontal()
         },
         layout = wibox.layout.align.horizontal
+    }
+
+    -- Bottom bar for easy resizing of floating windows
+    awful.titlebar(c, { size = 10, position = "bottom" }):setup {
+        {
+            buttons = buttons,
+            layout = wibox.layout.flex.horizontal
+        },
+        layout = wibox.layout.flex.horizontal
     }
 end)
 

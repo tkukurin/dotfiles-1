@@ -28,7 +28,7 @@ local function showBatteryWarning()
     naughty.notify {
         text = "Houston, we have a problem",
         title = "Battery is dying . . . give it some juice!",
-        timeout = 5,
+        timeout = 15,
         hover_timeout = 0.5,
         position = "bottom_right",
         bg = "#F06060",
@@ -47,7 +47,7 @@ local colors = {
 }
 
 local textWidget = wibox.widget {
-    markup = "<span color='#a0a0a0a0'></span>",
+    markup = "<span color='#c0c0c0'></span>",
     align = 'center',
     valign = 'center',
     widget = wibox.widget.textbox
@@ -61,7 +61,7 @@ local batteryWidget = wibox.widget {
 }
 
 local function showIcon()
-    textWidget.markup = "<span color='#a0a0a0a0'></span>"
+    textWidget.markup = "<span color='#c0c0c0'></span>"
     batteryWidget.widget = wibox.container.mirror(
             textWidget,
             { horizontal = true }
