@@ -42,7 +42,8 @@ editor_cmd = terminal .. " -e " .. editor
 
 -- user defined
 local listBorderRadius = 0
-local titleBarBorderRadius = 0
+local titlebarBorderradius = 0
+local titlebarHeight = 8
 local separatorWidth = 5
 
 -- set gaps
@@ -64,7 +65,7 @@ end
 
 -- Create shape for use in a client
 local clientShape = function(cr, width, height, tl, tr, br, bl, rad)
-    gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, titleBarBorderRadius)
+    gears.shape.partially_rounded_rect(cr, width, height, true, true, true, true, titlebarBorderradius)
 end
 
 require("autostart")
@@ -445,7 +446,7 @@ client.connect_signal("request::titlebars", function(c)
     --    local floatButton = nil
     --end
 
-    awful.titlebar(c, { size = 10, position = "top" }):setup {
+    awful.titlebar(c, { size = titlebarHeight, position = "top" }):setup {
         {
             -- Left
             buttons = buttons,
@@ -469,7 +470,7 @@ client.connect_signal("request::titlebars", function(c)
     }
 
     -- Bottom bar for easy resizing of floating windows
-    awful.titlebar(c, { size = 10, position = "bottom" }):setup {
+    awful.titlebar(c, { size = titlebarHeight, position = "bottom" }):setup {
         {
             buttons = buttons,
             layout = wibox.layout.flex.horizontal
