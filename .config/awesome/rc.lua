@@ -321,12 +321,7 @@ awful.rules.rules = {
                 "pinentry",
                 "veromix",
                 "xtightvncviewer",
-                "jetbrains-goland",
-                "jetbrains-idea",
-                "jetbrains-phpstorm",
-                "jetbrains-pycharm",
-                "jetbrains-rubymine",
-                "jetbrains-webstorm"
+                "jetbrains-*"
             },
             name = {
                 "Event Tester", -- xev.
@@ -353,23 +348,28 @@ awful.rules.rules = {
         rule_any = {
             class = {
                 "Gedit",
-                "Gnome-calculator",
-                "Gnome-calendar",
-                "Gnome-control-center",
-                "Gnome-dictionary",
-                "Gnome-disks",
-                "Gnome-font-viewer",
-                "Gnome-logs",
-                "Gnome-software",
-                "Gnome-system-monitor",
-                "Gnome-tweaks",
+                "Gnome-.*",
                 "Nautilus",
                 "Org.gnome.DejaDup",
-                "Pamac-manager",
-                "Pamac-updater"
+                "Pamac-.*"
             }
         },
         properties = { titlebars_enabled = false }
+    },
+
+    {
+        rule = {
+            class = "jetbrains-.*",
+        },
+        properties = { focus = true }
+    },
+
+    {
+        rule = {
+            class = "jetbrains-.*",
+            name = "win.*"
+        },
+        properties = { titlebars_enabled = false, focusable = false, focus = true, floating = true, placement = awful.placement.restore }
     },
 
     -- Set Firefox to always map on the tag named ""
