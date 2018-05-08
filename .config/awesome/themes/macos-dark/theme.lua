@@ -61,12 +61,12 @@ theme.notification_shape            = notificationShape
 theme.notification_border_color     = "#808080f0"
 theme.notification_width            = 550
 
-theme.tasklist_sticky                           = "<span color='#ff2cf3'>● </span>"
-theme.tasklist_ontop                            = "<span color='#d8d8d8'>● </span>"
-theme.tasklist_floating                         = "<span color='#1940ff'>● </span>"
-theme.tasklist_maximized                        = "<span color='#0dbc00'>● </span>"
-theme.tasklist_maximized_horizontal             = "<span color='#0dbc00'>● </span>"
-theme.tasklist_maximized_vertical               = "<span color='#0dbc00'>● </span>"
+theme.tasklist_sticky                           = "<span color='#ff2cf3'>■ </span>"
+theme.tasklist_ontop                            = "<span color='#d8d8d8'>■ </span>"
+theme.tasklist_floating                         = "<span color='#1940ff'>■ </span>"
+theme.tasklist_maximized                        = "<span color='#0dbc00'>■ </span>"
+theme.tasklist_maximized_horizontal             = "<span color='#0dbc00'>■ </span>"
+theme.tasklist_maximized_vertical               = "<span color='#0dbc00'>■ </span>"
 theme.tasklist_disable_icon                     = false
 
 theme.awesome_icon                              = theme.dir .. "/icons/awesome.png"

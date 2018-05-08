@@ -470,13 +470,18 @@ client.connect_signal("request::titlebars", function(c)
     }
 
     -- Bottom bar for easy resizing of floating windows
-    awful.titlebar(c, { size = titlebarHeight, position = "bottom" }):setup {
-        {
-            buttons = buttons,
-            layout = wibox.layout.flex.horizontal
-        },
-        layout = wibox.layout.flex.horizontal
-    }
+--    awful.titlebar(c, { size = titlebarHeight, position = "bottom", bg_normal = "#00000000" }):setup {
+--        { -- Left
+--            awful.titlebar.widget.iconwidget(c),
+--            buttons = buttons,
+--            layout  = wibox.layout.fixed.horizontal
+--        },
+--        {
+--            buttons = buttons,
+--            layout = wibox.layout.flex.horizontal
+--        },
+--        layout = wibox.layout.flex.horizontal
+--    }
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.
