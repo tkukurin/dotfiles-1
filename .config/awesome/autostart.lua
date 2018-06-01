@@ -15,16 +15,13 @@ autorunApps = {
     "xinput set-prop 'Wacom Intuos PT M Pen stylus' 294 1572867",
 
     -- Touchpads: tap to click
-    "xinput set-prop 'ETPS/2 Elantech Touchpad' 277 1",
-    "xinput set-prop 'DLL07A9:01 044E:120B' 322 1",
+    "xinput set-prop 'ETPS/2 Elantech Touchpad' 278 1",
     -- Touchpads: natural scrolling
-    "xinput set-prop 'ETPS/2 Elantech Touchpad' 285 1",
-    "xinput set-prop 'DLL07A9:01 044E:120B' 330 1",
+    "xinput set-prop 'ETPS/2 Elantech Touchpad' 286 1",
     -- Touchpads: Tapping drag
-    "xinput set-prop 'ETPS/2 Elantech Touchpad' 279 0",
+    "xinput set-prop 'ETPS/2 Elantech Touchpad' 280 0",
     -- Touchpads: disable touchpad while typing
-    "xinput set-prop 'ETPS/2 Elantech Touchpad' 287 1",
-    "xinput set-prop 'DLL07A9:01 044E:120B' 332 1",
+    "xinput set-prop 'ETPS/2 Elantech Touchpad' 288 1",
 
     -- Lock screen and suspend
     "xss-lock -- betterlockscreen -s dim",
