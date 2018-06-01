@@ -159,9 +159,9 @@ keys.globalkeys = gears.table.join(keys.globalkeys,
     awful.key({}, "XF86MonBrightnessDown", function() awful.spawn("light -U 5") end),
 
     -- Volume
-    awful.key({}, "XF86AudioMute", function() awful.spawn("pactl set-sink-mute 0 toggle") end),
-    awful.key({}, "XF86AudioRaiseVolume", function() awful.spawn("pactl set-sink-volume 0 +3%") end),
-    awful.key({}, "XF86AudioLowerVolume", function() awful.spawn("pactl set-sink-volume 0 -3%") end))
+    awful.key({}, "XF86AudioMute", function() awful.spawn("pactl set-sink-mute 1 toggle") end),
+    awful.key({}, "XF86AudioRaiseVolume", function() awful.spawn("pactl set-sink-volume 1 +3%") end),
+    awful.key({}, "XF86AudioLowerVolume", function() awful.spawn("pactl set-sink-volume 1 -3%") end))
 
 keys.clientkeys = gears.table.join(keys.clientkeys,
 
