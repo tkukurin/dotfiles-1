@@ -36,6 +36,7 @@ alias vi=vim
 alias :e="\$EDITOR"
 alias :q="exit"
 
+alias dev=docker-compose
 alias l="ls -A -F"
 alias ll="ls -h -l "
 alias la="ls -a"
@@ -63,7 +64,7 @@ done
 
 # Tmux
 alias tmux="export HOSTNAME=\$(hostname); sshAuthSave; tmux"
-alias tw="tmux new-session -A -s work"
+alias t="tmux new-session -A -s work"
 alias tp="tmux new-session -A -s play"
 alias tl="tmux list-sessions"
 
