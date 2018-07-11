@@ -402,7 +402,7 @@ awful.rules.rules = {
         properties = { tag = keys.tags[2] }
     },
 
-    { rule = { class = "Gimp-2.8" },
+    { rule = { class = "Gimp-2.10" },
       properties = { tag = keys.tags[4], floating = true } },
 }
 -- }}}
