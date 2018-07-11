@@ -27,9 +27,8 @@ URxvt.cursorUnderline:  false
 
 !URxvt.geometry:         166x56
 !URxvt*backgroundPixmap: /home/michiel/dotfiles/Background/dwm-mypattern.png;style=tiled
-! Leave transparency to compton
-!URxvt*.transparent:      true
-!URxvt*.shading:          10
+URxvt*.transparent:      true
+URxvt*.shading:          12
 !URxvt*.blurRadius:       21
 ! Behavior
 URxvt*scrollTtyOutput:   false
