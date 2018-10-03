@@ -36,7 +36,12 @@ alias vi=vim
 alias :e="\$EDITOR"
 alias :q="exit"
 
+# Docker
 alias dev=docker-compose
+alias red='f(){ dev stop $@ && dev rm -fv $@ && dev up -d $@ && dev logs -f $@; unset -f f; }; f'
+alias off='f(){ dev stop $@ && dev rm -fv $@; unset -f f; }; f'
+alias on='f(){ dev up -d $@ && dev logs -f $@; unset -f f; }; f'
+
 alias l="ls -A -F"
 alias ll="ls -h -l "
 alias la="ls -a"
