@@ -42,7 +42,7 @@ alias red='f(){ dev stop $@ && dev rm -fv $@ && dev up -d $@ && dev logs -f $@; 
 alias off='f(){ dev stop $@ && dev rm -fv $@; unset -f f; }; f'
 alias on='f(){ dev up -d $@ && dev logs -f $@; unset -f f; }; f'
 alias onoff=red
-alias cf="dev php exec bash -c /code/bin/typo3cms cache:flush"
+alias cf='dev exec php bash -c "/code/bin/typo3cms cache:flush"'
 
 alias l="ls -A -F"
 alias ll="ls -h -l "
