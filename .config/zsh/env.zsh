@@ -53,6 +53,7 @@ path=(\
     ${HOME}/.node/bin \
     ${HOME}/.npm-packages/bin \
     ${HOME}/.rvm/bin \
+    ./bin \
     $path\
     )
 export PATH
