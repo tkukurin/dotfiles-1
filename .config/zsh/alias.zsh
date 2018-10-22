@@ -43,7 +43,7 @@ alias off='f(){ dev rm -fsv $@; unset -f f; }; f'
 alias on='f(){ dev up -d $@ && dev logs -f $@; unset -f f; }; f'
 alias onoff=red
 alias cf='dev exec php bash -c "/code/bin/typo3cms cache:flush"'
-alias docker-wraith="docker run -P -v \$PWD:/wraithy -w='/wraithy' bbcnews/wraith"
+alias docker-wraith="docker run --rm -P -v \$PWD:/wraithy -w='/wraithy' bbcnews/wraith"
 
 alias l="ls -A -F"
 alias ll="ls -h -l "
