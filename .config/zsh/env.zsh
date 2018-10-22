@@ -48,6 +48,7 @@ fi
 path=(\
     ${GOPATH}/bin \
     ${HOME}/.rvm/gems/ruby-2.4.1/bin \
+    ${HOME}/.gem/ruby/2.5.0/bin \
     ${HOME}/bin \
     ${HOME}/.composer/vendor/bin \
     ${HOME}/.node/bin \
