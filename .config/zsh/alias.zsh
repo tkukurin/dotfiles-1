@@ -28,6 +28,7 @@ alias sa="ssh-add ~/.ssh/id_rsa"
 alias h="history"
 alias j="jobs"
 alias open="xdg-open"
+alias o="xdg-open"
 
 # ddev
 alias up="ddev start"
