@@ -12,9 +12,9 @@ alias .....="cd ../../../.."
 alias -- -="cd -"
 
 # Shortcuts
-alias d="cd ~/Documents/Dropbox"
+alias db="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
+alias d="cd ~/Desktop"
 alias p="cd ~/Projects"
 alias g="git"
 alias ga="git add"
@@ -26,6 +26,7 @@ alias s="git status"
 alias sa="ssh-add ~/.ssh/id_rsa"
 alias h="history"
 alias j="jobs"
+alias open="xdg-open"
 
 # ddev
 alias up="ddev start"
