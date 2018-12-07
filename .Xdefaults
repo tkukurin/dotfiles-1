@@ -9,17 +9,29 @@ URxvt.loginShell:       true
 URxvt.saveLines:        10000
 URxvt.internalBorder:   2
 URxvt.lineSpace:        0
-URxvt.letterSpace:      0
+URxvt.letterSpace:      -1
 
 ! Appearance
-URxvt.font:             xft:DejaVuSansMono Nerd Font:pixelsize=13
-URxvt.boldFont:         xft:DejaVuSansMono Nerd Font:bold:pixelsize=13
-URxvt.italicFont:       xft:DejaVuSansMono Nerd Font:italic:pixelsize=13
-URxvt.boldItalicFont:   xft:DejaVuSansMono Nerd Font:bold:italic:pixelsize=13
+! fc-list
+! URxvt.font:             xft:Hack:size=10
+! URxvt.boldFont:         xft:Hack:weight=bold:size=10
+! URxvt.italicFont:       xft:Hack:slant=italic:size=10
+! URxvt.boldItalicFont:   xft:Hack:weight=bold:slant=italic:size=10
+
+URxvt.font:             xft:DejaVuSansMonoForPowerline Nerd Font:size=10
+URxvt.boldFont:         xft:DejaVuSansMonoForPowerline Nerd Font:weight=bold:size=10
+URxvt.italicFont:       xft:DejaVuSansMonoForPowerline Nerd Font:slant=italic:size=10
+URxvt.boldItalicFont:   xft:DejaVuSansMonoForPowerline Nerd Font:weight=bold:slant=italic:size=10
+
+! URxvt.font: xft:Hack:size=10:antialias=true:hinting=true,xft:Symbola,xft:UbuntuMonoDerivativePowerline Nerd Font
+! URxvt.boldFont: xft:Hack:style=Bold:size=10:antialias=true:hinting=true,xft:DejaVu Sans Mono:size=12,xft:FontAwesome:size=12
+! URxvt.italicFont:   xft:Hack:style=Italic:size=10:antialias=true:hinting=true,xft:DejaVu Sans Mono:size=12,xft:FontAwesome:size=12
+! URxvt.boldItalicFont:   xft:Hack:style=Bold Italic:size=10:antialias=true:hinting=true,xft:DejaVu Sans Mono:size=12,xft:FontAwesome:size=12
+
 URxvt.iconFile:         /home/michiel/dotfiles/Icon/terminal.svg
 
-URxvt.background:       [85]#000000
-URxvt.borderColor:      [85]#000000
+URxvt.background:       [90]#000000
+URxvt.borderColor:      [90]#000000
 URxvt.scrollBar:        false
 URxvt.cursorBlink:      false
 URxvt.cursorColor:      #af5f00
@@ -88,11 +100,11 @@ rofi.hide-scrollbar:    true
 rofi.width:             30
 
 !! black dark/light
-*color0: #494949
+*color0: #2E3436
 *color8: #5c5c5c
 
 !! red dark/light
-*color1: #870000
+*color1: #cc0000
 *color9: #cb4b16
 
 !! green dark/light
@@ -104,11 +116,11 @@ rofi.width:             30
 *color11: #fdd68a
 
 !! blue dark/light
-*color4: #5f87af
-*color12: #9391bd
+*color4: #3465A4
+*color12: #729FCF
 
 !! magenta dark/light
-*color5: #d33682
+*color5: #75507B
 *color13: #bd91b3
 
 !! cyan dark/light
@@ -116,5 +128,5 @@ rofi.width:             30
 *color14: #8bb7b3
 
 !! white dark/light
-*color7: #eee8d5
-*color15: #fdf6e3
+*color7: #FDFFFB
+*color15: #fffffd
