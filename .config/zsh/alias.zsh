@@ -30,9 +30,9 @@ alias j="jobs"
 alias open="xdg-open"
 alias o="xdg-open"
 
-# ddev
-alias up="ddev start"
-alias down="ddev stop"
+## ddev
+#alias up="ddev start"
+#alias down="ddev stop"
 
 # Vim shortcuts
 alias vi=vim
@@ -41,10 +41,13 @@ alias :q="exit"
 
 # Docker
 alias dev=docker-compose
-alias red='f(){ dev rm -fsv $@ && dev up -d $@ && dev logs -f $@; unset -f f; }; f'
+alias red='f(){ dev rm -fsv $@ && dev build && dev up -d $@ && dev logs -f $@; unset -f f; }; f'
 alias off='f(){ dev rm -fsv $@; unset -f f; }; f'
 alias on='f(){ dev up -d $@ && dev logs -f $@; unset -f f; }; f'
+alias up=on
+alias down=off
 alias onoff=red
+alias re=red
 alias cf='dev exec php bash -c "/code/bin/typo3cms cache:flush"'
 alias docker-wraith="docker run --rm -P -v \$PWD:/wraithy -w='/wraithy' bbcnews/wraith"
 
