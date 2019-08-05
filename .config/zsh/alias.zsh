@@ -12,11 +12,7 @@ alias .....="cd ../../../.."
 alias -- -="cd -"
 
 # Shortcuts
-alias db="cd ~/Dropbox"
-alias dl="cd ~/Downloads"
-alias c="cd ~/Projects/Clients"
-alias d="cd ~/Desktop"
-alias p="cd ~/Projects"
+alias c=composer
 alias g="git"
 alias ga="git add"
 alias gc="git commit -m"
@@ -24,7 +20,6 @@ alias gca="git commit -a -m"
 alias gd="git diff"
 alias gp="git push"
 alias s="git status"
-alias sa="ssh-add ~/.ssh/id_rsa"
 alias h="history"
 alias j="jobs"
 alias open="xdg-open"
@@ -40,7 +35,10 @@ alias :e="\$EDITOR"
 alias :q="exit"
 
 # Docker
-alias dev=docker-compose
+alias d=docker
+alias dp="docker ps"
+alias dc="docker-compose -f .docker/docker-compose.yml"
+alias dev="docker-compose -f .docker/docker-compose.yml"
 alias red='f(){ dev rm -fsv $@ && dev build && dev up -d $@ && dev logs -f $@; unset -f f; }; f'
 alias off='f(){ dev rm -fsv $@; unset -f f; }; f'
 alias on='f(){ dev up -d $@ && dev logs -f $@; unset -f f; }; f'
