@@ -18,10 +18,10 @@ URxvt.letterSpace:      -1
 ! URxvt.italicFont:       xft:Hack:slant=italic:size=10
 ! URxvt.boldItalicFont:   xft:Hack:weight=bold:slant=italic:size=10
 
-URxvt.font:             xft:DejaVuSansMonoForPowerline Nerd Font:size=10
-URxvt.boldFont:         xft:DejaVuSansMonoForPowerline Nerd Font:weight=bold:size=10
-URxvt.italicFont:       xft:DejaVuSansMonoForPowerline Nerd Font:slant=italic:size=10
-URxvt.boldItalicFont:   xft:DejaVuSansMonoForPowerline Nerd Font:weight=bold:slant=italic:size=10
+URxvt.font:             xft:DejaVuSansMonoForPowerline Nerd Font:size=10,xft:Twitter Color Emoji:size=10
+URxvt.boldFont:         xft:DejaVuSansMonoForPowerline Nerd Font:weight=bold:size=10,xft:Twitter Color Emoji:size=10
+URxvt.italicFont:       xft:DejaVuSansMonoForPowerline Nerd Font:slant=italic:size=10,xft:Twitter Color Emoji:size=10
+URxvt.boldItalicFont:   xft:DejaVuSansMonoForPowerline Nerd Font:weight=bold:slant=italic:size=10,xft:Twitter Color Emoji:size=10
 
 ! URxvt.font: xft:Hack:size=10:antialias=true:hinting=true,xft:Symbola,xft:UbuntuMonoDerivativePowerline Nerd Font
 ! URxvt.boldFont: xft:Hack:style=Bold:size=10:antialias=true:hinting=true,xft:DejaVu Sans Mono:size=12,xft:FontAwesome:size=12
@@ -38,10 +38,10 @@ URxvt.cursorColor:      #af5f00
 URxvt.cursorUnderline:  false
 
 !URxvt.geometry:         166x56
-!URxvt*backgroundPixmap: /home/michiel/dotfiles/Background/dwm-mypattern.png;style=tiled
+!URxvt*backgroundPixmap:  /home/michiel/dotfiles/Background/dwm-mypattern.png;style=tiled
 URxvt*.transparent:      true
-URxvt*.shading:          12
-!URxvt*.blurRadius:       21
+!URxvt*.shading:          25
+!URxvt*.blurRadius:       50
 ! Behavior
 URxvt*scrollTtyOutput:   false
 URxvt*scrollTtyKeypress: true
