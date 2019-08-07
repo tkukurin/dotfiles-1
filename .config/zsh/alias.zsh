@@ -76,8 +76,7 @@ done
 
 # Tmux
 alias tmux="export HOSTNAME=\$(hostname); sshAuthSave; tmux"
-alias t="tmux new-session -A -s work"
-alias tp="tmux new-session -A -s play"
+alias t="tmux new-session -A -s think"
 alias tl="tmux list-sessions"
 
 # Composer

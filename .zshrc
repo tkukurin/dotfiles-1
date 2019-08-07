@@ -12,6 +12,9 @@ e_error()   { echo -e " \033[1;31m✖\033[0m  $@"; }
 # Croptesting
 #source ${ZDOTDIR:-${HOME}}/.config/zsh/frameworks.zsh
 
+# Show path in title
+precmd () {print -Pn "\e]0;${PWD/$HOME/\~}\a"}
+
 # Load zgen only if a user types a zgen command
 zgen () {
 	if [[ ! -s ${ZDOTDIR:-${HOME}}/.zgen/zgen.zsh ]]; then
