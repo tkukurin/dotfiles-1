@@ -39,14 +39,15 @@ alias d=docker
 alias dp="docker ps"
 alias dc="docker-compose -f .docker/docker-compose.yml"
 alias dev="docker-compose -f .docker/docker-compose.yml"
-alias red='f(){ dev rm -fsv $@ && dev build $@ && dev up -d $@ && dev logs -f before_script after_script; unset -f f; }; f'
-alias off='f(){ dev rm -fsv $@; unset -f f; }; f'
-alias on='f(){ dev up -d $@ && dev logs -f before_script after_script; unset -f f; }; f'
-alias up=on
-alias down=off
-alias onoff=red
-alias re=red
-alias cf='dev exec php bash -c "/code/bin/typo3cms cache:flush"'
+alias down='f(){ dev rm -fsv $@; unset -f f; }; f'
+alias up='f(){ dev up -d $@ && dev logs -f before_script after_script; unset -f f; }; f'
+alias on=up
+alias off=down
+alias re='f(){ dev rm -fsv $@ && dev build $@ && dev up -d $@ && dev logs -f before_script after_script; unset -f f; }; f'
+alias offon=re
+alias ds="dev exec php bash -l"
+alias cf='ds -c "./Web/bin/typo3cms cache:flush"'
+alias ct='ds -c "rm -rf ./Web/typo3temp/*"'
 alias docker-wraith="docker run --rm -P -v \$PWD:/wraithy -w='/wraithy' bbcnews/wraith"
 
 alias l="ls -A -F"
