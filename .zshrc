@@ -4,7 +4,7 @@ umask g-w,o-rwx
 # If command is a path, cd into it
 setopt auto_cd
 
-# Colourfull messages
+# Colorful messages
 e_header()  { echo -e "\n\033[1m$@\033[0m"; }
 e_success() { echo -e " \033[1;32m✔\033[0m  $@"; }
 e_error()   { echo -e " \033[1;31m✖\033[0m  $@"; }

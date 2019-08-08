@@ -25,23 +25,23 @@ Plug 'edkolev/tmuxline.vim', { 'on': [ 'Tmuxline', 'TmuxlineSimpe' ] }
 Plug 'edkolev/promptline.vim', { 'on': 'PromptlineSnapshot' }
 
 " Fuzzy file, buffer, mru, tag, etc finder
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 
 " A tree explorer plugin for vim.
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'scrooloose/nerdtree'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Git
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " Syntax checking
-Plug 'scrooloose/syntastic'
-Plug 'mtscout6/syntastic-local-eslint.vim'
-Plug 'chr4/sslsecure.vim'
+" Plug 'scrooloose/syntastic'
+" Plug 'mtscout6/syntastic-local-eslint.vim'
+" Plug 'chr4/sslsecure.vim'
 
 " Completions
-Plug 'marijnh/tern_for_vim'
+" Plug 'marijnh/tern_for_vim'
 " Plug 'Valloric/YouCompleteMe'
 
 " Show trailing whitespace in red background
@@ -51,23 +51,23 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'elzr/vim-json'
 
 " Haskell
-Plug 'dag/vim2hs'
-Plug 'lukerandall/haskellmode-vim'
+" Plug 'dag/vim2hs'
+" Plug 'lukerandall/haskellmode-vim'
 
 " Snippets
-Plug 'honza/vim-snippets'
+" Plug 'honza/vim-snippets'
 
 " JavaScript
-Plug 'othree/yajs.vim'
-Plug 'othree/es.next.syntax.vim'
+" Plug 'othree/yajs.vim'
+" Plug 'othree/es.next.syntax.vim'
 
 " File type support
-Plug 'rodjek/vim-puppet'
+"Plug 'rodjek/vim-puppet'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'rstacruz/sparkup'
 
 " Naviation
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
 
 " Colors
 Plug 'ap/vim-css-color'
@@ -76,9 +76,9 @@ Plug 'altercation/vim-colors-solarized'
 " And the rest
 Plug 'wincent/command-t'
 Plug 'tomtom/tcomment_vim'
-Plug 'raimondi/delimitmate'
+" Plug 'raimondi/delimitmate'
 Plug 'ervandew/supertab'
-Plug 'majutsushi/tagbar'
+" Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-eunuch'
 
 call plug#end()
@@ -111,7 +111,7 @@ set magic              " Use some magic in search patterns
 set matchtime=2        " Show the match for n tenths of a second
 set noerrorbells       " Damn error bells!
 set noexpandtab
-set number relativenumber     " Show relative line numbers
+set number relativenumber " Show line numbers
 set copyindent
 set nostartofline      " Don't jump to start of line on pagedown
 set nrformats+=alpha   " Allows CTRL-A and CTRL-X to increment/decrement letters
@@ -382,15 +382,15 @@ let g:haddock_browser="/usr/bin/env lynx"
 " https://github.com/scrooloose/nerdtree
 autocmd StdinReadPre * let s:std_in=1
 " Show tree if no file was given
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Show tree if a dir was given
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+"autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 " Close vim if NERDTree is the last open buffer
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-map <leader>nt :NERDTreeToggle<cr>
-nmap <leader>t :NERDTreeToggle<CR>
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeWinPos = 'right'
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"map <leader>nt :NERDTreeToggle<cr>
+"nmap <leader>t :NERDTreeToggle<CR>
+"let g:NERDTreeShowHidden = 1
+"let g:NERDTreeWinPos = 'right'
 
 " Sparkup
 let g:sparkupNextMapping = '<c-n>'
@@ -408,9 +408,9 @@ noremap <leader>cc :TComment<cr>
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
 " Tagbar
-let g:tagbar_autofocus = 1
-let g:tagbar_usearrows = 1
-au BufWinEnter *.js TagbarOpenAutoClose
-au BufWinEnter *.php TagbarOpenAutoClose
-map <leader>tb :TagbarToggle<cr>
+" let g:tagbar_autofocus = 1
+" let g:tagbar_usearrows = 1
+" au BufWinEnter *.js TagbarOpenAutoClose
+" au BufWinEnter *.php TagbarOpenAutoClose
+" map <leader>tb :TagbarToggle<cr>
 
