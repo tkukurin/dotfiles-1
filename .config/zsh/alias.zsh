@@ -45,7 +45,7 @@ alias on=up
 alias off=down
 alias re='f(){ dev rm -fsv $@ && dev build $@ && dev up -d $@ && dev logs -f before_script after_script; unset -f f; }; f'
 alias offon=re
-alias ds="dev exec php bash -l"
+alias ds="dev exec php zsh -l"
 alias cf='e_header "Running typo3cms cache:flush"; ds -c "./Web/bin/typo3cms cache:flush"; e_success Done'
 alias ct='e_header "Clearing ./Web/typo3temp/*"; ds -c "echo removing \`find ./Web/typo3temp/ -type f | wc -l\` files; rm -rf ./Web/typo3temp/*"; e_success Done'
 alias docker-wraith="docker run --rm -P -v \$PWD:/wraithy -w='/wraithy' bbcnews/wraith"
