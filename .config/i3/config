@@ -128,7 +128,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # Vertical split
-bindsym $mod+v vsplit
+#bindsym $mod+v vsplit
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle

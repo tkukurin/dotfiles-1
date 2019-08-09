@@ -74,12 +74,8 @@ Xft.hintstyle:  hintfull
 Xft.lcdfilter:  lcddefault
 
 !! Extensions
-URxvt.perl-ext-common: default,matcher,url-select,keyboard-select,font-size
+URxvt.perl-ext-common: default,matcher,keyboard-select,font-size
 URxvt.colorUL:         #4682B4
-!! url-select
-URxvt.keysym.M-u:      perl:url-select:select_next
-URxvt.url-select.launcher: chromium
-URxvt.url-select.underline: true
 !! keyboard-select:
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 !! Matcher
