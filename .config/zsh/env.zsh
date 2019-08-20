@@ -26,6 +26,7 @@ export MAKEFLAGS="-j$(nproc)"
 export COLORTERM=truecolor
 
 export GOPATH=${HOME}/Projects/Go
+export GOBIN=${GOPATH}/bin
 
 if [[ -e /usr/libexec/java_home ]]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
@@ -46,7 +47,7 @@ if (( $+commands[luarocks] )); then
 fi
 
 path=(\
-    ${GOPATH}/bin \
+    ${GOBIN} \
     ${HOME}/.gem/ruby/2.5.0/bin \
     ${HOME}/bin \
     ${HOME}/.composer/vendor/bin \
