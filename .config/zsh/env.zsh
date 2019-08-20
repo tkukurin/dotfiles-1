@@ -35,16 +35,17 @@ fi
 # Set GPG TTY
 export GPG_TTY=$(tty)
 
-# Ruby version manager
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-
-# Node version manager
-export NVM_DIR="$HOME/.nvm"
-[[ -s "$NVM_DIR/nvm.sh" ]] && . "$NVM_DIR/nvm.sh"
-
-if (( $+commands[luarocks] )); then
-    eval `luarocks path --bin`
-fi
+# Disabled because of slowness
+# # Ruby version manager
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+#
+# # Node version manager
+# export NVM_DIR="$HOME/.nvm"
+# [[ -s "$NVM_DIR/nvm.sh" ]] && . "$NVM_DIR/nvm.sh"
+#
+# if (( $+commands[luarocks] )); then
+#     eval `luarocks path --bin`
+# fi
 
 path=(\
     ${GOBIN} \
