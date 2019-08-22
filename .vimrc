@@ -27,13 +27,12 @@ Plug 'edkolev/promptline.vim', { 'on': 'PromptlineSnapshot' }
 " Fuzzy file, buffer, mru, tag, etc finder
 " Plug 'ctrlpvim/ctrlp.vim'
 
-" A tree explorer plugin for vim.
-" Plug 'scrooloose/nerdtree'
-" Plug 'Xuyuanp/nerdtree-git-plugin'
-
 " Git
 " Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+
+" Go
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Syntax checking
 " Plug 'scrooloose/syntastic'
@@ -62,7 +61,7 @@ Plug 'elzr/vim-json'
 " Plug 'othree/es.next.syntax.vim'
 
 " File type support
-"Plug 'rodjek/vim-puppet'
+" Plug 'rodjek/vim-puppet'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'rstacruz/sparkup'
 
@@ -76,9 +75,7 @@ Plug 'altercation/vim-colors-solarized'
 " And the rest
 Plug 'wincent/command-t'
 Plug 'tomtom/tcomment_vim'
-" Plug 'raimondi/delimitmate'
 Plug 'ervandew/supertab'
-" Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-eunuch'
 
 call plug#end()
@@ -87,6 +84,7 @@ call plug#end()
 filetype on
 filetype plugin on
 filetype indent on
+
 silent execute '!mkdir -p ~/.vim/backup'
 set backupdir=~/.vim/backup/
 set backupskip=/tmp/*,/private/tmp/*
@@ -379,8 +377,17 @@ let g:ctrlp_custom_ignore = {
 let g:haddock_browser="/usr/bin/env lynx"
 
 " NERDTree
-" https://github.com/scrooloose/nerdtree
-autocmd StdinReadPre * let s:std_in=1
+" let g:netrw_banner = 0
+" let g:netrw_liststyle = 3
+" let g:netrw_browse_split = 4
+" let g:netrw_altv = 1
+" let g:netrw_winsize = 25
+" augroup ProjectDrawer
+" 	autocmd!
+" 	autocmd VimEnter * :Vexplore
+" augroup END
+
+"autocmd StdinReadPre * let s:std_in=1
 " Show tree if no file was given
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Show tree if a dir was given

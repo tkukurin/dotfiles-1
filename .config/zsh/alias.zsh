@@ -50,6 +50,7 @@ alias dcf='e_header "Running typo3cms cache:flush"; ds -c "./Web/bin/typo3cms ca
 alias dct='e_header "Clearing ./Web/typo3temp/*"; ds -c "echo removing \`find ./Web/typo3temp/ -type f | wc -l\` files; rm -rf ./Web/typo3temp/*"; e_success Done'
 alias dei='e_header "Enabling install tool"; ds -c "touch ./Web/typo3conf/ENABLE_INSTALL_TOOL"; e_success Done'
 alias docker-wraith="docker run --rm -P -v \$PWD:/wraithy -w='/wraithy' bbcnews/wraith"
+alias lzd=lazydocker
 
 alias l="ls -A -F"
 alias ll="ls -h -l "
