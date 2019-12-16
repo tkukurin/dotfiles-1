@@ -79,7 +79,7 @@ URxvt.colorUL:         #4682B4
 !! keyboard-select:
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 !! Matcher
-URxvt.url-launcher:   chromium
+URxvt.url-launcher:   firefox
 URxvt.matcher.button: 1
 
 rofi.color-enabled: true
