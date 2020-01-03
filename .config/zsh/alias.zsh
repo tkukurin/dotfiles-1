@@ -79,7 +79,7 @@ done
 
 # Tmux
 alias tmux="export HOSTNAME=\$(hostname); sshAuthSave; tmux"
-alias t="tmux new-session -A -s think"
+alias t="tmux"
 alias tl="tmux list-sessions"
 
 # Composer
