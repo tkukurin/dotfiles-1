@@ -58,5 +58,6 @@ path=(\
     ${HOME}/.rvm/bin \
     ./bin \
     $path\
+    /opt/atlassian/plugin-sdk/bin \
     )
 export PATH
