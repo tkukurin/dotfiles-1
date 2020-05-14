@@ -37,9 +37,7 @@ Plug 'rstacruz/sparkup'
 Plug 'ap/vim-css-color'
 
 " And the rest
-Plug 'wincent/command-t'
 Plug 'tomtom/tcomment_vim'
-Plug 'ervandew/supertab'
 Plug 'tpope/vim-eunuch'
 
 call plug#end()
@@ -340,29 +338,6 @@ let g:ctrlp_custom_ignore = {
 " Haskell
 let g:haddock_browser="/usr/bin/env lynx"
 
-" NERDTree
-" let g:netrw_banner = 0
-" let g:netrw_liststyle = 3
-" let g:netrw_browse_split = 4
-" let g:netrw_altv = 1
-" let g:netrw_winsize = 25
-" augroup ProjectDrawer
-" 	autocmd!
-" 	autocmd VimEnter * :Vexplore
-" augroup END
-
-"autocmd StdinReadPre * let s:std_in=1
-" Show tree if no file was given
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" Show tree if a dir was given
-"autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-" Close vim if NERDTree is the last open buffer
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-"map <leader>nt :NERDTreeToggle<cr>
-"nmap <leader>t :NERDTreeToggle<CR>
-"let g:NERDTreeShowHidden = 1
-"let g:NERDTreeWinPos = 'right'
-
 " Sparkup
 let g:sparkupNextMapping = '<c-n>'
 let g:sparkupExecuteMapping = '<c-e>'
@@ -374,13 +349,3 @@ noremap <leader>cty :CommandTFlush<cr>
 
 " TComment
 noremap <leader>cc :TComment<cr>
-
-" Supertab
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-
-" Tagbar
-" let g:tagbar_autofocus = 1
-" let g:tagbar_usearrows = 1
-" au BufWinEnter *.js TagbarOpenAutoClose
-" au BufWinEnter *.php TagbarOpenAutoClose
-" map <leader>tb :TagbarToggle<cr>
