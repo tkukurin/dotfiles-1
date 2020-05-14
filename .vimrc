@@ -24,53 +24,17 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim', { 'on': [ 'Tmuxline', 'TmuxlineSimpe' ] }
 Plug 'edkolev/promptline.vim', { 'on': 'PromptlineSnapshot' }
 
-" Fuzzy file, buffer, mru, tag, etc finder
-" Plug 'ctrlpvim/ctrlp.vim'
-
 " Git
-" Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-
-" Go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
-" Syntax checking
-" Plug 'scrooloose/syntastic'
-" Plug 'mtscout6/syntastic-local-eslint.vim'
-" Plug 'chr4/sslsecure.vim'
-
-" Completions
-" Plug 'marijnh/tern_for_vim'
-" Plug 'Valloric/YouCompleteMe'
 
 " Show trailing whitespace in red background
 Plug 'bronson/vim-trailing-whitespace'
 
-" JSON
-Plug 'elzr/vim-json'
-
-" Haskell
-" Plug 'dag/vim2hs'
-" Plug 'lukerandall/haskellmode-vim'
-
-" Snippets
-" Plug 'honza/vim-snippets'
-
-" JavaScript
-" Plug 'othree/yajs.vim'
-" Plug 'othree/es.next.syntax.vim'
-
 " File type support
-" Plug 'rodjek/vim-puppet'
-Plug 'tmux-plugins/vim-tmux'
 Plug 'rstacruz/sparkup'
-
-" Naviation
-" Plug 'easymotion/vim-easymotion'
 
 " Colors
 Plug 'ap/vim-css-color'
-Plug 'altercation/vim-colors-solarized'
 
 " And the rest
 Plug 'wincent/command-t'
@@ -217,7 +181,7 @@ nmap <F2> :w<C-M>
 nmap <F10> :qall<C-M>
 
 " Use system-wide clipboard
-set clipboard+=unnamedplus
+set clipboard^=unnamed,unnamedplus
 
 " Copy to clipboard
 map <leader>c :!xclip -f -sel clip<cr>
@@ -420,4 +384,3 @@ let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 " au BufWinEnter *.js TagbarOpenAutoClose
 " au BufWinEnter *.php TagbarOpenAutoClose
 " map <leader>tb :TagbarToggle<cr>
-
