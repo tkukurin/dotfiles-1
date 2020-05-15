@@ -4,6 +4,8 @@ SAVEHIST=3000
 # Share history between tmux windows
 setopt SHARE_HISTORY
 
+export KUBECONFIG=${HOME}/.config/kube/config
+
 export TERMINAL='urxvt'
 
 export GREP_COLOR='38;5;202'
