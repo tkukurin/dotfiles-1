@@ -18,10 +18,10 @@ URxvt.letterSpace:      -1
 ! URxvt.italicFont:       xft:Hack:slant=italic:size=10
 ! URxvt.boldItalicFont:   xft:Hack:weight=bold:slant=italic:size=10
 
-URxvt.font:             xft:DejaVuSansMonoForPowerline Nerd Font:size=10,xft:Twitter Color Emoji:size=10
-URxvt.boldFont:         xft:DejaVuSansMonoForPowerline Nerd Font:weight=bold:size=10,xft:Twitter Color Emoji:size=10
-URxvt.italicFont:       xft:DejaVuSansMonoForPowerline Nerd Font:slant=italic:size=10,xft:Twitter Color Emoji:size=10
-URxvt.boldItalicFont:   xft:DejaVuSansMonoForPowerline Nerd Font:weight=bold:slant=italic:size=10,xft:Twitter Color Emoji:size=10
+URxvt.font:             xft:Hack:size=10,xft:DejaVuSansMonoForPowerline Nerd Font:size=10,xft:Twitter Color Emoji:size=10
+URxvt.boldFont:         xft:Hack:weight=bold:size=10,xft:DejaVuSansMonoForPowerline Nerd Font:weight=bold:size=10,xft:Twitter Color Emoji:size=10
+URxvt.italicFont:       xft:Hack:slant=italic:size=10,xft:DejaVuSansMonoForPowerline Nerd Font:slant=italic:size=10,xft:Twitter Color Emoji:size=10
+URxvt.boldItalicFont:   xft:Hack:weight=bold:slant=italic:size=10,xft:DejaVuSansMonoForPowerline Nerd Font:weight=bold:slant=italic:size=10,xft:Twitter Color Emoji:size=10
 
 ! URxvt.font: xft:Hack:size=10:antialias=true:hinting=true,xft:Symbola,xft:UbuntuMonoDerivativePowerline Nerd Font
 ! URxvt.boldFont: xft:Hack:style=Bold:size=10:antialias=true:hinting=true,xft:DejaVu Sans Mono:size=12,xft:FontAwesome:size=12
