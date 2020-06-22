@@ -17,15 +17,17 @@ bindkey '^h' backward-delete-char
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
-bindkey "${terminfo[kcuu1]}" history-beginning-search-backward-end
-bindkey "${terminfo[kcud1]}" history-beginning-search-forward-end
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[B" history-beginning-search-forward-end
+bindkey '^p' history-substring-search-up
+bindkey '^n' history-substring-search-down
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 bindkey '^k' kill-line
 bindkey "^f" forward-word
 bindkey "^b" backward-word
-bindkey "${terminfo[khome]}" beginning-of-line # Fn-Left, Home
-bindkey "${terminfo[kend]}" end-of-line # Fn-Right, End
+bindkey "${terminfo[khome]}" beginning-of-line
+bindkey "${terminfo[kend]}" end-of-line
 bindkey "${terminfo[kbs]}" backward-kill-dir
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
