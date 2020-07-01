@@ -36,6 +36,7 @@ alias :q="exit"
 
 # Docker
 alias d=docker
+alias dbd="./.docker/bin/dump.sh"
 alias dp="docker ps"
 alias dc="docker-compose -f .docker/docker-compose.yml"
 alias dev="docker-compose -f .docker/docker-compose.yml"
