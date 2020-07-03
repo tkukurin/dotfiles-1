@@ -1,3 +1,5 @@
+!! Reload with: xrdb ~/.Xdefaults
+
 *foreground:      #c0c0c0
 *foreground_bold: #a8a19f
 *cursor:          #a8a19f
@@ -11,7 +13,7 @@ URxvt.internalBorder:   2
 URxvt.lineSpace:        0
 URxvt.letterSpace:      -1
 
-! Appearance
+!! Appearance
 ! fc-list
 ! URxvt.font:             xft:Hack:size=10
 ! URxvt.boldFont:         xft:Hack:weight=bold:size=10
@@ -42,7 +44,8 @@ URxvt.cursorUnderline:  false
 URxvt*.transparent:      true
 !URxvt*.shading:          25
 !URxvt*.blurRadius:       50
-! Behavior
+
+!! Behavior
 URxvt*scrollTtyOutput:   false
 URxvt*scrollTtyKeypress: true
 
@@ -51,6 +54,7 @@ URxvt.keysym.C-Up:       perl:font-size:increase
 URxvt.keysym.C-Down:     perl:font-size:decrease
 URxvt.keysym.C-S-Up:     perl:font-size:incglobal
 URxvt.keysym.C-S-Down:   perl:font-size:decglobal
+
 !Home and End keys to jump to the beginning and end of lines
 URxvt*keysym.Home:       \033[1~
 URxvt*keysym.End:        \033[4~
@@ -59,12 +63,17 @@ URxvt*keysym.End:        \033[4~
 URxvt.iso14755:          false
 URxvt.iso14755_52:       false
 
-! Misc
-! delimiters for double-click selection
+!! Common Keybinds for Navigations
+!! https://addy-dclxvi.github.io/post/configuring-urxvt/
+URxvt.keysym.Shift-Up: command:\033]720;1\007
+URxvt.keysym.Shift-Down: command:\033]721;1\007
+
+!! Misc
+!! delimiters for double-click selection
 URxvt*cutchars:          BACKSLASH '"'&()*,;<=>?@[]^{|}
 URxvt*urgentOnBell:      true
 
-! Xft settings
+!! Xft settings
 Xft.autohint:   0
 Xft.dpi:        96
 Xft.antialias:  true
@@ -74,13 +83,21 @@ Xft.hintstyle:  hintfull
 Xft.lcdfilter:  lcddefault
 
 !! Extensions
-URxvt.perl-ext-common: default,matcher,keyboard-select,font-size
+URxvt.perl-ext-common: default,clipboard,matcher,keyboard-select,font-size
 URxvt.colorUL:         #4682B4
-!! keyboard-select:
-URxvt.keysym.M-Escape: perl:keyboard-select:activate
 !! Matcher
 URxvt.url-launcher:   firefox
 URxvt.matcher.button: 1
+
+!! Clipboard
+URxvt.copyCommand: xclip -i -selection clipboard
+URxvt.pasteCommand: xclip -o -selection clipboard
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+URxvt.keysym.M-s: perl:keyboard-select:search
+URxvt.keysym.M-u: perl:url-select:select_next
 
 rofi.color-enabled: true
 rofi.color-window:  #000, #000, #000
