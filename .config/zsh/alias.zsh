@@ -67,13 +67,6 @@ alias know="vim ${HOME}/.ssh/known_hosts"
 alias mc="mc --nosubshell"
 alias reload!=". ${HOME}/.zshrc"
 alias takeover="tmux detach -a"
-alias vd="vagrant destroy"
-alias vu="vagrant up"
-alias vh="vagrant halt"
-alias vp="vagrant provision"
-alias vr="vagrant reload"
-alias vs="vagrant ssh"
-alias vbu="vagrant box update"
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 	alias "$method"="lwp-request -m '$method'"
 done
