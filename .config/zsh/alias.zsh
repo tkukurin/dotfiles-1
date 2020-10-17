@@ -5,7 +5,11 @@ else
 fi
 
 # Kitty
-alias icat="kitty +kitten icat"
+# https://gist.github.com/katef/fb4cb6d47decd8052bd0e8d88c03a102
+# https://twitter.com/thingskatedid/status/1316074032379248640
+alias icat="kitty +kitten icat --align left"
+alias isvg="rsvg-convert | icat"
+alias kd="kitty +kitten diff"
 
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
