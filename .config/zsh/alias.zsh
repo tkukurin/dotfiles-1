@@ -4,6 +4,9 @@ else
 	alias ls='/bin/ls --color=auto'
 fi
 
+# Kitty
+alias icat="kitty +kitten icat"
+
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
@@ -25,14 +28,8 @@ alias j="jobs"
 alias open="xdg-open"
 alias o="xdg-open"
 
-## ddev
-#alias up="ddev start"
-#alias down="ddev stop"
-
 # Vim shortcuts
 alias vi=vim
-alias :e="\$EDITOR"
-alias :q="exit"
 
 # Docker
 alias d=docker
@@ -45,7 +42,6 @@ alias up='f(){ dev up -d $@ && dev logs -f before_script after_script; unset -f 
 alias on=up
 alias off=down
 alias re='f(){ dev rm -fsv $@ && dev up -d $@ && dev logs -f before_script after_script; unset -f f; }; f'
-alias offon=re
 alias ds="dev exec php zsh -l"
 alias dcf='e_header "Running typo3cms cache:flush"; ds -c "./Web/bin/typo3cms cache:flush"; e_success Done'
 alias dct='e_header "Clearing ./Web/typo3temp/*"; ds -c "echo removing \`find ./Web/typo3temp/ -type f | wc -l\` files; rm -rf ./Web/typo3temp/*"; e_success Done'
@@ -74,9 +70,3 @@ done
 # Tmux
 alias tmux="export HOSTNAME=\$(hostname); sshAuthSave; tmux"
 alias t="tmux"
-alias tl="tmux list-sessions"
-
-# Composer
-alias composer5="docker run --rm -v \$(pwd):/app --volume ~/.ssh/known_hosts:/etc/ssh/ssh_known_hosts composer/composer:php5"
-alias composer7="docker run --rm -v \$(pwd):/app -v \$(dirname $SSH_AUTH_SOCK):\$(dirname $SSH_AUTH_SOCK) -e SSH_AUTH_SOCK=\$SSH_AUTH_SOCK --volume ~/.ssh/known_hosts:/etc/ssh/ssh_known_hosts composer/composer:php7"
-alias ch70="COMPOSER_HOME=~/Projects/composer-config/php-7.0/"
