@@ -1,24 +1,24 @@
 # Set colors
 red_000 = "#F9B7B0"
-red_025 = "#cb4b16"
+red_025 = "#33cb4b16"
 red_050 = "#E62B17"
 red_075 = "#8F463F"
 red_100 = "#6D0D03"
 
 blue_000 = "#A9BDE6"
-blue_025 = "#729fcf"
+blue_025 = "#33729fcf"
 blue_050 = "#1D4599"
 blue_075 = "#2F3F60"
 blue_100 = "#031A49"
 
 green_000 = "#A6EBB5"
-green_025 = "#3eb53e"
+green_025 = "#333eb53e"
 green_050 = "#11AD34"
 green_075 = "#2F6C3D"
 green_100 = "#025214"
 
 brown_000 = "#F9E0B0"
-brown_025 = "#ffaf5f"
+brown_025 = "#33ffaf5f"
 brown_050 = "#E69F17"
 brown_075 = "#8F743F"
 brown_100 = "#6D4903"
@@ -27,14 +27,14 @@ grid_color = "#5c5c5c"
 text_color = "#2e3436"
 
 # Set the font
-my_font = "FreeSans, 15"
+my_font = "Cantarell, 15"
 
 # Some variables
 my_line_width = 3
 my_axis_width = 2
 my_ps = 1
-resolution_x = 1280
-resolution_y = 1024
+resolution_x = 1024
+resolution_y = 768
 my_grid_width = 1
 
 # define the font for the terminal
