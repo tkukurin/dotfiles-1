@@ -20,9 +20,10 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias -- -="cd -"
+alias c="cd ~/Clients"
+alias p="cd ~/Projects"
 
 # Shortcuts
-alias c=composer
 alias g="git"
 alias ga="git add"
 alias gc="git commit -m"
@@ -55,6 +56,7 @@ alias dct='e_header "Clearing ./Web/typo3temp/*"; ds -c "echo removing \`find ./
 alias dei='e_header "Enabling install tool"; ds -c "touch ./Web/typo3conf/ENABLE_INSTALL_TOOL"; e_success Done'
 alias docker-wraith="docker run --rm -P -v \$PWD:/wraithy -w='/wraithy' bbcnews/wraith"
 alias lzd='lazydocker -f ./.docker/docker-compose.yml'
+alias resolve="pushd $HOME/Applications/resolvable && docker-compose restart && popd"
 
 alias l="ls -A -F"
 alias ll="ls -h -l "

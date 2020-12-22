@@ -51,6 +51,7 @@ export GPG_TTY=$(tty)
 
 path=(\
     ${GOBIN} \
+    ${HOME}/.cargo/bin \
     ${HOME}/.gem/ruby/2.5.0/bin \
     ${HOME}/bin \
     ${HOME}/.composer/vendor/bin \
