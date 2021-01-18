@@ -28,6 +28,5 @@ bindkey "^f" forward-word
 bindkey "^b" backward-word
 bindkey "${terminfo[khome]}" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
-bindkey "${terminfo[kbs]}" backward-kill-dir
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
