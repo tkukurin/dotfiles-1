@@ -5,7 +5,6 @@ zstyle ':completion:*' cache-path ${ZDOTDIR:-${HOME}}/.config/zsh/cache         
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
-eval "$(dircolors -b)"
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'

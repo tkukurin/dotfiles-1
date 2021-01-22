@@ -10,6 +10,8 @@
 #exec 3>&2 2>/tmp/zshstart.$$.log
 #setopt xtrace prompt_subst
 
+# Checkout https://github.com/marlonrichert/zsh-snap
+
 FRAMEWORK="zplugin"   # 0.14
 FRAMEWORK="oh-my-zsh" # 0.37
 FRAMEWORK="zpm"       # 0.30
