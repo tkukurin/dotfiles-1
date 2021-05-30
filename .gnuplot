@@ -23,15 +23,18 @@ brown_050 = "#E69F17"
 brown_075 = "#8F743F"
 brown_100 = "#6D4903"
 
-grid_color = "#5c5c5c"
-text_color = "#2e3436"
+grid_color = "#333333"
+text_color = "#585844"
 
 # Set the font
-my_font = "Cantarell, 15"
+my_font = "Fira Sans Book, 13"
+#my_font = "Comic Neue, 13"
+#my_font = "Ubuntu, 13"
+my_font_title = "Ubuntu, 13"
 
 # Some variables
 my_line_width = 3
-my_axis_width = 2
+my_axis_width = 1
 my_ps = 1
 resolution_x = 1024
 resolution_y = 768
@@ -73,16 +76,20 @@ set style increment user
 # set the color and font of the text of the axis
 set xtics textcolor rgb text_color font my_font
 set ytics textcolor rgb text_color font my_font
+set y2tics textcolor rgb text_color font my_font
 set ztics textcolor rgb text_color font my_font
 
 # set the color and font (and a default text) for the title and each axis
-set title "Top Title" textcolor rgb text_color font my_font
+set title "Top Title" textcolor rgb text_color font my_font_title
 set xlabel "X Label (unit)" textcolor rgb text_color font my_font
 set ylabel "Y Label (unit)" textcolor rgb text_color font my_font
+set y2label "Y Label (unit)" textcolor rgb text_color font my_font
 set zlabel "Z Label (unit)" textcolor rgb text_color font my_font
 
 # set the text color and font for the label
 # set label textcolor rgb text_color font my_font
+
+set key textcolor rgb text_color font my_font
 
 # set the color and width of the axis border
 # set border 31 lw my_axis_width lc rgb text_color
