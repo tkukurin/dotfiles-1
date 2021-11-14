@@ -32,7 +32,6 @@ alias gd="git diff"
 alias gp="git push"
 alias s="git status"
 alias h="history"
-alias j="jobs"
 alias open="xdg-open"
 alias o="xdg-open"
 
