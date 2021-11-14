@@ -18,10 +18,17 @@ if [ $now -ge $sunrise ] && [ $now -lt $sunset ]; then
 	mode=light
 fi
 
+if [ "$1" != "" ]
+  then
+    mode=$1
+fi
+
 if [ $mode == "light" ]; then
 	kitty @ --to unix:@kitty-`pidof kitty` set-colors -a background=\#fdf6e3 foreground=\#586e75
 	kitty @ --to unix:@kitty-`pidof kitty` set-background-image ~/Pictures/Backgrounds/termBg.day.png
+	gsettings set org.gnome.desktop.interface gtk-theme Adwaita
 else
 	kitty @ --to unix:@kitty-`pidof kitty` set-colors -a background=\#000000 foreground=\#c0c0c0
 	kitty @ --to unix:@kitty-`pidof kitty` set-background-image ~/Pictures/Backgrounds/termBg.png
+	gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark
 fi

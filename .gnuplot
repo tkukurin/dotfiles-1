@@ -6,13 +6,13 @@ red_075 = "#8F463F"
 red_100 = "#6D0D03"
 
 blue_000 = "#A9BDE6"
-blue_025 = "#33729fcf"
+blue_025 = "#0d73cc"
 blue_050 = "#1D4599"
 blue_075 = "#2F3F60"
 blue_100 = "#031A49"
 
 green_000 = "#A6EBB5"
-green_025 = "#333eb53e"
+green_025 = "#3eb53e"
 green_050 = "#11AD34"
 green_075 = "#2F6C3D"
 green_100 = "#025214"
@@ -24,7 +24,8 @@ brown_075 = "#8F743F"
 brown_100 = "#6D4903"
 
 grid_color = "#333333"
-text_color = "#585844"
+text_color = "#586e75"
+#text_color = "#c0c0c0"
 
 # Set the font
 my_font = "Fira Sans Book, 13"
@@ -33,7 +34,7 @@ my_font = "Fira Sans Book, 13"
 my_font_title = "Ubuntu, 13"
 
 # Some variables
-my_line_width = 3
+my_line_width = 2
 my_axis_width = 1
 my_ps = 1
 resolution_x = 1024
@@ -49,6 +50,7 @@ set key top left
 # set default point size
 set pointsize my_ps
 
+# FIXME use palette? http://www.gnuplotting.org/tag/linestyle/
 # Set the line styles
 set style line 1 linecolor rgbcolor blue_025 linewidth my_line_width pt 7
 set style line 2 linecolor rgbcolor green_025 linewidth my_line_width pt 5
@@ -87,12 +89,12 @@ set y2label "Y Label (unit)" textcolor rgb text_color font my_font
 set zlabel "Z Label (unit)" textcolor rgb text_color font my_font
 
 # set the text color and font for the label
-# set label textcolor rgb text_color font my_font
+set label textcolor rgb text_color font my_font
 
 set key textcolor rgb text_color font my_font
 
 # set the color and width of the axis border
-# set border 31 lw my_axis_width lc rgb text_color
+set border 31 lw my_axis_width lc rgb text_color
 
 # Set the border color
 set border 3 back ls 18

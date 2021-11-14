@@ -40,6 +40,15 @@ fi
 # Set GPG TTY
 export GPG_TTY=$(tty)
 
+# nnn file manager
+export NNN_FIFO="/tmp/nnn.fifo nnn"
+export NNN_PLUG="p:preview-tui;w:wallpaper;i:imgview;d:diffs"
+export NNN_OPENER="xdg-open"
+export NNN_OPENER_DETACH=1
+#export NNN_COLORS="453"
+#export NNN_FCOLORS="0B0B04060006060009060B06"
+export NNN_BMS='h:~;i:~/Pictures;d:~/Downloads;p:~/Projects;c:~/Projects/Clients'
+
 # Disabled because of slowness
 # # Ruby version manager
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
