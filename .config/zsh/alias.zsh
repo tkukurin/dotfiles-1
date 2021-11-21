@@ -1,7 +1,7 @@
 if [ `uname` = Darwin ]; then
 	alias ls='/usr/local/bin/gls --color=auto'
 else
-	alias ls='/bin/ls --color=auto'
+	alias ls='exa'
 fi
 
 # Argh
@@ -32,11 +32,13 @@ alias gd="git diff"
 alias gp="git push"
 alias s="git status"
 alias h="history"
+alias n="nnn -Pp"
 alias open="xdg-open"
 alias o="xdg-open"
 
 # Vim shortcuts
 alias vi=vim
+alias v=vim
 
 # Docker
 alias d=docker
@@ -58,7 +60,7 @@ alias docker-wraith="docker run --rm -P -v \$PWD:/wraithy -w='/wraithy' bbcnews/
 alias lzd='lazydocker -f ./.docker/docker-compose.yml'
 alias resolve="pushd $HOME/Applications/resolvable && docker-compose restart && popd"
 
-alias l="ls -A -F"
+alias l="ls -F"
 alias ll="ls -h -l "
 alias la="ls -a"
 # List only directories and symbolic links that point to directories

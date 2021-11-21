@@ -6,7 +6,9 @@ setopt SHARE_HISTORY
 
 export KUBECONFIG=${HOME}/.config/kube/config
 
-export TERMINAL='urxvt'
+export TERMINAL=kitty
+
+export PAGER=most
 
 export GREP_COLOR='38;5;202'
 
@@ -45,9 +47,13 @@ export NNN_FIFO="/tmp/nnn.fifo nnn"
 export NNN_PLUG="p:preview-tui;w:wall;j:autojump;i:imgview;d:diffs"
 export NNN_OPENER="xdg-open"
 export NNN_OPENER_DETACH=1
-#export NNN_COLORS="453"
-#export NNN_FCOLORS="0B0B04060006060009060B06"
+export NNN_COLORS="4321"
+export NNN_FCOLORS="c1e2431c006025f7a2d6aba0"
+export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
 export NNN_BMS='h:~;i:~/Pictures;d:~/Downloads;p:~/Projects;c:~/Projects/Clients'
+export ICONLOOKUP=1
+export USE_PISTOL=1
+export PISTOL_DEBUG=0
 
 # load autojump
 . /usr/share/autojump/autojump.zsh
