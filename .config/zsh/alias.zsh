@@ -14,6 +14,9 @@ alias icat="kitty +kitten icat --align left"
 alias isvg="rsvg-convert | icat"
 alias kd="kitty +kitten diff"
 
+# nnn iconlookup likes gawk (GNU awk)
+alias awk=gawk
+
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."

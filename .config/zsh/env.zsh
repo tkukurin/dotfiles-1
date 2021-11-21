@@ -8,7 +8,7 @@ export KUBECONFIG=${HOME}/.config/kube/config
 
 export TERMINAL=kitty
 
-export PAGER=most
+export PAGER=less
 
 export GREP_COLOR='38;5;202'
 
@@ -52,7 +52,7 @@ export NNN_FCOLORS="c1e2431c006025f7a2d6aba0"
 export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
 export NNN_BMS='h:~;i:~/Pictures;d:~/Downloads;p:~/Projects;c:~/Projects/Clients'
 export ICONLOOKUP=1
-export USE_PISTOL=1
+export USE_PISTOL=0
 export PISTOL_DEBUG=0
 
 # load autojump
