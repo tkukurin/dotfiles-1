@@ -8,7 +8,7 @@ export KUBECONFIG=${HOME}/.config/kube/config
 
 export TERMINAL=kitty
 
-export PAGER=less
+export PAGER=most
 
 export GREP_COLOR='38;5;202'
 
