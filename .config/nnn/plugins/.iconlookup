@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env zsh
 
 # Description: Print icons in front of list of directories/files
 
@@ -20,9 +20,9 @@ awk 'BEGIN {
 # Set your ANSI colorscheme below (https://en.wikipedia.org/wiki/ANSI_escape_code#Colors).
 # Default uses standard nnn icon colors, 8 and 24-bit nord themes are commented out.
     colordepth=8      #colordepth=8        #colordepth=24
-    color_dirtxt=39   #color_dirtxt=111    #color_dirtxt="129;161;193"
-    color_filetxt=15  #color_filetxt=111   #color_filetxt="129;161;193"
-    color_default=39  #color_default=111   #color_default="129;161;193"
+    color_dirtxt=67   #color_dirtxt=111    #color_dirtxt="129;161;193"
+    color_filetxt=238 #color_filetxt=111   #color_filetxt="129;161;193"
+    color_default=67  #color_default=111   #color_default="129;161;193"
     color_video=93    #color_video=110     #color_video="136;192;208"
     color_audio=220   #color_audio=150     #color_audio="163;190;140"
     color_image=82    #color_image=150     #color_image="163;190;140"
@@ -41,6 +41,15 @@ awk 'BEGIN {
     color_scala=196   #color_scala=139     #color_scala="143;188;187"
     color_shell=47    #color_shell=109     #color_shell="143;188;187"
     color_vim=28      #color_vim=109       #color_vim="143;188;187"
+
+    if (ENVIRON["IL_C_DIRTXT"])
+      color_dirtxt=ENVIRON["IL_C_DIRTXT"]
+    if (ENVIRON["IL_C_FILETXT"])
+      color_filetxt=ENVIRON["IL_C_FILETXT"]
+    if (ENVIRON["IL_C_DEFAULT"])
+      color_default=ENVIRON["IL_C_DEFAULT"]
+    if (ENVIRON["IL_C_VIDEO"])
+      color_video=ENVIRON["IL_C_VIDEO"]
 
 # icons[][1] contains icon and icons[][2] contains color
     icons["directory"][1] = ""; icons["directory"][2] = color_default

@@ -102,12 +102,6 @@ recreateCachedSettingsFile() {
   fi
 }
 
-# Gather external ip address
-exip () {
-  e_header "Current External IP: "
-  curl -s -m 5 http://ipv4.myip.dk/api/info/IPv4Address | sed -e 's/"//g'
-}
-
 # Determine local IP address
 ips () {
   ifconfig | grep "inet " | awk '{ print $2 }'
@@ -154,4 +148,31 @@ zle -N backward-kill-dir
 # Save ssh auth socket
 sshAuthSave() {
     ln -sf "$SSH_AUTH_SOCK" "$HOME/.ssh/ssh-auth-sock.$HOSTNAME"
+}
+
+# Return 'dark' or 'light' based on the time of day
+themeMode () {
+  # See ~/bin/sunrise-sunset.sh
+  # */5 * * * * ~/bin/kittyMode.sh
+
+  location=${LOCATION:-NLXX5790}
+
+  IFS=':'
+  read -r sunrise < $HOME/tmp/$location.sunrise
+  sunrise=${sunrise/':'/}
+  read -r sunset < $HOME/tmp/$location.sunset
+  sunset=${sunset/':'/}
+
+  now=`date +%H%M`
+
+  mode=dark
+  if [ $now -ge $sunrise ] && [ $now -lt $sunset ]; then
+    mode=light
+  fi
+
+  if [ "$1" != "" ]; then
+    mode=$1
+  fi
+
+  echo $mode
 }

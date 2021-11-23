@@ -63,6 +63,7 @@ export LESS='-g -i -M -R -S -w -z-4'
 
 # Kitty theme
 ~/bin/kittyMode.sh
+source ${ZDOTDIR:-${HOME}}/.config/zsh/themes/env.zsh
 
 # Set the Less input preprocessor.
 if (( $+commands[lesspipe.sh] )); then

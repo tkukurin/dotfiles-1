@@ -55,6 +55,9 @@ export ICONLOOKUP=1
 export USE_PISTOL=0
 export PISTOL_DEBUG=0
 
+# See ~/bin/sunrise-sunset.sh
+export LOCATION=NLXX5790
+
 # load autojump
 . /usr/share/autojump/autojump.zsh
 
