@@ -9,6 +9,8 @@ local newColour
 
 symbols=(
 	'branch' ''
+	'error' '✘'
+	'flip' '❨╯°益°❩╯彡┻━┻'
 	'hash' '➦'
 )
 
@@ -120,7 +122,7 @@ prompt_tuurlijk_setup() {
 	# %m: shortname host
 	# %(?..): prompt conditional - %(condition.true.false)
 	PROMPT_PWD=' $(shrink_path -l -t) '
-	PROMPT_EXIT="%K{$colours[exitBg]}%F{$colours[exit]}%(?.. ✘ %K{$colours[pwdBg]}%F{$colours[exitBg]})%K{$colours[pwdBg]}%F{$colours[pwd]}"
+	PROMPT_EXIT="%K{$colours[exitBg]}%F{$colours[exit]}%(?.. ${symbols[flip]} %? %K{$colours[pwdBg]}%F{$colours[exitBg]})%K{$colours[pwdBg]}%F{$colours[pwd]}"
 	PROMPT_SU="%(!.%k%F{$colours[pwdBg]}%K{$colours[rootBg]} ⚡ %F{$colours[rootBg]}%k.%k%F{$colours[pwdBg]})%{%f%k%b%} "
 	PROMPT='${PROMPT_EXIT}${(e)${PROMPT_PWD}}${PROMPT_SU}'
 
