@@ -69,7 +69,7 @@ main () {
     fi
     popd
 
-    source $home/.config/zsh/functions.zsh
+    source $home/.config/zsh/0_functions.zsh
     e_header "Concatenating .config/zsh files into single file..."
     recreateCachedSettingsFile
     e_header "Compiling zsh files for increased speed..."

@@ -10,7 +10,7 @@ e_success() { echo -e " \033[1;32m✔\033[0m  $@"; }
 e_error()   { echo -e " \033[1;31m✖\033[0m  $@"; }
 
 # Croptesting
-#source ${ZDOTDIR:-${HOME}}/.config/zsh/frameworks.zsh
+#source ${ZDOTDIR:-${HOME}}/.config/zsh/archive/frameworks.zsh
 
 # Show path in title
 precmd () {print -Pn "\e]0;${PWD/$HOME/\~}\a"}
@@ -37,16 +37,16 @@ fi
 
 # Load dircolors
 if [ -s ${ZDOTDIR:-${HOME}}/.dircolors ]; then
-	if (( $+commands[gdircolors] )); then
-		eval $(command gdircolors -b ${ZDOTDIR:-${HOME}}/.dircolors)
-	elif (( $+commands[dircolors] )); then
+	if (( $+commands[dircolors] )); then
 		eval $(command dircolors -b ${ZDOTDIR:-${HOME}}/.dircolors)
+	elif (( $+commands[gdircolors] )); then
+		eval $(command gdircolors -b ${ZDOTDIR:-${HOME}}/.dircolors)
 	fi
 fi
 
 # Load settings
 if [[ ! -s ${ZDOTDIR:-${HOME}}/.config/zsh/cache/settings.zsh ]]; then
-	source ${ZDOTDIR:-${HOME}}/.config/zsh/functions.zsh
+	source ${ZDOTDIR:-${HOME}}/.config/zsh/0_functions.zsh
 	recreateCachedSettingsFile
 fi
 source ${ZDOTDIR:-${HOME}}/.config/zsh/cache/settings.zsh

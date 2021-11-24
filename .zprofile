@@ -6,35 +6,6 @@
 #
 
 #
-# Browser
-#
-
-if [[ "$OSTYPE" == darwin* ]]; then
-  export BROWSER='open'
-else
-  export BROWSER='xdg-open'
-fi
-
-#
-# Editors
-#
-
-export EDITOR='vim'
-export GIT_EDITOR='vim'
-export VISUAL='vim'
-export PAGER='less'
-
-#
-# Language
-#
-
-if [[ -z "$LANG" ]]; then
-  export LANG='en_US.UTF-8'
-fi
-export LC_ALL='en_US.UTF-8'
-export LC_CTYPE='en_US.UTF-8'
-
-#
 # Paths
 #
 
@@ -62,7 +33,7 @@ path=(
 export LESS='-g -i -M -R -S -w -z-4'
 
 # Kitty theme
-~/bin/kittyMode.sh
+#~/bin/kittyMode.sh
 source ${ZDOTDIR:-${HOME}}/.config/zsh/themes/env.zsh
 
 # Set the Less input preprocessor.
