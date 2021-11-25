@@ -33,8 +33,9 @@ if [[ ! -s ${ZDOTDIR:-${HOME}}/.zgenom/sources/init.zsh ]]; then
   zgenom load zsh-users/zsh-autosuggestions
   zgenom load zdharma-continuum/fast-syntax-highlighting
   zgenom load zsh-users/zsh-history-substring-search
-  zgenom oh-my-zsh plugins/shrink-path
-  zgenom oh-my-zsh plugins/ssh-agent
+  zgenom ohmyzsh plugins/shrink-path
+  zgenom ohmyzsh plugins/ssh-agent
+  zgenom ohmyzsh --completion plugins/docker-compose
   # generate the init script from plugins above
   zgenom save
 fi
