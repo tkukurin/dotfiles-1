@@ -33,7 +33,7 @@ path=(
 export LESS='-g -i -M -R -S -w -z-4'
 
 # Kitty theme
-#~/bin/kittyMode.sh
+~/bin/kittyMode.sh
 source ${ZDOTDIR:-${HOME}}/.config/zsh/themes/env.zsh
 
 # Set the Less input preprocessor.

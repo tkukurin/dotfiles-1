@@ -1,7 +1,7 @@
 # Completion
 [ -d /usr/local/share/zsh-completions ] && fpath=(/usr/local/share/zsh-completions $fpath)
-zstyle ':completion::complete:*' use-cache on               # completion caching, use rehash to clear
-zstyle ':completion:*' cache-path ${ZDOTDIR:-${HOME}}/.config/zsh/cache              # cache path
+zstyle ':completion::complete:*' use-cache on                             # completion caching, use rehash to clear
+zstyle ':completion:*' cache-path ${ZDOTDIR:-${HOME}}/.config/zsh/cache   # cache path
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
@@ -51,9 +51,6 @@ zstyle ':auto-fu:var' track-keymap-skip opp
 zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:kill:*' force-list always
 zstyle ':completion:*:*:kill:*:processes' list-colors "=(#b) #([0-9]#)*=36=31"
-
-# Zstyle ssh known hosts
-zstyle -e ':completion::*:*:*:hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/hosts,etc/ssh_,${HOME}/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
 
 # Zstyle autocompletion
 zstyle ':auto-fu:highlight' input bold

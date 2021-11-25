@@ -28,16 +28,16 @@ echo "# This file is generated automatically, do not edit by hand!" >$themeEnvir
 echo "# Edit ~/bin/kittyMode.sh instead!" >>$themeEnvironment
 
 if [[ $mode == "light" ]]; then
-  kitty @ --to unix:@kitty-$(pidof kitty) set-colors -a background=\#fdf6e3 foreground=\#586e75
-  kitty @ --to unix:@kitty-$(pidof kitty) set-background-image ~/Pictures/Backgrounds/termBg.day.png
-  gsettings set org.gnome.desktop.interface gtk-theme Adwaita
+  kitty @ --to unix:@kitty-$(pidof kitty) set-colors -a background=\#fdf6e3 foreground=\#586e75 &
+  kitty @ --to unix:@kitty-$(pidof kitty) set-background-image ~/Pictures/Backgrounds/termBg.day.png &
+  gsettings set org.gnome.desktop.interface gtk-theme Adwaita &
   echo 'export BAT_THEME="OneHalfLight"' >>$themeEnvironment
   echo 'export IL_C_DIRTXT=67' >>$themeEnvironment
   echo 'export IL_C_FILETXT=238' >>$themeEnvironment
 else
-  kitty @ --to unix:@kitty-$(pidof kitty) set-colors -a background=\#000000 foreground=\#c0c0c0
-  kitty @ --to unix:@kitty-$(pidof kitty) set-background-image ~/Pictures/Backgrounds/termBg.png
-  gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark
+  kitty @ --to unix:@kitty-$(pidof kitty) set-colors -a background=\#000000 foreground=\#c0c0c0 &
+  kitty @ --to unix:@kitty-$(pidof kitty) set-background-image ~/Pictures/Backgrounds/termBg.png &
+  gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark &
   echo 'export BAT_THEME="OneHalfDark"' >>$themeEnvironment
   echo 'export IL_C_DIRTXT=67' >>$themeEnvironment
   echo 'export IL_C_FILETXT=250' >>$themeEnvironment

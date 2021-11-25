@@ -1,3 +1,6 @@
+# Uncomment to profile zsh startup
+#zmodload zsh/zprof
+
 # Set umask
 umask g-w,o-rwx
 
@@ -5,49 +8,49 @@ umask g-w,o-rwx
 setopt auto_cd
 
 # Colorful messages
-e_header()  { echo -e "\n\033[1m$@\033[0m"; }
+e_header() { echo -e "\n\033[1m$@\033[0m"; }
 e_success() { echo -e " \033[1;32m✔\033[0m  $@"; }
-e_error()   { echo -e " \033[1;31m✖\033[0m  $@"; }
+e_error() { echo -e " \033[1;31m✖\033[0m  $@"; }
 
 # Croptesting
 #source ${ZDOTDIR:-${HOME}}/.config/zsh/archive/frameworks.zsh
 
 # Show path in title
-precmd () {print -Pn "\e]0;${PWD/$HOME/\~}\a"}
+precmd() {print -Pn "\e]0;${PWD/$HOME/\~}\a"}
 
-# Load zgen only if a user types a zgen command
-zgen () {
-	if [[ ! -s ${ZDOTDIR:-${HOME}}/.zgen/zgen.zsh ]]; then
-		git clone --recursive https://github.com/tarjoilija/zgen.git ${ZDOTDIR:-${HOME}}/.zgen
-	fi
-	source ${ZDOTDIR:-${HOME}}/.zgen/zgen.zsh
-	zgen "$@"
+# Load zgenom only if a user types a zgenom command
+zgenom() {
+  if [[ ! -s ${ZDOTDIR:-${HOME}}/.zgenom/zgenom.zsh ]]; then
+    git clone https://github.com/jandamm/zgenom.git "${HOME}/.zgenom" ${ZDOTDIR:-${HOME}}/.zgenom
+  fi
+  # load zgenom
+  source "${ZDOTDIR:-${HOME}}/.zgenom/zgenom.zsh"
+  zgenom "$@"
 }
 
-# Generate zgen init script if needed
-if [[ ! -s ${ZDOTDIR:-${HOME}}/.zgen/init.zsh ]]; then
-	zgen load zsh-users/zsh-autosuggestions
-	zgen load zdharma/fast-syntax-highlighting
-	zgen load zsh-users/zsh-history-substring-search
-	zgen oh-my-zsh plugins/shrink-path
-	zgen oh-my-zsh plugins/ssh-agent
-	zgen save
-	zcompile ${ZDOTDIR:-${HOME}}/.zgen/init.zsh
+# Generate zgenom init script if needed
+if [[ ! -s ${ZDOTDIR:-${HOME}}/.zgenom/sources/init.zsh ]]; then
+  zgenom load zsh-users/zsh-autosuggestions
+  zgenom load zdharma-continuum/fast-syntax-highlighting
+  zgenom load zsh-users/zsh-history-substring-search
+  zgenom oh-my-zsh plugins/shrink-path
+  zgenom oh-my-zsh plugins/ssh-agent
+  # generate the init script from plugins above
+  zgenom save
 fi
+
+# This needs to be loaded before ssh-agent plugin
+zstyle :omz:plugins:ssh-agent lazy yes
 
 # Load dircolors
 if [ -s ${ZDOTDIR:-${HOME}}/.dircolors ]; then
-	if (( $+commands[dircolors] )); then
-		eval $(command dircolors -b ${ZDOTDIR:-${HOME}}/.dircolors)
-	elif (( $+commands[gdircolors] )); then
-		eval $(command gdircolors -b ${ZDOTDIR:-${HOME}}/.dircolors)
-	fi
+  eval $(command dircolors -b ${ZDOTDIR:-${HOME}}/.dircolors)
 fi
 
-# Load settings
+# Load complete compiled settings file including zgenom init
 if [[ ! -s ${ZDOTDIR:-${HOME}}/.config/zsh/cache/settings.zsh ]]; then
-	source ${ZDOTDIR:-${HOME}}/.config/zsh/0_functions.zsh
-	recreateCachedSettingsFile
+  source ${ZDOTDIR:-${HOME}}/.config/zsh/0_functions.zsh
+  recreateCachedSettingsFile
 fi
 source ${ZDOTDIR:-${HOME}}/.config/zsh/cache/settings.zsh
 
@@ -58,3 +61,6 @@ prompt tuurlijk
 
 # Remove whitespace after the RPROMPT
 #ZLE_RPROMPT_INDENT=0
+
+# Uncomment to profile zsh startup
+#zprof
