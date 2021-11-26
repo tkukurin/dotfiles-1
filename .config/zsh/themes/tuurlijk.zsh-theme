@@ -8,10 +8,13 @@ local newSymbol
 local newColour
 
 symbols=(
-	'branch' ''
+	'branch' ''
 	'error' '✘'
 	'flip' '❨╯°益°❩╯彡┻━┻'
-	'hash' '➦'
+	'hash' '#'
+	'left' ''
+	'root' ' '
+	'right' ''
 )
 
 # Use extended color palette if available
@@ -91,15 +94,15 @@ prompt_tuurlijk_setup() {
 	zstyle ':vcs_info:*:*' unstagedstr '!'
 	zstyle ':vcs_info:*:*' stagedstr '+'
 	zstyle ':vcs_info:*:*' formats \
-		"%F{$colours[vcsBg]}%K{$colours[vcsBg]}%F{$colours[vcs]} %F{$colours[vcsClean]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
-		"%F{$colours[vcsBg]}%K{$colours[vcsBg]}%F{$colours[vcs]} %F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
-		"$symbols[hash] %7.7i" \
+		"%F{$colours[vcsBg]}${symbols[left]}%K{$colours[vcsBg]}%F{$colours[vcs]}%F{$colours[vcsClean]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
+		"%F{$colours[vcsBg]}${symbols[left]}%K{$colours[vcsBg]}%F{$colours[vcs]}%F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
+		"%7.7i" \
 		"%r" \
 		"%u%c"
 	zstyle ':vcs_info:*:* actionformats' \
-		"%F{$colours[vcsBg]}%K{$colours[vcsBg]}%F{$colours[vcs]} %F{$colours[vcsClean]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
-		"%F{$colours[vcsBg]}%K{$colours[vcsBg]}%F{$colours[vcs]} %F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
-		"$symbols[hash] %7.7i" \
+		"%F{$colours[vcsBg]}${symbols[left]}%K{$colours[vcsBg]}%F{$colours[vcs]}%F{$colours[vcsClean]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
+		"%F{$colours[vcsBg]}${symbols[left]}%K{$colours[vcsBg]}%F{$colours[vcs]}%F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
+		"%7.7i" \
 		"%r" \
 		"%u%c (%a)"
 	autoload -Uz colors && colors
@@ -121,12 +124,12 @@ prompt_tuurlijk_setup() {
 	# %n: username
 	# %m: shortname host
 	# %(?..): prompt conditional - %(condition.true.false)
-	PROMPT_PWD=' $(shrink_path -l -t) '
-	PROMPT_EXIT="%K{$colours[exitBg]}%F{$colours[exit]}%(?.. ${symbols[flip]} %? %K{$colours[pwdBg]}%F{$colours[exitBg]})%K{$colours[pwdBg]}%F{$colours[pwd]}"
-	PROMPT_SU="%(!.%k%F{$colours[pwdBg]}%K{$colours[rootBg]} ⚡ %F{$colours[rootBg]}%k.%k%F{$colours[pwdBg]})%{%f%k%b%} "
+	PROMPT_PWD=' $(shrink_path -l -t)'
+	PROMPT_EXIT="%K{$colours[exitBg]}%F{$colours[exit]}%(?.. ${symbols[flip]} %? %K{$colours[pwdBg]}%F{$colours[exitBg]}${symbols[right]})%K{$colours[pwdBg]}%F{$colours[pwd]}"
+	PROMPT_SU="%(!.%k%F{$colours[pwdBg]}%K{$colours[rootBg]}${symbols[right]} ⚡ %F{$colours[rootBg]}%k.%k%F{$colours[pwdBg]})${symbols[right]}%{%f%k%b%} "
 	PROMPT='${PROMPT_EXIT}${(e)${PROMPT_PWD}}${PROMPT_SU}'
 
-	RPROMPT_HOST="%F{$colours[userHostBg]}${SSH_TTY:+}%K{$colours[userHostBg]}%F{$colours[userHost]}${SSH_TTY:+ %n@%m }%{%f%k%b%}"
+	RPROMPT_HOST="%F{$colours[userHostBg]}${SSH_TTY:+${symbols[left]}}%K{$colours[userHostBg]}%F{$colours[userHost]}${SSH_TTY:+ %n@%m }%{%f%k%b%}"
 	RPROMPT_EXEC_COLOUR="%F{$colours[exec]}"
 	RPROMPT='$(_prompt_tuurlijk_vcs_path_and_branch)${RPROMPT_EXEC_COLOUR}$(_prompt_tuurlijk_cmd_exec_time)${RPROMPT_HOST}'
 }
@@ -151,7 +154,7 @@ _prompt_tuurlijk_vcs_path_and_branch() {
 			segment+=( "$vcs_info_msg_4_" )
 		fi
 		segment+=( "$vcs_info_msg_2_" )
-		[[ -n "$vcs_info_msg_3_" ]] && segment+=( "| $vcs_info_msg_3_ " )
+		[[ -n "$vcs_info_msg_3_" ]] && segment+=( "|$vcs_info_msg_3_ " )
 	fi
 	echo $segment
 }
