@@ -29,7 +29,7 @@ if [[ -n ${terminfo[colors]} && ${terminfo[colors]} -ge 256 ]]; then
 	'root' 245
 	'rootBg' 52
 	'exec' 208
-	'vcs' 244
+	'vcs' 250
 	'vcsBg' 236
 	'vcsClean' 28
 	'vcsDirty' 124
@@ -154,7 +154,7 @@ _prompt_tuurlijk_vcs_path_and_branch() {
 			segment+=( "$vcs_info_msg_4_" )
 		fi
 		segment+=( "$vcs_info_msg_2_" )
-		[[ -n "$vcs_info_msg_3_" ]] && segment+=( "|$vcs_info_msg_3_ " )
+		[[ -n "$vcs_info_msg_3_" ]] && segment+=( "$vcs_info_msg_3_ " )
 	fi
 	echo $segment
 }
@@ -217,4 +217,3 @@ EOH
 }
 
 prompt_tuurlijk_setup "$@"
-

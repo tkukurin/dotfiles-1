@@ -10,9 +10,11 @@ backup/
 .idea/
 .mc/history
 *.zwc
-.config/zsh/cache/settings.zsh
 tags
 __pycache__/
 *.py[cod]
 cache/
 /.config/zsh/cache/
+/.config/zsh/themes/env.zsh
+/.config/zsh/secrets.zsh
+/.config/kitty/env.conf
