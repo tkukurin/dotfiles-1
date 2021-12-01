@@ -11,11 +11,12 @@ lastKittyChange=$(stat --format=%Y $kittyThemeEnvironment)
 zshFileAge=$(expr $nowTimestamp - $lastZshChange)
 kittyFileAge=$(expr $nowTimestamp - $lastKittyChange)
 recreate=false
+
 if [[ ! -s "$kittyThemeEnvironment" || $lastKittyChange -le $fiveMinutesAgo ]]; then
   touch $kittyThemeEnvironment
   echo "# This file is generated automatically, do not edit by hand!" >$kittyThemeEnvironment
   echo "# Edit ~/bin/kittyMode.sh instead!" >>$kittyThemeEnvironment
-  notify-send 'KittyMode' "kittyFileAge: ${kittyFileAge}, refreshing kitty theme file" -a 'KittyMode' -i "${ZDOTDIR:-${HOME}}/Applications/WhiteSur-icon-theme/src/apps/scalable/kitty.svg"
+  notify-send 'KittyMode' "kittyFileAge: ${kittyFileAge}, refreshing kitty theme file" -a 'KittyMode' -i "/usr/lib/kitty/logo/kitty.png"
   recreate=true
 fi
 
@@ -23,7 +24,7 @@ if [[ ! -s "$zshThemeEnvironment" || $lastZshChange -le $fiveMinutesAgo ]]; then
   touch $zshThemeEnvironment
   echo "# This file is generated automatically, do not edit by hand!" >$zshThemeEnvironment
   echo "# Edit ~/bin/kittyMode.sh instead!" >>$zshThemeEnvironment
-  notify-send 'KittyMode' "zshFileAge: ${zshFileAge}, refreshing zsh theme file" -a 'KittyMode' -i "${ZDOTDIR:-${HOME}}/Applications/WhiteSur-icon-theme/src/apps/scalable/kitty.svg"
+  notify-send 'KittyMode' "zshFileAge: ${zshFileAge}, refreshing zsh theme file" -a 'KittyMode' -i "/usr/lib/kitty/logo/kitty.png"
   recreate=true
 fi
 
