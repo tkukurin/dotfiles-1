@@ -87,7 +87,7 @@ prompt_tuurlijk_setup() {
 	# %u: unstaged changes in the repository
 	# %c: staged changes in the repository
 	#
-	zstyle ':vcs_info:*' enable git hg
+	zstyle ':vcs_info:*' enable git
 	zstyle ':vcs_info:*' check-for-changes true
 	zstyle ':vcs_info:*' get-revision true
 	zstyle ':vcs_info:*' max-exports 5
@@ -132,15 +132,6 @@ prompt_tuurlijk_setup() {
 	RPROMPT_HOST="%F{$colours[userHostBg]}${SSH_TTY:+${symbols[left]}}%K{$colours[userHostBg]}%F{$colours[userHost]}${SSH_TTY:+ %n@%m }%{%f%k%b%}"
 	RPROMPT_EXEC_COLOUR="%F{$colours[exec]}"
 	RPROMPT='$(_prompt_tuurlijk_vcs_path_and_branch)${RPROMPT_EXEC_COLOUR}$(_prompt_tuurlijk_cmd_exec_time)${RPROMPT_HOST}'
-}
-
-# Fastest possible way to check if repo is dirty
-_prompt_tuurlijk_vcs_is_git_dirty() {
-	if [[ $(command git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
-		return true
-	else
-		return false
-	fi
 }
 
 # Display information about the current path and branch
