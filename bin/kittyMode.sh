@@ -2,33 +2,40 @@
 # See ~/bin/sunrise-sunset.sh
 # */5 * * * * ~/bin/kittyMode.sh
 
-kittyThemeEnvironment="${ZDOTDIR:-${HOME}}/.config/kitty/env.conf"
-zshThemeEnvironment="${ZDOTDIR:-${HOME}}/.config/zsh/themes/env.zsh"
+# Needed to run from cron
+export DISPLAY=:0
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus
+
 nowTimestamp=$(date +%s)
 fiveMinutesAgo=$(expr $nowTimestamp - 300)
-lastZshChange=$(stat --format=%Y $zshThemeEnvironment)
-lastKittyChange=$(stat --format=%Y $kittyThemeEnvironment)
-zshFileAge=$(expr $nowTimestamp - $lastZshChange)
-kittyFileAge=$(expr $nowTimestamp - $lastKittyChange)
 recreate=false
 
+kittyThemeEnvironment="${ZDOTDIR:-${HOME}}/.config/kitty/env.conf"
+lastKittyChange=$(stat --format=%Y $kittyThemeEnvironment)
+kittyFileAge=$(expr $nowTimestamp - $lastKittyChange)
 if [[ ! -s "$kittyThemeEnvironment" || $lastKittyChange -le $fiveMinutesAgo ]]; then
   touch $kittyThemeEnvironment
   echo "# This file is generated automatically, do not edit by hand!" >$kittyThemeEnvironment
+  echo "# $(date)" >>$kittyThemeEnvironment
   echo "# Edit ~/bin/kittyMode.sh instead!" >>$kittyThemeEnvironment
-  notify-send 'KittyMode' "kittyFileAge: ${kittyFileAge}, refreshing kitty theme file" -a 'KittyMode' -i "/usr/lib/kitty/logo/kitty.png"
   recreate=true
 fi
 
+zshThemeEnvironment="${ZDOTDIR:-${HOME}}/.config/zsh/themes/env.zsh"
+lastZshChange=$(stat --format=%Y $zshThemeEnvironment)
+zshFileAge=$(expr $nowTimestamp - $lastZshChange)
 if [[ ! -s "$zshThemeEnvironment" || $lastZshChange -le $fiveMinutesAgo ]]; then
   touch $zshThemeEnvironment
   echo "# This file is generated automatically, do not edit by hand!" >$zshThemeEnvironment
+  echo "# $(date)" >>$zshThemeEnvironment
   echo "# Edit ~/bin/kittyMode.sh instead!" >>$zshThemeEnvironment
-  notify-send 'KittyMode' "zshFileAge: ${zshFileAge}, refreshing zsh theme file" -a 'KittyMode' -i "/usr/lib/kitty/logo/kitty.png"
   recreate=true
 fi
 
 if ($recreate); then
+  # Debug
+  # notify-send 'KittyMode' "Refreshing kitty theme file" -a 'KittyMode' -i "/usr/lib/kitty/logo/kitty.png"
+
   location=${LOCATION:-NLXX5790}
 
   IFS=':'
