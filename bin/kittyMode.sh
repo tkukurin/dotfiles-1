@@ -57,7 +57,7 @@ if [[ ! -s "$zshThemeEnvironment" || $(stat --format=%Y $zshThemeEnvironment) -l
   recreate=true
 fi
 
-if [ $recreate ] || [ "$1" != "" ]; then
+if [ "$1" != "" ] || ($recreate); then
   # Debug
   # notify-send 'KittyMode' "Refreshing kitty theme file" -a 'KittyMode' -i "/usr/lib/kitty/logo/kitty.png"
 
