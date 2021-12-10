@@ -34,8 +34,8 @@ iconlookup_dirtxt=(
 )
 declare -A iconlookup_filetxt
 iconlookup_filetxt=(
-  [dark]="238"
-  [light]="250"
+  [dark]="250"
+  [light]="238"
 )
 
 # Needed to run from cron
