@@ -30,7 +30,7 @@ if [[ -n ${terminfo[colors]} && ${terminfo[colors]} -ge 256 ]]; then
 	'rootBg' 52
 	'exec' 208
 	'vcs' 250
-	'vcsBg' 236
+	'vcsBg' 238
 	'vcsClean' 28
 	'vcsDirty' 124
 	)

@@ -72,11 +72,17 @@ export ICONLOOKUP=1
 export USE_PISTOL=0
 export PISTOL_DEBUG=0
 
+# Exa https://the.exa.website/docs/colour-themes
+export EXA_COLORS="da=38;5;67:sn=38;5;28:uu=38;5;65:sb=38;33"
+
 # See ~/bin/sunrise-sunset.sh
 export LOCATION=NLXX5790
 
 # load autojump
 . /usr/share/autojump/autojump.zsh
+
+# load Rust env
+. "$HOME/.cargo/env"
 
 # Disabled because of slowness
 # # Ruby version manager

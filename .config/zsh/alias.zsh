@@ -1,7 +1,7 @@
 if [ $(uname) = Darwin ]; then
   alias ls='/usr/local/bin/gls --color=auto'
 else
-  alias ls='exa'
+  alias ls='exa --group-directories-first'
 fi
 
 # Argh
@@ -24,6 +24,7 @@ alias .....="cd ../../../.."
 alias -- -="cd -"
 
 # Shortcuts
+alias d=dust
 alias g="git"
 alias ga="git add"
 alias gc="git commit -m"
@@ -41,10 +42,8 @@ alias vi=vim
 alias v=vim
 
 # Docker
-alias d=docker
 alias dbd="./.docker/bin/dump.sh"
 alias dp="docker ps"
-alias dc="docker-compose -f .docker/docker-compose.yml -f .docker/docker-compose.*.yml"
 alias dev="docker-compose -f .docker/docker-compose.yml -f .docker/docker-compose.*.yml"
 alias down='f(){ dev rm -fsv $@; unset -f f; }; f'
 alias up='f(){ dev up -d $@ && dev logs -f before_script after_script; unset -f f; }; f'
@@ -56,13 +55,12 @@ alias dct='e_header "Clearing ./Web/typo3temp/*"; ds -c "echo removing \`find ./
 alias dei='e_header "Enabling install tool"; ds -c "touch ./Web/typo3conf/ENABLE_INSTALL_TOOL"; e_success Done'
 alias lzd='lazydocker -f ./.docker/docker-compose.yml'
 
-alias l="ls -F"
-alias ll="ls -h -l "
-alias la="ls -a"
+alias l="exa -l --group-directories-first"
+alias la="exa -la --group-directories-first"
 # List only directories and symbolic links that point to directories
-alias lsd='ls -ld *(-/DN)'
+alias lsd='exa -ld --group-directories-first *(-/DN)'
 # List only file beginning with "."
-alias lsa='ls -ld .*'
+alias lsa='exa -ld --group-directories-first .*'
 if [[ -f /etc/arch-release ]] || [[ -f /etc/debian_version ]]; then
   alias grep="grep --color=auto"
 fi
