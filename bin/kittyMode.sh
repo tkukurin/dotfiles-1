@@ -91,8 +91,11 @@ if [ "$1" != "" ] || ($recreate); then
   fi
 
   # Active terminals
-  kitty @ --to unix:@kitty-$(pidof kitty) set-colors -a background=${kitty_background[$mode]} foreground=${kitty_foreground[$mode]}
-  kitty @ --to unix:@kitty-$(pidof kitty) set-background-image "${kitty_background_image[$mode]}"
+  if pgrep -x kitty >/dev/null
+  then
+    kitty @ --to unix:@kitty-$(pidof kitty) set-colors -a background=${kitty_background[$mode]} foreground=${kitty_foreground[$mode]}
+    kitty @ --to unix:@kitty-$(pidof kitty) set-background-image "${kitty_background_image[$mode]}"
+  fi
 
   # Gnome theme
   gsettings set org.gnome.desktop.interface gtk-theme ${gtk_theme[$mode]} &
