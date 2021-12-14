@@ -12,16 +12,16 @@ symbols=(
 	'error' '✘'
 	'flip' '❨╯°益°❩╯彡┻━┻'
 	'hash' '#'
-	'left' ''
+	'left' ''
 	'root' ' '
-	'right' ''
+	'right' ''
 )
 
 # Use extended color palette if available
 if [[ -n ${terminfo[colors]} && ${terminfo[colors]} -ge 256 ]]; then
 	colours=(
-	'pwd' 250
-	'pwdBg' 238
+	'pwd' 243
+	'pwdBg' 172
 	'userHost' 16
 	'userHostBg' 254
 	'exit' 124
@@ -29,10 +29,13 @@ if [[ -n ${terminfo[colors]} && ${terminfo[colors]} -ge 256 ]]; then
 	'root' 245
 	'rootBg' 52
 	'exec' 208
-	'vcs' 250
-	'vcsBg' 238
+	'vcs' 243
+	'vcsBg' 246
 	'vcsClean' 28
 	'vcsDirty' 124
+	'vcsRevision' 65
+	'vcsChanges' 16
+	'vcsRoot' 67
 	)
 else
 	colours=(
@@ -49,6 +52,9 @@ else
 	'vcsBg' blue
 	'vcsClean' green
 	'vcsDirty' red
+	'vcsRevision' cyan
+	'vcsChanges' black
+	'vcsRoot' cyan
 	)
 fi
 
@@ -76,6 +82,8 @@ prompt_tuurlijk_setup() {
 	# vcs_info format strings, formatted using zformat
 	# See: man zshmodules
 	#
+	# https://zsh.sourceforge.io/Doc/Release/User-Contributions.html#Version-Control-Information
+	#
 	# max-exports: Defines the maximum number of vcs_info_msg_*_ variables vcs_info will set.
 	# %b: branch
 	# %a: action (rebase/merge)
@@ -87,24 +95,26 @@ prompt_tuurlijk_setup() {
 	# %u: unstaged changes in the repository
 	# %c: staged changes in the repository
 	#
-	zstyle ':vcs_info:*' enable git
+	zstyle ':vcs_info:*' enable git svn
 	zstyle ':vcs_info:*' check-for-changes true
+	zstyle ':vcs_info:*' check-for-staged-changes true
 	zstyle ':vcs_info:*' get-revision true
 	zstyle ':vcs_info:*' max-exports 5
-	zstyle ':vcs_info:*:*' unstagedstr '!'
-	zstyle ':vcs_info:*:*' stagedstr '+'
+	zstyle ':vcs_info:*' use-simple true
+	zstyle ':vcs_info:*:*' unstagedstr ''
+	zstyle ':vcs_info:*:*' stagedstr '➕'
 	zstyle ':vcs_info:*:*' formats \
-		"%F{$colours[vcsBg]}${symbols[left]}%K{$colours[vcsBg]}%F{$colours[vcs]}%F{$colours[vcsClean]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
-		"%F{$colours[vcsBg]}${symbols[left]}%K{$colours[vcsBg]}%F{$colours[vcs]}%F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
-		"%7.7i" \
-		"%r" \
-		"%u%c"
-	zstyle ':vcs_info:*:* actionformats' \
-		"%F{$colours[vcsBg]}${symbols[left]}%K{$colours[vcsBg]}%F{$colours[vcs]}%F{$colours[vcsClean]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
-		"%F{$colours[vcsBg]}${symbols[left]}%K{$colours[vcsBg]}%F{$colours[vcs]}%F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
-		"%7.7i" \
-		"%r" \
-		"%u%c (%a)"
+		"%F{$colours[vcsBg]}${symbols[left]}%B%F{$colours[vcs]}%F{$colours[vcsClean]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
+		"%F{$colours[vcsBg]}${symbols[left]}%B%F{$colours[vcs]}%F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
+		"%F{$colours[vcsRevision]}%1.7i%f" \
+		"%F{$colours[vcsRoot]}%r%f" \
+		"%F{$colours[vcsChanges]}%u%c%f"
+	zstyle ':vcs_info:*:*' actionformats \
+		"%F{$colours[vcsBg]}${symbols[left]}%B%F{$colours[vcs]}%F{$colours[vcsClean]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
+		"%F{$colours[vcsBg]}${symbols[left]}%B%F{$colours[vcs]}%F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
+		"%F{$colours[vcsRevision]}%1.7i%f" \
+		"%F{$colours[vcsRoot]}%r%f" \
+		"%F{$colours[vcsChanges]}%u%c%f %a"
 	autoload -Uz colors && colors
 	autoload -Uz add-zsh-hook
 
@@ -115,6 +125,8 @@ prompt_tuurlijk_setup() {
 
 	# Prompt format strings
 	#
+	# %B: set bold
+	# %b: reset bold
 	# %F: foreground color dict
 	# %f: reset foreground color
 	# %K: background color dict
@@ -124,12 +136,12 @@ prompt_tuurlijk_setup() {
 	# %n: username
 	# %m: shortname host
 	# %(?..): prompt conditional - %(condition.true.false)
-	PROMPT_PWD=' $(shrink_path -l -t)'
-	PROMPT_EXIT="%K{$colours[exitBg]}%F{$colours[exit]}%(?.. ${symbols[flip]} %? %K{$colours[pwdBg]}%F{$colours[exitBg]}${symbols[right]})%K{$colours[pwdBg]}%F{$colours[pwd]}"
+	PROMPT_PWD='$(shrink_path -l -t) '
+	PROMPT_EXIT="%F{$colours[exit]}%(?..${symbols[flip]} %? %F{$colours[exitBg]})%B%F{$colours[pwd]}"
 	PROMPT_SU="%(!.%k%F{$colours[pwdBg]}%K{$colours[rootBg]}${symbols[right]} ⚡ %F{$colours[rootBg]}%k.%k%F{$colours[pwdBg]})${symbols[right]}%{%f%k%b%} "
 	PROMPT='${PROMPT_EXIT}${(e)${PROMPT_PWD}}${PROMPT_SU}'
 
-	RPROMPT_HOST="%F{$colours[userHostBg]}${SSH_TTY:+${symbols[left]}}%K{$colours[userHostBg]}%F{$colours[userHost]}${SSH_TTY:+ %n@%m }%{%f%k%b%}"
+	RPROMPT_HOST="%F{$colours[userHostBg]}${SSH_TTY:+${symbols[left]}}%F{$colours[userHost]}${SSH_TTY:+ %n@%m }%f%k%b"
 	RPROMPT_EXEC_COLOUR="%F{$colours[exec]}"
 	RPROMPT='$(_prompt_tuurlijk_vcs_path_and_branch)${RPROMPT_EXEC_COLOUR}$(_prompt_tuurlijk_cmd_exec_time)${RPROMPT_HOST}'
 }
@@ -145,7 +157,7 @@ _prompt_tuurlijk_vcs_path_and_branch() {
 			segment+=( "$vcs_info_msg_4_" )
 		fi
 		segment+=( "$vcs_info_msg_2_" )
-		[[ -n "$vcs_info_msg_3_" ]] && segment+=( "$vcs_info_msg_3_ " )
+		[[ -n "$vcs_info_msg_3_" ]] && segment+=( "$vcs_info_msg_3_" )
 	fi
 	echo $segment
 }
@@ -160,7 +172,7 @@ _prompt_tuurlijk_cmd_exec_time() {
 	local stop=`date +%s`
 	local start=${_cmd_timestamp:-$stop}
 	let local elapsed=$stop-$start
-	[ $elapsed -gt 5 ] && echo "${elapsed}s "
+	[ $elapsed -gt 5 ] && echo " ${elapsed}s"
 }
 
 # Get the initial timestamp for cmd_exec_time
