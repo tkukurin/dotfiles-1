@@ -21,7 +21,7 @@ precmd() {print -Pn "\e]0;${PWD/$HOME/\~}\a"}
 # Load zgenom only if a user types a zgenom command
 zgenom() {
   if [[ ! -s ${ZDOTDIR:-${HOME}}/.zgenom/zgenom.zsh ]]; then
-    git clone https://github.com/jandamm/zgenom.git "${HOME}/.zgenom" ${ZDOTDIR:-${HOME}}/.zgenom
+    git clone https://github.com/jandamm/zgenom.git "${ZDOTDIR:-${HOME}}/.zgenom"
   fi
   # load zgenom
   source "${ZDOTDIR:-${HOME}}/.zgenom/zgenom.zsh"
