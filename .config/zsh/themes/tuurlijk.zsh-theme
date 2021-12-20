@@ -13,8 +13,8 @@ symbols=(
 	'flip' '❨╯°益°❩╯彡┻━┻'
 	'hash' '#'
 	'left' ''
-	'root' ' '
 	'right' ''
+	'root' '#'
 )
 
 # Use extended color palette if available
@@ -26,7 +26,7 @@ if [[ -n ${terminfo[colors]} && ${terminfo[colors]} -ge 256 ]]; then
 	'userHostBg' 254
 	'exit' 124
 	'exitBg' 245
-	'root' 245
+	'root' 124
 	'rootBg' 52
 	'exec' 208
 	'vcs' 243
@@ -34,7 +34,7 @@ if [[ -n ${terminfo[colors]} && ${terminfo[colors]} -ge 256 ]]; then
 	'vcsClean' 28
 	'vcsDirty' 124
 	'vcsRevision' 65
-	'vcsChanges' 16
+	'vcsChanges' 208
 	'vcsRoot' 67
 	)
 else
@@ -101,8 +101,8 @@ prompt_tuurlijk_setup() {
 	zstyle ':vcs_info:*' get-revision true
 	zstyle ':vcs_info:*' max-exports 5
 	zstyle ':vcs_info:*' use-simple true
-	zstyle ':vcs_info:*:*' unstagedstr ''
-	zstyle ':vcs_info:*:*' stagedstr '➕'
+	zstyle ':vcs_info:*:*' unstagedstr ' '
+	zstyle ':vcs_info:*:*' stagedstr ' '
 	zstyle ':vcs_info:*:*' formats \
 		"%F{$colours[vcsBg]}${symbols[left]}%B%F{$colours[vcs]}%F{$colours[vcsClean]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
 		"%F{$colours[vcsBg]}${symbols[left]}%B%F{$colours[vcs]}%F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
@@ -138,7 +138,7 @@ prompt_tuurlijk_setup() {
 	# %(?..): prompt conditional - %(condition.true.false)
 	PROMPT_PWD='$(shrink_path -l -t) '
 	PROMPT_EXIT="%F{$colours[exit]}%(?..${symbols[flip]} %? %F{$colours[exitBg]})%B%F{$colours[pwd]}"
-	PROMPT_SU="%(!.%k%F{$colours[pwdBg]}%K{$colours[rootBg]}${symbols[right]} ⚡ %F{$colours[rootBg]}%k.%k%F{$colours[pwdBg]})${symbols[right]}%{%f%k%b%} "
+	PROMPT_SU="%(!.%k ⚡ %F{$colours[root]}${symbols[root]}.%k%F{$colours[pwdBg]}${symbols[right]})%{%f%k%b%} "
 	PROMPT='${PROMPT_EXIT}${(e)${PROMPT_PWD}}${PROMPT_SU}'
 
 	RPROMPT_HOST="%F{$colours[userHostBg]}${SSH_TTY:+${symbols[left]}}%F{$colours[userHost]}${SSH_TTY:+ %n@%m }%f%k%b"
@@ -211,6 +211,9 @@ prompt_tuurlijk_help () {
 	zstyle ':theme:tuurlijk:vcsBg' colour 238
 	zstyle ':theme:tuurlijk:vcsClean' colour 28
 	zstyle ':theme:tuurlijk:vcsDirty' colour 124
+	zstyle ':theme:tuurlijk:vcsChanges' colour 124
+	zstyle ':theme:tuurlijk:vcsRevision' colour 124
+	zstyle ':theme:tuurlijk:vcsRoot' colour 124
 
 	# Set custom prompt symbols
 	zstyle ':theme:tuurlijk:branch' symbol 
