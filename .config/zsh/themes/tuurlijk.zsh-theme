@@ -31,9 +31,9 @@ if [[ -n ${terminfo[colors]} && ${terminfo[colors]} -ge 256 ]]; then
 	'exec' 208
 	'vcs' 243
 	'vcsBg' 246
-	'user' 67
+	'user' 65
 	'at' 243
-	'host' 65
+	'host' 67
 	'vcsClean' 28
 	'vcsDirty' 124
 	'vcsRevision' 65
