@@ -20,7 +20,8 @@ symbols=(
 # Use extended color palette if available
 if [[ -n ${terminfo[colors]} && ${terminfo[colors]} -ge 256 ]]; then
 	colours=(
-	'pwd' 172
+	'pwd' 243
+	'promptSymbol' 172
 	'userHost' 16
 	'userHostBg' 254
 	'exit' 124
@@ -30,6 +31,9 @@ if [[ -n ${terminfo[colors]} && ${terminfo[colors]} -ge 256 ]]; then
 	'exec' 208
 	'vcs' 243
 	'vcsBg' 246
+	'user' 67
+	'at' 243
+	'host' 65
 	'vcsClean' 28
 	'vcsDirty' 124
 	'vcsRevision' 65
@@ -138,10 +142,10 @@ prompt_tuurlijk_setup() {
 	# %(?..): prompt conditional - %(condition.true.false)
 	PROMPT_PWD='$(shrink_path -l -t) '
 	PROMPT_EXIT="%F{$colours[exit]}%(?..${symbols[flip]} %? %F{$colours[exitBg]})%B%F{$colours[pwd]}"
-	PROMPT_SU="%(!.%k ⚡ %F{$colours[root]}${symbols[root]}.%k%F{$colours[pwd]}${symbols[right]})%f%k%b "
+	PROMPT_SU="%(!.%k ⚡ %F{$colours[root]}${symbols[root]}.%k%F{$colours[promptSymbol]}${symbols[right]})%f%k%b "
 	PROMPT='${PROMPT_EXIT}${(e)${PROMPT_PWD}}${PROMPT_SU}'
 
-	RPROMPT_HOST="%B%F{$colours[userHostBg]}${SSH_TTY:+${symbols[left]}}%F{$colours[userHost]}${SSH_TTY:+ %n@%m }%f%k%b"
+	RPROMPT_HOST="%B%F{$colours[userHostBg]}${SSH_TTY:+${symbols[left]}}%F{$colours[userHost]}${SSH_TTY:+ %F{$colours[user]}%n%F{$colours[at]}@%F{$colours[host]}%m }%f%k%b"
 	RPROMPT_EXEC_COLOUR="%F{$colours[exec]}"
 	RPROMPT='$(_prompt_tuurlijk_vcs_path_and_branch)${RPROMPT_EXEC_COLOUR}$(_prompt_tuurlijk_cmd_exec_time)${RPROMPT_HOST}'
 }
