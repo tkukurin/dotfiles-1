@@ -142,7 +142,7 @@ prompt_tuurlijk_setup() {
 	# %(?..): prompt conditional - %(condition.true.false)
 	PROMPT_PWD='$(shrink_path -l -t) '
 	PROMPT_EXIT="%F{$colours[exit]}%(?..${symbols[flip]} %? %F{$colours[exitBg]})%B%F{$colours[pwd]}"
-	PROMPT_SU="%(!.%k ⚡ %F{$colours[root]}${symbols[root]}.%k%F{$colours[promptSymbol]}${symbols[right]})%f%k%b "
+	PROMPT_SU="%(!.%k %F{$colours[root]}${symbols[root]}.%k%F{$colours[promptSymbol]}${symbols[right]})%f%k%b "
 	PROMPT='${PROMPT_EXIT}${(e)${PROMPT_PWD}}${PROMPT_SU}'
 
 	RPROMPT_USER_AT_HOST="%F{$colours[user]}%n%F{$colours[at]}@%F{$colours[host]}%m"
