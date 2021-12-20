@@ -20,8 +20,7 @@ symbols=(
 # Use extended color palette if available
 if [[ -n ${terminfo[colors]} && ${terminfo[colors]} -ge 256 ]]; then
 	colours=(
-	'pwd' 243
-	'pwdBg' 172
+	'pwd' 172
 	'userHost' 16
 	'userHostBg' 254
 	'exit' 124
@@ -34,13 +33,13 @@ if [[ -n ${terminfo[colors]} && ${terminfo[colors]} -ge 256 ]]; then
 	'vcsClean' 28
 	'vcsDirty' 124
 	'vcsRevision' 65
-	'vcsChanges' 208
+	'vcsUnstaged' 208
+	'vcsStaged' 28
 	'vcsRoot' 67
 	)
 else
 	colours=(
 	'pwd' white
-	'pwdBg' blue
 	'userHost' black
 	'userHostBg' cyan
 	'exit' red
@@ -53,7 +52,7 @@ else
 	'vcsClean' green
 	'vcsDirty' red
 	'vcsRevision' cyan
-	'vcsChanges' black
+	'vcsUnstaged' black
 	'vcsRoot' cyan
 	)
 fi
@@ -71,6 +70,7 @@ done
 # Define prompts
 prompt_tuurlijk_setup() {
 	if ! type shrink_path > /dev/null; then
+		zgenom ohmyzsh plugins/shrink-path
 		echo -e " \033[1;31m✖\033[0m Please install the 'shrink-path' plugin:"
 		echo "   https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/shrink-path"
 		echo "   This prompt uses it to generate a short readable path."
@@ -108,13 +108,13 @@ prompt_tuurlijk_setup() {
 		"%F{$colours[vcsBg]}${symbols[left]}%B%F{$colours[vcs]}%F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
 		"%F{$colours[vcsRevision]}%1.7i%f" \
 		"%F{$colours[vcsRoot]}%r%f" \
-		"%F{$colours[vcsChanges]}%u%c%f"
+		"%F{$colours[vcsUnstaged]}%u%F{$colours[vcsStaged]}%c%f"
 	zstyle ':vcs_info:*:*' actionformats \
 		"%F{$colours[vcsBg]}${symbols[left]}%B%F{$colours[vcs]}%F{$colours[vcsClean]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
 		"%F{$colours[vcsBg]}${symbols[left]}%B%F{$colours[vcs]}%F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
 		"%F{$colours[vcsRevision]}%1.7i%f" \
 		"%F{$colours[vcsRoot]}%r%f" \
-		"%F{$colours[vcsChanges]}%u%c%f %a"
+		"%F{$colours[vcsUnstaged]}%u%F{$colours[vcsStaged]}%c%f %a"
 	autoload -Uz colors && colors
 	autoload -Uz add-zsh-hook
 
@@ -138,10 +138,10 @@ prompt_tuurlijk_setup() {
 	# %(?..): prompt conditional - %(condition.true.false)
 	PROMPT_PWD='$(shrink_path -l -t) '
 	PROMPT_EXIT="%F{$colours[exit]}%(?..${symbols[flip]} %? %F{$colours[exitBg]})%B%F{$colours[pwd]}"
-	PROMPT_SU="%(!.%k ⚡ %F{$colours[root]}${symbols[root]}.%k%F{$colours[pwdBg]}${symbols[right]})%{%f%k%b%} "
+	PROMPT_SU="%(!.%k ⚡ %F{$colours[root]}${symbols[root]}.%k%F{$colours[pwd]}${symbols[right]})%f%k%b "
 	PROMPT='${PROMPT_EXIT}${(e)${PROMPT_PWD}}${PROMPT_SU}'
 
-	RPROMPT_HOST="%F{$colours[userHostBg]}${SSH_TTY:+${symbols[left]}}%F{$colours[userHost]}${SSH_TTY:+ %n@%m }%f%k%b"
+	RPROMPT_HOST="%B%F{$colours[userHostBg]}${SSH_TTY:+${symbols[left]}}%F{$colours[userHost]}${SSH_TTY:+ %n@%m }%f%k%b"
 	RPROMPT_EXEC_COLOUR="%F{$colours[exec]}"
 	RPROMPT='$(_prompt_tuurlijk_vcs_path_and_branch)${RPROMPT_EXEC_COLOUR}$(_prompt_tuurlijk_cmd_exec_time)${RPROMPT_HOST}'
 }
@@ -199,7 +199,6 @@ prompt_tuurlijk_help () {
 
 	# Set custom prompt colours
 	zstyle ':theme:tuurlijk:pwd' colour 250
-	zstyle ':theme:tuurlijk:pwdBg' colour 238
 	zstyle ':theme:tuurlijk:exit' colour 124
 	zstyle ':theme:tuurlijk:exitBg' colour 245
 	zstyle ':theme:tuurlijk:root' colour 234
@@ -211,7 +210,8 @@ prompt_tuurlijk_help () {
 	zstyle ':theme:tuurlijk:vcsBg' colour 238
 	zstyle ':theme:tuurlijk:vcsClean' colour 28
 	zstyle ':theme:tuurlijk:vcsDirty' colour 124
-	zstyle ':theme:tuurlijk:vcsChanges' colour 124
+	zstyle ':theme:tuurlijk:vcsStaged' colour 124
+	zstyle ':theme:tuurlijk:vcsUnstaged' colour 124
 	zstyle ':theme:tuurlijk:vcsRevision' colour 124
 	zstyle ':theme:tuurlijk:vcsRoot' colour 124
 
