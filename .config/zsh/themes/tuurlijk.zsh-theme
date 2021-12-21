@@ -106,7 +106,7 @@ prompt_tuurlijk_setup() {
 	zstyle ':vcs_info:*' max-exports 5
 	zstyle ':vcs_info:*' use-simple true
 	zstyle ':vcs_info:*:*' unstagedstr ' '
-	zstyle ':vcs_info:*:*' stagedstr ' '
+	zstyle ':vcs_info:*:*' stagedstr '🌱'
 	zstyle ':vcs_info:*:*' formats \
 		"%F{$colours[vcsBg]}${symbols[left]}%B%F{$colours[vcs]}%F{$colours[vcsClean]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
 		"%F{$colours[vcsBg]}${symbols[left]}%B%F{$colours[vcs]}%F{$colours[vcsDirty]}${symbols[branch]} %F{$colours[vcs]}%1.25b" \
