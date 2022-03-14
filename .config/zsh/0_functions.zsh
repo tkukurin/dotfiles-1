@@ -119,6 +119,19 @@ mkcd() {
   fi
 }
 
+# Create TYPO3 extension archive from current directory
+t3x () {
+  e_header "Creating TYP3 extension archive..."
+  if [[ ! -n "$1" ]]; then
+    echo "Usage: mkcd [directory]"
+  elif git show-ref --tags v${1} --quiet; then
+    git archive -o "../${PWD##*/}_${1}.zip" v${1}
+    e_success "Created: ../${PWD##*/}_${1}.zip"
+  else
+    e_error "Could not find tag: v${1} in current repository. Maybe you need to: git pull?"
+  fi
+}
+
 # Recreate git folder from existing remote
 regit() {
   if [[ ! -n "$1" ]]; then
