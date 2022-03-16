@@ -49,6 +49,7 @@ alias down='f(){ dev rm -fsv $@; unset -f f; }; f'
 alias up='f(){ dev up -d $@ && dev logs -f before_script after_script; unset -f f; }; f'
 alias re='f(){ dev rm -fsv $@ && dev up -d $@ && dev logs -f before_script after_script; unset -f f; }; f'
 alias ds="dev exec -u dev php zsh -l"
+alias dsx="dev exec -u dev php_xdebug zsh -l"
 alias de="dev exec -u dev"
 alias dcf='e_header "Running typo3cms cache:flush"; ds -c "./Web/bin/typo3cms cache:flush"; e_success Done'
 alias dct='e_header "Clearing ./Web/typo3temp/*"; ds -c "echo removing \`find ./Web/typo3temp/ -type f | wc -l\` files; rm -rf ./Web/typo3temp/*"; e_success Done'
