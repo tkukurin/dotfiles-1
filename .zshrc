@@ -29,7 +29,7 @@ zgenom() {
 }
 
 # Generate zgenom init script if needed
-if [[ ! -s ${ZDOTDIR:-${HOME}}/.zgenom/sources/init.zsh ]]; then
+if ! zgenom saved; then
   zgenom load zsh-users/zsh-autosuggestions
   zgenom load zdharma-continuum/fast-syntax-highlighting
   zgenom load zsh-users/zsh-history-substring-search

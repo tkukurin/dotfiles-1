@@ -18,3 +18,6 @@ if [[ -r ~/.credentials ]]; then
 fi
 
 # export PROMPT_COMMAND="_update_ps1"
+
+# Start bash, then switch to zsh embedded in bash
+[[ $(which zsh)=0 ]] && exec -l zsh "$@"
