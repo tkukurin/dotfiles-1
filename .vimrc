@@ -17,6 +17,7 @@ call plug#begin()
 
 " Sensible defaults
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-vinegar'
 
 " Status bar and prompt
 Plug 'vim-airline/vim-airline'
