@@ -15,7 +15,7 @@ fi
 export EDITOR='vim'
 export GIT_EDITOR='vim'
 export VISUAL='vim'
-export PAGER='less'
+[[ $(which bat) ]] && export PAGER='bat' || export PAGER='less'
 
 # Language
 if [[ -z "$LANG" ]]; then
@@ -26,9 +26,8 @@ export LC_CTYPE='en_US.UTF-8'
 
 export KUBECONFIG=${HOME}/.config/kube/config
 
-export TERMINAL=kitty
-
-export PAGER=most
+# export TERMINAL=kitty
+# export PAGER=most
 
 export GREP_COLOR='38;5;202'
 
@@ -79,7 +78,8 @@ export EXA_COLORS="da=38;5;67:sn=38;5;28:uu=38;5;65:sb=38;33"
 export LOCATION=NLXX5790
 
 # load autojump
-. /usr/share/autojump/autojump.zsh
+# NOTE(tk) not installed by default ?
+# . /usr/share/autojump/autojump.zsh
 
 # load Rust env
 . "$HOME/.cargo/env"
